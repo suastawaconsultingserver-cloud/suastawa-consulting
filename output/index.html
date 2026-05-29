@@ -1295,10 +1295,10 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
       <!-- Cert 5: Izin KJA — 2 halaman slide dalam 1 kolom -->
       <div class="cert cert-slide reveal" data-cert="5" style="cursor:zoom-in;">
         <div class="cert-slideshow" id="kjaSS">
-          <div class="cert-slide-item active">
+          <div class="cert-slide-item active" onclick="openLightboxKJA(event)" style="cursor:zoom-in;">
             <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_1_verzvv.jpg" alt="Surat Izin KJA Halaman 1">
           </div>
-          <div class="cert-slide-item">
+          <div class="cert-slide-item" onclick="openLightboxKJA(event)" style="cursor:zoom-in;">
             <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_2_p8zmki.jpg" alt="Surat Izin KJA Halaman 2">
           </div>
           <!-- Navigasi slide -->
@@ -1669,7 +1669,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   window.openLightboxKJA = function(e) {
     e.stopPropagation();
     // Deteksi halaman KJA yang sedang aktif
-    var activeSlide = document.querySelector('#kjaSS .cert-slide-item.active');
     var slides = document.querySelectorAll('#kjaSS .cert-slide-item');
     var page = 0;
     slides.forEach(function(s, i){ if(s.classList.contains('active')) page = i; });
