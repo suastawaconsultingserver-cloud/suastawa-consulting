@@ -233,6 +233,20 @@ section{padding:80px 0;}
 .cert-badge{display:inline-block;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
 .cert-badge.g{background:var(--gp);color:var(--g2);} .cert-badge.b{background:var(--bp);color:var(--b2);}
 
+/* KJA 2-halaman slideshow dalam 1 kolom */
+.cert-slideshow{position:relative;overflow:hidden;background:#f5f5f5;}
+.cert-slide-item{display:none;}
+.cert-slide-item.active{display:block;}
+.cert-slide-item img{width:100%;height:220px;object-fit:cover;object-position:top;transition:opacity .3s;}
+.kja-nav{position:absolute;top:50%;transform:translateY(-60%);background:rgba(0,0,0,.45);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;z-index:10;transition:.2s;display:flex;align-items:center;justify-content:center;}
+.kja-nav:hover{background:rgba(0,0,0,.7);}
+.kja-prev{left:8px;}
+.kja-next{right:8px;}
+.kja-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10;}
+.kja-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:.2s;}
+.kja-dot.kja-dot-on{background:#fff;transform:scale(1.2);}
+.cert-slide .cert-zoom-hint{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.5);color:#fff;font-size:10px;padding:4px 8px;border-radius:6px;cursor:zoom-in;z-index:10;}
+
 /* Foto kantor gallery */
 #galeri{background:var(--gray-l);}
 .galeri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
@@ -1233,6 +1247,7 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
       <p class="sec-desc">Semua izin dan sertifikasi yang dipegang oleh Suastawa Consulting diterbitkan oleh lembaga berwenang resmi Pemerintah RI dan organisasi profesi internasional.</p>
     </div>
     <div class="leg-grid">
+      <!-- Cert 0: Piagam RNA -->
       <div class="cert reveal" data-cert="0" onclick="openLightbox(0)" style="cursor:zoom-in;">
         <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/Piagam_kementrian_keuangan_eyju5f.jpg" alt="Piagam Register Negara Akuntan Kemenkeu RI"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
         <div class="cert-info">
@@ -1241,7 +1256,17 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
           <p>Register Negara Akuntan No. RNA 10235 · Diterbitkan 30 September 2015</p>
         </div>
       </div>
+      <!-- Cert 1: Sertifikat CA -->
       <div class="cert reveal" data-cert="1" onclick="openLightbox(1)" style="cursor:zoom-in;">
+        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961715/sertifikat_CA_scehi5.jpg" alt="Sertifikat CA ASEAN Chartered Professional Accountant"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
+        <div class="cert-info">
+          <span class="cert-badge g">KJA</span>
+          <h4>Sertifikat CA — ASEAN CPA</h4>
+          <p>ASEAN Chartered Professional Accountant · Reg. ACPACC-ID.0001468 · 30 April 2018</p>
+        </div>
+      </div>
+      <!-- Cert 2: KP3SKP -->
+      <div class="cert reveal" data-cert="2" onclick="openLightbox(2)" style="cursor:zoom-in;">
         <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/sertifikat_KP3SKP_vr2mjs.jpg" alt="Sertifikat C KP3SKP Konsultan Pajak"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
         <div class="cert-info">
           <span class="cert-badge b">KKP</span>
@@ -1249,7 +1274,8 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
           <p>Sertifikasi Konsultan Pajak Tingkat C · No. C.19.VI/KP3SKP/L-0057 · 2019</p>
         </div>
       </div>
-      <div class="cert reveal" data-cert="2" onclick="openLightbox(2)" style="cursor:zoom-in;">
+      <!-- Cert 3: SK DJP Izin Praktik -->
+      <div class="cert reveal" data-cert="3" onclick="openLightbox(3)" style="cursor:zoom-in;">
         <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_praktik_ogmzhy.jpg" alt="SK Dirjen Pajak Izin Praktik Konsultan Pajak"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
         <div class="cert-info">
           <span class="cert-badge b">KKP</span>
@@ -1257,7 +1283,8 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
           <p>KEP-6378/IP.C/PJ/2020 · Kementerian Keuangan RI Direktorat Jenderal Pajak</p>
         </div>
       </div>
-      <div class="cert reveal" data-cert="3" onclick="openLightbox(3)" style="cursor:zoom-in;">
+      <!-- Cert 4: PERADI -->
+      <div class="cert reveal" data-cert="4" onclick="openLightbox(4)" style="cursor:zoom-in;">
         <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961715/sertifikat_peradi_eukcjy.jpg" alt="Sertifikat PERADI Perhimpunan Advokat Indonesia"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
         <div class="cert-info">
           <span class="cert-badge b">KKP</span>
@@ -1265,12 +1292,28 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
           <p>Pendidikan Khusus Profesi Advokat · No. 12-04395/PERADI-KP2A1/XII/13 · 2013</p>
         </div>
       </div>
-      <div class="cert reveal" data-cert="4" onclick="openLightbox(4)" style="grid-column:span 2;cursor:zoom-in;">
-        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_1_verzvv.jpg" alt="Surat Izin DJP Konsultan Pajak" style="height:260px;object-fit:cover;object-position:top;"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
+      <!-- Cert 5: Izin KJA — 2 halaman slide dalam 1 kolom -->
+      <div class="cert cert-slide reveal" data-cert="5" style="cursor:zoom-in;">
+        <div class="cert-slideshow" id="kjaSS">
+          <div class="cert-slide-item active">
+            <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_1_verzvv.jpg" alt="Surat Izin KJA Halaman 1">
+          </div>
+          <div class="cert-slide-item">
+            <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_2_p8zmki.jpg" alt="Surat Izin KJA Halaman 2">
+          </div>
+          <!-- Navigasi slide -->
+          <button class="kja-nav kja-prev" onclick="kjaSlide(-1,event)" title="Halaman sebelumnya">&#8249;</button>
+          <button class="kja-nav kja-next" onclick="kjaSlide(1,event)" title="Halaman berikutnya">&#8250;</button>
+          <div class="kja-dots">
+            <span class="kja-dot kja-dot-on" onclick="kjaGo(0,event)"></span>
+            <span class="kja-dot" onclick="kjaGo(1,event)"></span>
+          </div>
+          <div class="cert-zoom-hint" onclick="openLightboxKJA(event)">🔍 Klik untuk perbesar</div>
+        </div>
         <div class="cert-info">
-          <span class="cert-badge b">KKP</span>
-          <h4>Izin Praktik DJP — SI-1543/PJ/2008</h4>
-          <p>Izin Konsultan Pajak Terdaftar dari Direktorat Jenderal Pajak RI · Sejak 2008</p>
+          <span class="cert-badge g">KJA</span>
+          <h4>Izin Usaha KJA — No. 357/KM.1/PPPK/2022</h4>
+          <p>Surat Izin Kantor Jasa Akuntan · Diterbitkan Kementerian Keuangan RI · 2 Halaman</p>
         </div>
       </div>
     </div>
@@ -1287,10 +1330,10 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
     </div>
     <div class="galeri-grid reveal">
       <div class="gi tall">
-        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_2_p8zmki.jpg" alt="Fasad Kantor KKP Suastawa Consulting dengan papan nama IKPI">
+        <img src="PLACEHOLDER_17_interior-teras-kantor-dengan-furniture-kayu-bali" alt="Interior teras kantor dengan furniture kayu Bali">
       </div>
       <div class="gi">
-        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961715/sertifikat_CA_scehi5.jpg" alt="Ruang konsultasi dalam kantor bergaya Bali">
+        <img src="PLACEHOLDER_18_tampak-luar-kantor-dari-teras" alt="Tampak luar kantor dari teras">
       </div>
       <div class="gi">
         <img src="PLACEHOLDER_17_interior-teras-kantor-dengan-furniture-kayu-bali" alt="Interior teras kantor dengan furniture kayu Bali">
@@ -1593,24 +1636,44 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 <script>
 // ══ LIGHTBOX ═════════════════════════════════════════
 (function(){
-  var certImgs = [];
-  var certCaptions = [];
+  // certImgs[5] = array 2 URL untuk KJA (halaman 1 & 2)
+  var certImgs = [
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/Piagam_kementrian_keuangan_eyju5f.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961715/sertifikat_CA_scehi5.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/sertifikat_KP3SKP_vr2mjs.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_praktik_ogmzhy.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961715/sertifikat_peradi_eukcjy.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_1_verzvv.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_2_p8zmki.jpg'
+  ];
+  var certCaptions = [
+    'Piagam RNA — Kemenkeu RI · Register Negara Akuntan No. RNA 10235 · 30 September 2015',
+    'Sertifikat CA — ASEAN CPA · ASEAN Chartered Professional Accountant · Reg. ACPACC-ID.0001468 · 30 April 2018',
+    'Sertifikat C — KP3SKP · Sertifikasi Konsultan Pajak Tingkat C · No. C.19.VI/KP3SKP/L-0057 · 2019',
+    'SK DJP — Izin Praktik Tingkat C · KEP-6378/IP.C/PJ/2020 · Kementerian Keuangan RI',
+    'PERADI — PKPA · Pendidikan Khusus Profesi Advokat · No. 12-04395/PERADI-KP2A1/XII/13 · 2013',
+    'Izin Usaha KJA — Halaman 1 · No. 357/KM.1/PPPK/2022 · Kementerian Keuangan RI',
+    'Izin Usaha KJA — Halaman 2 · No. 357/KM.1/PPPK/2022 · Kementerian Keuangan RI'
+  ];
   var current = 0;
-
-  function init() {
-    var certs = document.querySelectorAll('.cert[data-cert]');
-    certs.forEach(function(c) {
-      var img = c.querySelector('img');
-      var h4  = c.querySelector('.cert-info h4');
-      var p   = c.querySelector('.cert-info p');
-      if(img) certImgs.push(img.src);
-      certCaptions.push((h4 ? h4.textContent : '') + (p ? ' · ' + p.textContent : ''));
-    });
-  }
+  var total = certImgs.length;
 
   window.openLightbox = function(idx) {
-    if(!certImgs.length) init();
     current = idx;
+    showImg(current);
+    document.getElementById('lbOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Buka lightbox KJA dari tombol zoom hint (mulai dari halaman 1)
+  window.openLightboxKJA = function(e) {
+    e.stopPropagation();
+    // Deteksi halaman KJA yang sedang aktif
+    var activeSlide = document.querySelector('#kjaSS .cert-slide-item.active');
+    var slides = document.querySelectorAll('#kjaSS .cert-slide-item');
+    var page = 0;
+    slides.forEach(function(s, i){ if(s.classList.contains('active')) page = i; });
+    current = 5 + page; // index 5 = KJA hal1, index 6 = KJA hal2
     showImg(current);
     document.getElementById('lbOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -1623,7 +1686,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       img.src = certImgs[idx];
       img.style.opacity = '1';
     }, 150);
-    document.getElementById('lbCounter').textContent = (idx+1) + ' / ' + certImgs.length;
+    document.getElementById('lbCounter').textContent = (idx+1) + ' / ' + total;
     document.getElementById('lbCaption').textContent = certCaptions[idx] || '';
   }
 
@@ -1632,8 +1695,8 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     document.body.style.overflow = '';
   }
 
-  function prev() { current = (current - 1 + certImgs.length) % certImgs.length; showImg(current); }
-  function next() { current = (current + 1) % certImgs.length; showImg(current); }
+  function prev() { current = (current - 1 + total) % total; showImg(current); }
+  function next() { current = (current + 1) % total; showImg(current); }
 
   document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('lbClose').addEventListener('click', closeLb);
@@ -1649,9 +1712,31 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       if(e.key === 'ArrowLeft') prev();
       if(e.key === 'ArrowRight') next();
     });
-    init();
   });
 })();
+
+// ══ KJA SLIDESHOW (2 halaman dalam 1 kolom) ══════════
+var _kjaCur = 0;
+function kjaSlide(dir, e) {
+  e.stopPropagation();
+  var slides = document.querySelectorAll('#kjaSS .cert-slide-item');
+  var dots   = document.querySelectorAll('#kjaSS .kja-dot');
+  slides[_kjaCur].classList.remove('active');
+  dots[_kjaCur].classList.remove('kja-dot-on');
+  _kjaCur = (_kjaCur + dir + slides.length) % slides.length;
+  slides[_kjaCur].classList.add('active');
+  dots[_kjaCur].classList.add('kja-dot-on');
+}
+function kjaGo(idx, e) {
+  e.stopPropagation();
+  var slides = document.querySelectorAll('#kjaSS .cert-slide-item');
+  var dots   = document.querySelectorAll('#kjaSS .kja-dot');
+  slides[_kjaCur].classList.remove('active');
+  dots[_kjaCur].classList.remove('kja-dot-on');
+  _kjaCur = idx;
+  slides[_kjaCur].classList.add('active');
+  dots[_kjaCur].classList.add('kja-dot-on');
+}
 </script>
 <script>
 // ══ HERO PHOTO SLIDESHOW ═════════════════════════
