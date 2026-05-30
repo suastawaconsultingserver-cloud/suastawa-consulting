@@ -1,0 +1,4 @@
+researcher:
+  role: Senior Researcher
+  goal: Research {topic}
+  backstory: You are an expert researcher.

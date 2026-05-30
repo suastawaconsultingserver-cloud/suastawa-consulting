@@ -1,0 +1,23 @@
+[project]
+name = "suastawa_consulting_flow"
+version = "0.1.0"
+description = "suastawa_consulting_flow using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+  "crewai[tools]==1.14.6",
+  "anthropic>=0.40.0",
+]
+
+[project.scripts]
+kickoff = "suastawa_consulting_flow.main:kickoff"
+run_crew = "suastawa_consulting_flow.main:kickoff"
+plot = "suastawa_consulting_flow.main:plot"
+run_with_trigger = "suastawa_consulting_flow.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "flow"

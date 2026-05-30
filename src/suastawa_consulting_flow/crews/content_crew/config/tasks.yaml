@@ -1,0 +1,4 @@
+research_task:
+  description: Research {topic}
+  expected_output: Summary of {topic}
+  agent: researcher
