@@ -1300,6 +1300,16 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
         <div class="cert-info"><span class="cert-badge g">KJA</span><h4>Izin Usaha KJA — No. 357/KM.1/PPPK/2022</h4><p>Surat Izin Kantor Jasa Akuntan · Kementerian Keuangan RI · 2 Halaman</p></div>
       </div>
     </div>
+
+    <!-- Area Dokumen Lainnya (muncul otomatis jika ada upload kategori non-sertifikat) -->
+    <div id="dokLainnyaWrap" style="display:none;margin-top:56px;">
+      <div style="text-align:center;margin-bottom:32px;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.2rem);color:#1a1a1a;font-weight:600;">Dokumen Lainnya</h3>
+        <p style="color:#666;font-size:.95rem;margin-top:6px;">Brosur, company profile, dan dokumen pendukung</p>
+      </div>
+      <div class="leg-grid" id="dokLainnyaGrid"></div>
+    </div>
+
   </div>
 </section>
 
@@ -2020,49 +2030,61 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'&&kkpO.classList.
 
 
 <script>
-// ══ INTEGRASI API: DOKUMEN & SERTIFIKAT DARI ADMIN ══
+// ══ INTEGRASI API: DOKUMEN & SERTIFIKAT DARI ADMIN (2 AREA) ══
 (function(){
   var API_BASE = 'https://suastawa-consulting-production.up.railway.app';
   var legGrid = document.getElementById('legGrid');
+  var lainGrid = document.getElementById('dokLainnyaGrid');
+  var lainWrap = document.getElementById('dokLainnyaWrap');
   if(!legGrid) return;
 
   function badgeClass(kat){
     var k = (kat||'').toLowerCase();
-    if(k.indexOf('izin')>=0) return 'g';
     if(k.indexOf('pajak')>=0 || k.indexOf('kkp')>=0) return 'b';
     return 'g';
   }
 
+  // Kategori yang masuk area "Sertifikat & Izin Resmi"
+  function isSertifikat(kat){
+    var k = (kat||'').toLowerCase();
+    return k.indexOf('sertifikat')>=0 || k.indexOf('izin')>=0;
+  }
+
+  function cardHTML(d){
+    var nama = d.nama || d.name || 'Dokumen';
+    var kat = d.kategori || d.category || 'Dokumen';
+    var url = d.url || d.file_url;
+    var bcls = badgeClass(kat);
+    var isImg = /\.(jpg|jpeg|png|webp|gif)$/i.test(url);
+    var thumb = isImg
+      ? '<img src="'+url+'" alt="'+nama+'" loading="lazy">'
+      : '<div style="height:220px;display:flex;align-items:center;justify-content:center;background:#f1f5f9;font-size:48px;">📄</div>';
+    return '<a href="'+url+'" target="_blank" rel="noopener" class="cert reveal visible" style="cursor:pointer;display:block;text-decoration:none;color:inherit;">' +
+      thumb +
+      '<div class="cert-zoom-hint">🔍 Klik untuk buka</div>' +
+      '<div class="cert-info"><span class="cert-badge '+bcls+'">'+kat.toUpperCase()+'</span><h4>'+nama+'</h4><p>Dokumen resmi Suastawa Consulting</p></div>' +
+    '</a>';
+  }
+
   function renderDokumen(list){
-    // Hanya dokumen yang punya URL file & nama valid
     var valid = list.filter(function(d){
       return (d.url || d.file_url) && (d.nama || d.name || '').trim().length > 0;
     });
-    if(valid.length === 0) return; // tidak ada → cert statis tetap
+    if(valid.length === 0) return;
 
-    var html = valid.map(function(d){
-      var nama = d.nama || d.name || 'Dokumen';
-      var kat = d.kategori || d.category || 'Dokumen';
-      var url = d.url || d.file_url;
-      var bcls = badgeClass(kat);
-      var isImg = /\.(jpg|jpeg|png|webp|gif)$/i.test(url);
-      var thumb = isImg
-        ? '<img src="'+url+'" alt="'+nama+'" loading="lazy">'
-        : '<div style="height:220px;display:flex;align-items:center;justify-content:center;background:#f1f5f9;font-size:48px;">📄</div>';
-      return '<a href="'+url+'" target="_blank" rel="noopener" class="cert reveal" style="cursor:pointer;display:block;text-decoration:none;color:inherit;">' +
-        thumb +
-        '<div class="cert-zoom-hint">🔍 Klik untuk buka</div>' +
-        '<div class="cert-info"><span class="cert-badge '+bcls+'">'+kat.toUpperCase()+'</span><h4>'+nama+'</h4><p>Dokumen resmi Suastawa Consulting</p></div>' +
-      '</a>';
-    }).join('');
+    var sertifikat = valid.filter(function(d){ return isSertifikat(d.kategori || d.category); });
+    var lainnya    = valid.filter(function(d){ return !isSertifikat(d.kategori || d.category); });
 
-    // TAMBAHKAN dokumen API setelah cert statis (tidak menghapus yang lama)
-    legGrid.insertAdjacentHTML('beforeend', html);
+    // Sertifikat & Izin → gabung dengan cert statis di legGrid
+    if(sertifikat.length > 0){
+      legGrid.insertAdjacentHTML('beforeend', sertifikat.map(cardHTML).join(''));
+    }
 
-    // re-trigger reveal animation
-    document.querySelectorAll('#legGrid .cert.reveal:not(.visible)').forEach(function(el){
-      el.classList.add('visible');
-    });
+    // Dokumen Lainnya → area terpisah (muncul hanya jika ada)
+    if(lainnya.length > 0 && lainGrid && lainWrap){
+      lainGrid.innerHTML = lainnya.map(cardHTML).join('');
+      lainWrap.style.display = 'block';
+    }
   }
 
   var controller = new AbortController();
