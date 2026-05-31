@@ -436,8 +436,36 @@ section{padding:80px 0;}
 .form-group textarea{resize:vertical;min-height:90px;}
 .btn-submit{width:100%;background:var(--g2);color:#fff;padding:14px;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.2s;margin-top:4px;}
 .btn-submit:hover{background:var(--g1);transform:translateY(-1px);}
-.maps-wrap{border-radius:14px;overflow:hidden;margin-top:28px;}
-.maps-wrap iframe{display:block;width:100%;height:220px;border:none;}
+.maps-wrap{border-radius:14px;overflow:hidden;margin-top:28px;position:relative;}
+.maps-wrap iframe{display:block;width:100%;height:220px;border:none;pointer-events:none;}
+.maps-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding-bottom:16px;
+  text-decoration:none;
+  background:linear-gradient(to top,rgba(0,0,0,0.25) 0%,transparent 40%);
+  opacity:0;
+  transition:opacity .3s ease;
+  cursor:pointer;
+}
+.maps-wrap:hover .maps-overlay{opacity:1;}
+.maps-overlay-btn{
+  background:#fff;
+  color:var(--g1);
+  font-size:13px;
+  font-weight:700;
+  padding:10px 22px;
+  border-radius:24px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+  display:flex;
+  align-items:center;
+  gap:6px;
+  transition:transform .2s;
+}
+.maps-overlay:hover .maps-overlay-btn{transform:translateY(-2px);}
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:900;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:.2s;text-decoration:none;animation:waPulse 2.5s infinite;}
 @keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4);}50%{box-shadow:0 4px 32px rgba(37,211,102,.65);}}
 .wa-float:hover{transform:scale(1.1);}
@@ -642,6 +670,40 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
   .kja-modal-icon{display:none;}
   .kja-cta{flex-direction:column;}
 }
+
+/* ── KKP MODAL (biru) ── */
+.kkp-modal-overlay{position:fixed;inset:0;z-index:10000;background:rgba(7,18,40,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;}
+.kkp-modal-overlay.open{opacity:1;visibility:visible;}
+.kkp-modal-panel{background:#fff;border-radius:20px;width:100%;max-width:640px;max-height:88vh;overflow-y:auto;position:relative;transform:translateY(28px) scale(.97);transition:transform .38s cubic-bezier(.34,1.56,.64,1);scrollbar-width:thin;scrollbar-color:#a8c6e8 transparent;}
+.kkp-modal-panel::-webkit-scrollbar{width:4px;}
+.kkp-modal-panel::-webkit-scrollbar-thumb{background:#a8c6e8;border-radius:4px;}
+.kkp-modal-overlay.open .kkp-modal-panel{transform:translateY(0) scale(1);}
+.kkp-modal-stripe{height:4px;background:linear-gradient(90deg,var(--b1),#3d7bbe,var(--gold));border-radius:20px 20px 0 0;}
+.kkp-modal-hd{padding:36px 36px 24px;background:linear-gradient(155deg,#eff5fc 0%,#fff 55%);border-bottom:1px solid #e2eaf0;position:relative;}
+.kkp-modal-num{display:inline-flex;align-items:center;gap:7px;background:#e3effa;color:var(--b1);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 13px;border-radius:20px;margin-bottom:16px;}
+.kkp-modal-num::before{content:'';width:6px;height:6px;background:#3d7bbe;border-radius:50%;}
+.kkp-modal-title{font-family:var(--serif);font-size:28px;font-weight:600;color:#1a2335;line-height:1.15;margin-bottom:10px;}
+.kkp-modal-sub{font-size:14px;color:#3d4c5c;line-height:1.65;max-width:480px;}
+.kkp-modal-icon{position:absolute;top:30px;right:36px;width:58px;height:58px;background:#fff;border:1px solid #dae6f0;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 16px rgba(26,60,107,.08);}
+.kkp-modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:1px solid #dae6f0;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#7a8ea0;font-size:17px;font-weight:400;transition:.2s;z-index:5;line-height:1;}
+.kkp-modal-close:hover{background:#fee2e2;border-color:#fca5a5;color:#dc2626;}
+.kkp-modal-body{padding:28px 36px 36px;}
+.kkp-sec-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--b2);margin-bottom:14px;}
+.kkp-features{display:flex;flex-direction:column;gap:10px;}
+.kkp-fi{display:flex;align-items:flex-start;gap:13px;padding:16px 18px;background:#eff5fc;border:1px solid #dae6f0;border-radius:12px;transition:.2s;}
+.kkp-fi:hover{background:#e3effa;border-color:#a8c6e8;}
+.kkp-fcheck{width:26px;height:26px;background:var(--b1);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.kkp-fcheck svg{width:13px;height:13px;stroke:#fff;stroke-width:2.5;fill:none;}
+.kkp-ft strong{display:block;font-size:13.5px;font-weight:600;color:#1a2335;margin-bottom:3px;}
+.kkp-ft span{font-size:12.5px;color:#3d4c5c;line-height:1.5;}
+.kkp-divider{height:1px;background:#e2eaf0;margin:24px 0;}
+.kkp-cta{background:var(--b1);border-radius:14px;padding:22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.kkp-cta-txt{color:rgba(255,255,255,.82);font-size:13px;line-height:1.55;}
+.kkp-cta-txt strong{display:block;color:#fff;font-size:15px;margin-bottom:3px;}
+.kkp-cta-btn{background:#fff;color:var(--b1);font-weight:700;font-size:13px;padding:10px 20px;border-radius:9px;border:none;cursor:pointer;white-space:nowrap;transition:.2s;display:flex;align-items:center;gap:7px;text-decoration:none;font-family:"DM Sans",sans-serif;}
+.kkp-cta-btn:hover{background:#e3effa;transform:translateY(-1px);}
+@media(max-width:600px){.kkp-modal-hd{padding:24px 22px 20px;}.kkp-modal-body{padding:22px 22px 28px;}.kkp-modal-title{font-size:22px;}.kkp-modal-icon{display:none;}.kkp-cta{flex-direction:column;}}
+
 </style>
 </head>
 <body>
@@ -802,11 +864,11 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
           <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780124164/Logo_IKPI_x0vvrm.jpg" alt="Logo IKPI" class="logo-corner">
         </div>
         <p class="pdesc">KKP Suastawa Consulting adalah mitra perpajakan terpercaya untuk bisnis dan perorangan. Izin resmi DJP &amp; keanggotaan IKPI menjamin kepatuhan pajak Anda.</p>
-        <div class="ps"><div class="pi b">💰</div><div><div class="psn">Pajak Penghasilan (PPh) Badan</div><div class="psd">Perhitungan, pelaporan SPT Tahunan PPh Badan, optimasi pajak yang legal dan efisien.</div></div></div>
-        <div class="ps"><div class="pi b">👤</div><div><div class="psn">PPh Orang Pribadi</div><div class="psd">Pendampingan pelaporan SPT Tahunan PPh OP — wirausaha, profesional, dan expatriat.</div></div></div>
-        <div class="ps"><div class="pi b">🧾</div><div><div class="psn">Pajak Pertambahan Nilai (PPN)</div><div class="psd">Pengkreditan pajak masukan, pelaporan SPT Masa PPN, dan rekonsiliasi faktur pajak.</div></div></div>
-        <div class="ps"><div class="pi b">🔍</div><div><div class="psn">Perencanaan Pajak (Tax Planning)</div><div class="psd">Strategi perencanaan pajak yang efisien dan legal untuk meminimalkan beban pajak.</div></div></div>
-        <div class="ps"><div class="pi b">⚖️</div><div><div class="psn">Pendampingan Sengketa Pajak</div><div class="psd">Pendampingan pemeriksaan dan penyelesaian sengketa di KPP Pratama.</div></div></div>
+        <div class="ps" data-kkp-id="1" role="button" tabindex="0"><div class="pi b">💰</div><div class="ps-content"><div class="psn">Pajak Penghasilan (PPh) Badan</div><div class="psd">Perhitungan, pelaporan SPT Tahunan PPh Badan, optimasi pajak yang legal dan efisien.</div></div><span class="ps-arrow">›</span></div>
+        <div class="ps" data-kkp-id="2" role="button" tabindex="0"><div class="pi b">👤</div><div class="ps-content"><div class="psn">PPh Orang Pribadi</div><div class="psd">Pendampingan pelaporan SPT Tahunan PPh OP — wirausaha, profesional, dan expatriat.</div></div><span class="ps-arrow">›</span></div>
+        <div class="ps" data-kkp-id="3" role="button" tabindex="0"><div class="pi b">🧾</div><div class="ps-content"><div class="psn">Pajak Pertambahan Nilai (PPN)</div><div class="psd">Pengkreditan pajak masukan, pelaporan SPT Masa PPN, dan rekonsiliasi faktur pajak.</div></div><span class="ps-arrow">›</span></div>
+        <div class="ps" data-kkp-id="4" role="button" tabindex="0"><div class="pi b">🔍</div><div class="ps-content"><div class="psn">Perencanaan Pajak (Tax Planning)</div><div class="psd">Strategi perencanaan pajak yang efisien dan legal untuk meminimalkan beban pajak.</div></div><span class="ps-arrow">›</span></div>
+        <div class="ps" data-kkp-id="5" role="button" tabindex="0"><div class="pi b">⚖️</div><div class="ps-content"><div class="psn">Pendampingan Sengketa Pajak</div><div class="psd">Pendampingan pemeriksaan dan penyelesaian sengketa di KPP Pratama.</div></div><span class="ps-arrow">›</span></div>
         <div class="ptags">
           <span class="ptag b">Izin DJP: SI-1543/PJ/2008</span>
           <span class="ptag b">KEP-6378/IP.C/PJ/2020</span>
@@ -890,7 +952,9 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
       <div class="lfr-stats">
         <div class="lfr-stat"><span class="lfr-stat-n">&#9733; 5.0</span><span class="lfr-stat-l">Rating Klien</span></div>
         <div class="lfr-stat"><span class="lfr-stat-n">10+</span><span class="lfr-stat-l">Tahun Pengalaman</span></div>
+        <div class="lfr-stat"><span class="lfr-stat-n">200+</span><span class="lfr-stat-l">Klien Berlangganan</span></div>
       </div>
+      <p style="font-size:12px;color:rgba(255,255,255,.4);font-style:italic;margin-top:14px;line-height:1.6;">Lebih dari 200 klien yang sudah berlangganan mempercayakan keuangan bisnis mereka kepada kami.</p>
     </div>
     <div class="lfr-right">
       <div class="lfr-slot" id="lfrSlot0"></div>
@@ -1105,7 +1169,12 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
           <div class="ki"><div class="ki-ic">🕐</div><div class="ki-text"><div class="kl">Jam Operasional</div><div class="kv">Senin – Jumat, 08.00 – 17.00 WITA</div></div></div>
         </div>
         <a href="https://wa.me/6281338983753?text=Halo%20Pak%20Suastawa%2C%20saya%20ingin%20berkonsultasi." target="_blank" class="wa-btn">💬 Chat WhatsApp Sekarang</a>
-        <div class="maps-wrap"><iframe src="https://maps.google.com/maps?q=-8.548965,115.230858&z=16&output=embed" allowfullscreen loading="lazy"></iframe></div>
+        <div class="maps-wrap">
+          <iframe src="https://maps.google.com/maps?q=-8.548965,115.230858&z=16&output=embed" allowfullscreen loading="lazy"></iframe>
+          <a href="https://www.google.com/maps/search/?api=1&query=-8.548965,115.230858" target="_blank" rel="noopener" class="maps-overlay" title="Buka di Google Maps">
+            <span class="maps-overlay-btn">📍 Buka di Google Maps</span>
+          </a>
+        </div>
       </div>
       <div class="kontak-form reveal">
         <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600;margin-bottom:18px;">Form Konsultasi</p>
@@ -1159,8 +1228,8 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
           <span style="font-size:9px;background:rgba(13,71,161,.2);color:#90CAF9;border:1px solid rgba(13,71,161,.3);padding:4px 10px;border-radius:20px;font-weight:600;letter-spacing:1px;">KKP: SI-1543/PJ/2008</span>
         </div>
       </div>
-      <div class="fc"><h4>KJA</h4><a href="#home" onclick="event.preventDefault();goSlide(1)">Profil KJA</a><a href="#home" onclick="event.preventDefault();goSlide(1)">Pembukuan</a><a href="#home" onclick="event.preventDefault();goSlide(1)">Laporan Keuangan</a><a href="#home" onclick="event.preventDefault();goSlide(1)">Sistem Akuntan</a></div>
-      <div class="fc"><h4>KKP</h4><a href="#home" onclick="event.preventDefault();goSlide(2)">Profil KKP</a><a href="#home" onclick="event.preventDefault();goSlide(2)">PPh Badan &amp; OP</a><a href="#home" onclick="event.preventDefault();goSlide(2)">PPN</a><a href="#home" onclick="event.preventDefault();goSlide(2)">Tax Planning</a></div>
+      <div class="fc"><h4>KJA</h4><a href="#home" onclick="event.preventDefault();goSlide(1)">Profil KJA</a><a href="#home" onclick="event.preventDefault();footerOpenKja(1)">Pembukuan</a><a href="#home" onclick="event.preventDefault();footerOpenKja(2)">Laporan Keuangan</a><a href="#home" onclick="event.preventDefault();footerOpenKja(4)">Sistem Akuntan</a></div>
+      <div class="fc"><h4>KKP</h4><a href="#home" onclick="event.preventDefault();goSlide(2)">Profil KKP</a><a href="#home" onclick="event.preventDefault();footerOpenKkp(1)">PPh Badan &amp; OP</a><a href="#home" onclick="event.preventDefault();footerOpenKkp(3)">PPN</a><a href="#home" onclick="event.preventDefault();footerOpenKkp(4)">Tax Planning</a></div>
       <div class="fc"><h4>Navigasi</h4><a href="#layanan">Layanan</a><a href="#profil">Profil</a><a href="#legalitas">Legalitas</a><a href="#galeri">Galeri</a><a href="#kontak">Kontak</a><a href="https://wa.me/6281338983753" target="_blank">WhatsApp</a></div>
     </div>
     <div class="f-btm">
@@ -1203,7 +1272,7 @@ function toggleMenu() { document.getElementById('mobMenu').classList.toggle('ope
 
 // ══ SPA ROUTER ══
 document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll(".nav-menu a, .mob-menu a");
+  const navLinks = document.querySelectorAll(".nav-menu a, .mob-menu a, .btn-gold, .fc a");
   const allSections = document.querySelectorAll("section");
   function switchPage(targetId) {
     const targetSection = document.querySelector(targetId);
@@ -1218,6 +1287,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   navLinks.forEach(link => {
     link.addEventListener("click", function (e) {
+      if (this.hasAttribute("onclick")) return; // skip link yang sudah punya onclick (footer KJA/KKP)
       const href = this.getAttribute("href");
       if (href && href.startsWith("#")) {
         e.preventDefault();
@@ -1529,6 +1599,12 @@ function openKjaModal(id) {
   mOverlay.querySelector('.kja-modal-panel').scrollTop = 0;
   mOverlay.classList.add('open'); document.body.style.overflow = 'hidden';
 }
+// ══ FOOTER → buka slide KJA lalu modal layanan ══
+window.footerOpenKja = function(id) {
+  goSlide(1);  // pindah ke slide KJA
+  setTimeout(function(){ if(typeof openKjaModal === 'function') openKjaModal(String(id)); }, 350);
+};
+
 document.querySelectorAll('.ps[data-kja-id]').forEach(item => {
   item.addEventListener('click', () => openKjaModal(item.getAttribute('data-kja-id')));
   item.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();openKjaModal(item.getAttribute('data-kja-id'));}});
@@ -1595,6 +1671,85 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'&&mOverlay.classL
     });
   });
 })();
+</script>
+
+
+<!-- ══ KKP MODAL ══ -->
+<div class="kkp-modal-overlay" id="kkpModalOverlay">
+  <div class="kkp-modal-panel">
+    <div class="kkp-modal-stripe"></div>
+    <div class="kkp-modal-hd">
+      <button class="kkp-modal-close" id="closeKkpModal">✕</button>
+      <div class="kkp-modal-num" id="kkpModalBadge">Layanan KKP 01</div>
+      <h2 class="kkp-modal-title" id="kkpModalTitle">Nama Layanan</h2>
+      <p class="kkp-modal-sub" id="kkpModalDesc">Deskripsi ringkas layanan.</p>
+    </div>
+    <div class="kkp-modal-body">
+      <div class="kkp-sec-lbl">Cakupan Fitur &amp; Spesifikasi</div>
+      <div class="kkp-features" id="kkpModalFeatures"></div>
+      <div class="kkp-divider"></div>
+      <div class="kkp-cta">
+        <div class="kkp-cta-txt"><strong>Butuh Bantuan Perpajakan Ini?</strong><span>Konsultasikan kebutuhan pajak Anda bersama konsultan pajak bersertifikat kami.</span></div>
+        <a href="https://wa.me/6281338983753" target="_blank" class="kkp-cta-btn" id="kkpModalWaBtn">💬 Konsultasi Sekarang</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const kkpDatabase = {
+  "1": { badge:"Layanan KKP 01", title:"Pajak Penghasilan (PPh) Badan", desc:"Perhitungan, pelaporan, dan optimasi PPh Badan yang legal dan efisien.", features:[
+    {label:"Perhitungan PPh Badan Tahunan",detail:"Kalkulasi pajak penghasilan badan sesuai tarif & ketentuan terbaru."},
+    {label:"Pelaporan SPT Tahunan PPh Badan",detail:"Penyusunan dan pelaporan SPT 1771 secara akurat dan tepat waktu."},
+    {label:"Optimasi Beban Pajak Legal",detail:"Pemanfaatan insentif & fasilitas pajak yang sah untuk efisiensi."}] },
+  "2": { badge:"Layanan KKP 02", title:"PPh Orang Pribadi", desc:"Pendampingan pelaporan SPT Tahunan PPh OP untuk wirausaha, profesional, & expatriat.", features:[
+    {label:"SPT Tahunan PPh OP (1770)",detail:"Penyusunan SPT untuk wirausaha, karyawan, dan profesional."},
+    {label:"Perpajakan Expatriat",detail:"Penanganan pajak khusus untuk warga negara asing di Indonesia."},
+    {label:"Konsultasi Status Pajak Pribadi",detail:"Penentuan kewajiban & perencanaan pajak orang pribadi."}] },
+  "3": { badge:"Layanan KKP 03", title:"Pajak Pertambahan Nilai (PPN)", desc:"Pengelolaan PPN — pengkreditan pajak masukan hingga pelaporan SPT Masa.", features:[
+    {label:"Pelaporan SPT Masa PPN",detail:"Penyusunan & pelaporan SPT Masa PPN bulanan secara tepat waktu."},
+    {label:"Rekonsiliasi Faktur Pajak",detail:"Pencocokan faktur pajak masukan & keluaran untuk akurasi."},
+    {label:"Pengkreditan Pajak Masukan",detail:"Optimasi pengkreditan PPN masukan sesuai ketentuan DJP."}] },
+  "4": { badge:"Layanan KKP 04", title:"Perencanaan Pajak (Tax Planning)", desc:"Strategi perencanaan pajak yang efisien & legal untuk meminimalkan beban pajak.", features:[
+    {label:"Analisis Struktur Pajak",detail:"Kajian menyeluruh atas posisi & kewajiban pajak perusahaan."},
+    {label:"Strategi Efisiensi Pajak Legal",detail:"Perencanaan untuk meminimalkan beban pajak sesuai regulasi."},
+    {label:"Proyeksi & Simulasi Pajak",detail:"Simulasi dampak pajak terhadap keputusan bisnis Anda."}] },
+  "5": { badge:"Layanan KKP 05", title:"Pendampingan Sengketa Pajak", desc:"Pendampingan profesional dalam pemeriksaan & penyelesaian sengketa pajak.", features:[
+    {label:"Pendampingan Pemeriksaan Pajak",detail:"Representasi & pendampingan saat pemeriksaan oleh KPP."},
+    {label:"Keberatan & Banding",detail:"Penyusunan surat keberatan hingga proses banding di pengadilan pajak."},
+    {label:"Penyelesaian di KPP Pratama",detail:"Negosiasi & penyelesaian sengketa secara profesional."}] }
+};
+const kkpO = document.getElementById('kkpModalOverlay');
+const kkpClose = document.getElementById('closeKkpModal');
+function openKkpModal(id) {
+  const data = kkpDatabase[id];
+  if (!data) return;
+  document.getElementById('kkpModalBadge').textContent = data.badge;
+  document.getElementById('kkpModalTitle').textContent = data.title;
+  document.getElementById('kkpModalDesc').textContent = data.desc;
+  const fc = document.getElementById('kkpModalFeatures');
+  fc.innerHTML = '';
+  data.features.forEach(feat => {
+    const el = document.createElement('div'); el.className = 'kkp-fi';
+    el.innerHTML = `<div class="kkp-fcheck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div><div class="kkp-ft"><strong>${feat.label}</strong><span>${feat.detail}</span></div>`;
+    fc.appendChild(el);
+  });
+  document.getElementById('kkpModalWaBtn').href = 'https://wa.me/6281338983753?text=' + encodeURIComponent(`Halo KKP Suastawa, saya ingin konsultasi mengenai ${data.title}.`);
+  kkpO.querySelector('.kkp-modal-panel').scrollTop = 0;
+  kkpO.classList.add('open'); document.body.style.overflow = 'hidden';
+}
+window.openKkpModal = openKkpModal;
+window.footerOpenKkp = function(id) {
+  goSlide(2);
+  setTimeout(function(){ openKkpModal(String(id)); }, 350);
+};
+document.querySelectorAll('.ps[data-kkp-id]').forEach(item => {
+  item.addEventListener('click', () => openKkpModal(item.getAttribute('data-kkp-id')));
+  item.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();openKkpModal(item.getAttribute('data-kkp-id'));}});
+});
+if (kkpClose) kkpClose.addEventListener('click', () => { kkpO.classList.remove('open'); document.body.style.overflow = ''; });
+window.addEventListener('click', e => { if(e.target===kkpO){kkpO.classList.remove('open');document.body.style.overflow='';} });
+document.addEventListener('keydown', e => { if(e.key==='Escape'&&kkpO.classList.contains('open')){kkpO.classList.remove('open');document.body.style.overflow='';} });
 </script>
 
 </body>
