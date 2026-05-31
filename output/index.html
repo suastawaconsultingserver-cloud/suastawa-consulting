@@ -704,6 +704,189 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
 .kkp-cta-btn:hover{background:#e3effa;transform:translateY(-1px);}
 @media(max-width:600px){.kkp-modal-hd{padding:24px 22px 20px;}.kkp-modal-body{padding:22px 22px 28px;}.kkp-modal-title{font-size:22px;}.kkp-modal-icon{display:none;}.kkp-cta{flex-direction:column;}}
 
+
+/* ════════════════════════════════════════════════════ */
+/* ══ MOBILE OPTIMIZATION — KEREN & FRIENDLY ══ */
+/* ════════════════════════════════════════════════════ */
+@media(max-width:768px){
+  /* ── Navbar mobile ── */
+  nav{height:58px;}
+  .nav-w{padding:0 18px;}
+  .brand-name{font-size:15px;}
+  .brand-sub{font-size:8px;letter-spacing:2px;}
+
+  /* ── Mobile menu styling lebih keren ── */
+  .mob-menu{top:58px;inset:58px 0 0 0;padding:20px 18px;gap:6px;}
+  .mob-menu a, .mob-menu button{font-size:16px;padding:15px 18px;border-radius:14px;display:flex;align-items:center;}
+
+  /* ── HERO SLIDER full mobile ── */
+  .hero-slider{margin-top:58px;height:auto;min-height:auto;overflow:visible;}
+  .slide{position:relative;opacity:1;pointer-events:all;display:none;height:auto;}
+  .slide.active{display:flex;}
+  .slide-home,.slide-kja,.slide-kkp{height:auto;min-height:auto;}
+
+  /* Slide Home mobile */
+  .sh-l{padding:32px 22px 28px;}
+  .sh-h1{font-size:30px;line-height:1.12;}
+  .sh-tagline{font-size:12px;}
+  .sh-desc{font-size:13px;max-width:100%;}
+  .sh-btns{gap:8px;}
+  .btn-gold,.btn-ow{font-size:12px;padding:12px 20px;flex:1;text-align:center;}
+  .sh-stats{gap:16px;flex-wrap:wrap;}
+  .sst .n{font-size:24px;}
+  .sst .l{font-size:8px;}
+  .sh-r{display:block;height:280px;}
+  .hp-dots{bottom:50px;right:14px;}
+  .sh-r-badge{bottom:16px;right:16px;padding:10px 14px;}
+  .sh-r-badge .bb-title{font-size:11px;}
+
+  /* Slide KJA & KKP mobile */
+  .sk-l,.sk2-r{padding:30px 22px;min-height:auto;}
+  .sk-r,.sk2-l{padding:30px 22px;min-height:auto;}
+  .sk-creds,.sk2-creds{grid-template-columns:1fr 1fr;gap:8px;}
+  .skc,.skc2{padding:10px;}
+  .skc .cv,.skc2 .cv{font-size:10px;}
+  .ph2{font-size:26px;}
+  .pdesc{font-size:12.5px;}
+  .psn{font-size:13px;}
+  .psd{font-size:11.5px;}
+  .ps-arrow{font-size:18px;}
+
+  /* Logo title mobile — lebih kecil & rapi */
+  .title-logo-wrap,.dark-title-logo-wrap{gap:12px;}
+  .logo-corner{height:46px;max-width:76px;}
+  .logo-corner-dark{height:50px;max-width:86px;}
+
+  /* Floating dots — lebih jelas di mobile */
+  .slider-dots{padding:14px 0;position:relative;background:var(--dark);}
+  .sdot{height:38px;padding:0 16px;font-size:11px;}
+
+  /* Slider arrows lebih kecil */
+  .slider-prev,.slider-next{width:36px;height:36px;font-size:14px;}
+  .slider-prev{left:8px;} .slider-next{right:8px;}
+
+  /* ── CERT STRIP mobile ── */
+  .cs-item{padding:0 20px;}
+  .cs-text{font-size:10px;}
+  .cs-text strong{font-size:11px;}
+
+  /* ── LIVE REVIEW FEED mobile ── */
+  .live-feed-wrap{padding:40px 0 44px;}
+  .lfr-inner{grid-template-columns:1fr;gap:28px;padding:0 22px;}
+  .lfr-heading{font-size:32px;}
+  .lfr-sub{font-size:13px;}
+  .lfr-stats{gap:20px;flex-wrap:wrap;}
+  .lfr-stat-n{font-size:24px;}
+  .lfr-card{padding:16px 18px;}
+  .lfr-quote{font-size:12px;}
+
+  /* ── SECTIONS umum ── */
+  section{padding:56px 0;}
+  section:not(#home){padding-top:80px;}
+  .container{padding:0 22px;}
+  .sec-h2{font-size:26px;}
+  .sec-desc{font-size:13px;}
+  .sec-head{margin-bottom:32px;}
+  .sec-label{font-size:9px;letter-spacing:3px;}
+
+  /* ── LAYANAN cards ── */
+  .layanan-grid{grid-template-columns:1fr;}
+  .lc{padding:28px 24px;}
+  .lc-h3{font-size:18px;}
+  .lc-desc{font-size:12.5px;}
+  .lc-list li{font-size:11.5px;}
+  .filter-tabs{gap:6px;margin-bottom:28px;}
+  .ftab{padding:8px 16px;font-size:11px;}
+
+  /* ── PROFIL ── */
+  .profil-grid{grid-template-columns:1fr;gap:40px;}
+  .profil-photo-wrap{max-width:280px;margin:0 auto;}
+  .profil-gelar{gap:6px;}
+  .pg{font-size:9px;padding:4px 11px;}
+  .profil-text{font-size:13px;}
+  .profil-vm{grid-template-columns:1fr;gap:12px;}
+
+  /* ── LEGALITAS ── */
+  .leg-grid{grid-template-columns:1fr;gap:18px;}
+  .cert img,.cert-slide-item img{height:240px;}
+
+  /* ── GALERI ── */
+  .galeri-grid{grid-template-columns:1fr 1fr;gap:12px;}
+  .galeri-grid .gi{height:180px;}
+  .gi-caption strong{font-size:.8rem;}
+  .gi-caption span{font-size:.68rem;}
+
+  /* ── TESTIMONI ── */
+  .testi-grid{grid-template-columns:1fr;gap:16px;}
+  .tc{padding:24px;}
+
+  /* ── KONTAK ── */
+  .kontak-grid{grid-template-columns:1fr;gap:36px;}
+  .kontak-info h3{font-size:26px;}
+  .kontak-form{padding:28px 22px;}
+  .form-row{grid-template-columns:1fr;gap:14px;}
+  .maps-wrap iframe{height:200px;}
+  .maps-overlay{opacity:1;}  /* selalu tampil tombol di mobile */
+  .maps-overlay-btn{font-size:12px;padding:9px 18px;}
+
+  /* ── FOOTER ── */
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px;}
+  .footer-inner{padding:0 22px;}
+  .fn{font-size:20px;}
+  .fc h4{font-size:9px;}
+  .fc a{font-size:12px;}
+  .f-btm{flex-direction:column;gap:10px;text-align:center;}
+  .f-btm p{font-size:10px;}
+
+  /* ── WA FLOAT lebih besar & jelas di mobile ── */
+  .wa-float{bottom:20px;right:20px;width:54px;height:54px;font-size:24px;}
+  .toast{bottom:84px;right:20px;left:20px;text-align:center;font-size:12px;}
+
+  /* ── MODAL KJA & KKP mobile ── */
+  .kja-modal-panel,.kkp-modal-panel{max-width:100%;max-height:90vh;border-radius:18px;}
+  .kja-modal-hd,.kkp-modal-hd{padding:26px 22px 20px;}
+  .kja-modal-body,.kkp-modal-body{padding:22px 22px 28px;}
+  .kja-modal-title,.kkp-modal-title{font-size:21px;}
+  .kja-modal-sub,.kkp-modal-sub{font-size:13px;}
+  .kja-modal-icon,.kkp-modal-icon{display:none;}
+  .kja-cta,.kkp-cta{flex-direction:column;align-items:stretch;text-align:center;}
+  .kja-cta-btn,.kkp-cta-btn{justify-content:center;}
+
+  /* ── LIGHTBOX mobile ── */
+  #lbPrev,#lbNext{width:42px;height:42px;font-size:20px;}
+  #lbPrev{left:8px;} #lbNext{right:8px;}
+  #lbClose{top:12px;right:12px;width:40px;height:40px;}
+  #lbCaption{font-size:11px;bottom:54px;padding:6px 14px;max-width:88vw;}
+  #lbCounter{font-size:11px;bottom:16px;}
+}
+
+/* ── EXTRA SMALL (HP kecil < 420px) ── */
+@media(max-width:420px){
+  .sh-h1{font-size:26px;}
+  .ph2{font-size:23px;}
+  .sec-h2{font-size:23px;}
+  .lfr-heading{font-size:27px;}
+  .kontak-info h3{font-size:23px;}
+  .galeri-grid{grid-template-columns:1fr;}
+  .galeri-grid .gi{height:220px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .sh-btns{flex-direction:column;}
+  .btn-gold,.btn-ow{width:100%;}
+  .sk-creds,.sk2-creds{grid-template-columns:1fr;}
+  .sh-stats{gap:14px;}
+  .filter-tabs{flex-direction:column;}
+  .ftab{width:100%;justify-content:center;}
+  .title-logo-wrap,.dark-title-logo-wrap{flex-wrap:wrap;}
+}
+
+/* ── Touch-friendly: perbesar area klik ── */
+@media(hover:none) and (pointer:coarse){
+  .ps{padding:14px 8px;}
+  .lc{cursor:pointer;}
+  .nav-cta,.btn-gold,.btn-ow,.wa-btn,.btn-submit{min-height:46px;}
+  .sdot{min-height:38px;}
+}
+
 </style>
 </head>
 <body>
@@ -1750,6 +1933,34 @@ document.querySelectorAll('.ps[data-kkp-id]').forEach(item => {
 if (kkpClose) kkpClose.addEventListener('click', () => { kkpO.classList.remove('open'); document.body.style.overflow = ''; });
 window.addEventListener('click', e => { if(e.target===kkpO){kkpO.classList.remove('open');document.body.style.overflow='';} });
 document.addEventListener('keydown', e => { if(e.key==='Escape'&&kkpO.classList.contains('open')){kkpO.classList.remove('open');document.body.style.overflow='';} });
+</script>
+
+
+<script>
+// ══ SWIPE GESTURE untuk hero slider (mobile) ══
+(function(){
+  var slider = document.getElementById('heroSlider');
+  if(!slider) return;
+  var startX = 0, startY = 0, isSwiping = false;
+  slider.addEventListener('touchstart', function(e){
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isSwiping = true;
+  }, {passive:true});
+  slider.addEventListener('touchend', function(e){
+    if(!isSwiping) return;
+    isSwiping = false;
+    var endX = e.changedTouches[0].clientX;
+    var endY = e.changedTouches[0].clientY;
+    var dx = endX - startX;
+    var dy = endY - startY;
+    // Hanya swipe horizontal (abaikan scroll vertikal)
+    if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)*1.5){
+      if(dx < 0 && typeof slideBy === 'function') slideBy(1);   // swipe kiri → next
+      if(dx > 0 && typeof slideBy === 'function') slideBy(-1);  // swipe kanan → prev
+    }
+  }, {passive:true});
+})();
 </script>
 
 </body>
