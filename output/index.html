@@ -19,14 +19,7 @@ body{font-family:'DM Sans',sans-serif;color:#111;background:#fff;overflow-x:hidd
 }
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-thumb{background:var(--g2);border-radius:4px;}
-
-/* ══ NAV ══════════════════════════════════════════════ */
-nav{
-  position:fixed;inset:0 0 auto 0;z-index:999;height:64px;
-  background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--gray-m);
-  display:flex;align-items:center;
-}
+nav{position:fixed;inset:0 0 auto 0;z-index:999;height:64px;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-m);display:flex;align-items:center;}
 .nav-w{width:100%;max-width:1280px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:0;}
 .nav-brand{text-decoration:none;margin-right:auto;}
 .brand-name{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--g1);line-height:1;display:block;}
@@ -48,17 +41,46 @@ nav{
 .mob-menu a:hover,.mob-menu button:hover{background:var(--gl);color:var(--g2);}
 .mob-sep{border:none;border-top:1px solid var(--gray-m);margin:8px 0;}
 
-/* ══ HERO SLIDER ══════════════════════════════════════ */
-.hero-slider{position:relative;margin-top:64px;height:calc(100vh - 64px);min-height:580px;overflow:hidden;isolation:isolate;}
-.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;pointer-events:none;}
+/* ══ HERO SLIDER — FIXED ══ */
+.hero-slider{
+  position:relative;
+  margin-top:64px;
+  height:calc(100vh - 64px);
+  min-height:520px;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+/* ══ SLIDE BASE — FIXED ══ */
+.slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity .8s ease;
+  pointer-events:none;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
 .slide.active{opacity:1;pointer-events:all;}
 
-/* Slide 0: Welcome/Home */
-.slide-home{display:grid;grid-template-columns:50% 50%;height:100%;}
+/* ══ SLIDE HOME ══ */
+.slide-home{
+  display:grid;
+  grid-template-columns:50% 50%;
+  height:calc(100% - 58px);
+  flex:1;
+}
 .sh-l{
   background:linear-gradient(155deg,#071A07 0%,#0F3B0F 30%,#1B5E20 60%,#2E7D32 100%);
-  padding:60px 52px;display:flex;flex-direction:column;justify-content:center;
-  position:relative;overflow:hidden;
+  padding:60px 52px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  height:100%;
+  box-sizing:border-box;
 }
 .sh-l::before{content:'SC';position:absolute;right:-20px;bottom:-40px;font-family:var(--serif);font-size:320px;font-weight:600;color:rgba(255,255,255,.03);line-height:1;pointer-events:none;}
 .badge-live{display:inline-flex;align-items:center;gap:8px;margin-bottom:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.8);font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:20px;width:fit-content;}
@@ -76,33 +98,145 @@ nav{
 .sh-stats{display:flex;gap:24px;margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);}
 .sst .n{font-family:var(--serif);font-size:28px;color:var(--gold-l);display:block;line-height:1;}
 .sst .l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:3px;}
-/* Right panel: photo gallery */
-.sh-r{position:relative;overflow:hidden;}
+.sh-r{
+  position:relative;
+  overflow:hidden;
+  height:100%;
+}
 .sh-r img{width:100%;height:100%;object-fit:cover;}
 .sh-r-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(27,94,32,.3) 0%,transparent 60%);}
 .sh-r-badge{position:absolute;bottom:24px;right:24px;background:rgba(0,0,0,.5);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px 18px;color:#fff;}
 .sh-r-badge .bb-title{font-family:var(--serif);font-size:13px;font-weight:600;}
 .sh-r-badge .bb-sub{font-size:10px;color:rgba(255,255,255,.6);letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
 
-/* Slide KJA */
-.slide-kja{display:grid;grid-template-columns:44% 56%;height:100%;}
+/* ══ SLIDE KJA — FIXED SEJAJAR ══ */
+.slide-kja{
+  display:grid;
+  grid-template-columns:44% 56%;
+  height:calc(100% - 58px);
+  align-items:stretch;
+  overflow:hidden;
+  flex:1;
+}
 .sk-l{
   background:linear-gradient(155deg,#071A07,#0F3B0F,#1B5E20,#2E7D32);
-  padding:52px 44px;display:flex;flex-direction:column;justify-content:center;
-  position:relative;overflow:hidden;
+  padding:36px 44px;
+  display:flex;
+  flex-direction:column;
+  justify-content:safe center;
+  position:relative;
+  overflow-y:auto;
+  height:100%;
+  box-sizing:border-box;
 }
 .sk-l::after{content:'KJA';position:absolute;right:-15px;bottom:-24px;font-family:var(--serif);font-size:220px;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;}
 .sk-creds{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:22px;}
 .skc{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:9px 11px;}
 .skc .cl{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);}
 .skc .cv{font-size:11px;font-weight:600;color:rgba(255,255,255,.88);margin-top:2px;line-height:1.3;}
-.sk-r{background:#fff;padding:44px 40px;overflow-y:auto;display:flex;flex-direction:column;justify-content:flex-start;}
+.sk-r{
+  background:#fff;
+  padding:36px 44px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:safe center;
+  height:100%;
+  box-sizing:border-box;
+}
+
+/* ══ SLIDE KKP — FIXED SEJAJAR ══ */
+.slide-kkp{
+  display:grid;
+  grid-template-columns:56% 44%;
+  height:calc(100% - 58px);
+  align-items:stretch;
+  overflow:hidden;
+  flex:1;
+}
+.sk2-l{
+  background:#fff;
+  padding:36px 44px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:safe center;
+  height:100%;
+  box-sizing:border-box;
+}
+.sk2-r{
+  background:linear-gradient(155deg,#071422,#0D2B6B,#0D47A1,#1565C0);
+  padding:36px 44px;
+  display:flex;
+  flex-direction:column;
+  justify-content:safe center;
+  position:relative;
+  overflow-y:auto;
+  height:100%;
+  box-sizing:border-box;
+}
+.sk2-r::after{content:'KKP';position:absolute;right:-15px;bottom:-24px;font-family:var(--serif);font-size:220px;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;}
+.sk2-creds{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:22px;}
+.skc2{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:9px 11px;}
+.skc2 .cl{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.skc2 .cv{font-size:11px;font-weight:600;color:rgba(255,255,255,.88);margin-top:2px;line-height:1.3;}
+
+/* Shared slide content styles */
 .pt{font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:600;display:block;margin-bottom:10px;}
 .pt.g{color:var(--g2);} .pt.b{color:var(--b2);}
 .ph2{font-family:var(--serif);font-size:clamp(22px,2.8vw,38px);font-weight:500;line-height:1.15;margin-bottom:12px;}
 .ph2 em.g{font-style:italic;color:var(--g2);} .ph2 em.b{font-style:italic;color:var(--b2);}
 .pdesc{font-size:13px;color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--gray-m);}
-.ps{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--gray-m);transition:.2s;}
+.ps{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--gray-m);transition:.2s;cursor:pointer;}
+
+/* ── LOGO DI SAMPING BLOK JUDUL — FLEX, VERTIKAL CENTER ── */
+
+/* Panel PUTIH */
+.title-logo-wrap {
+  display: flex;
+  align-items: center;        /* logo center vertikal terhadap blok judul */
+  gap: 16px;                  /* jarak teks ke logo */
+  margin-bottom: 14px;
+}
+.title-logo-wrap h2 {
+  margin: 0;                  /* tidak grow — lebar mengikuti teks */
+}
+.logo-corner {
+  height: 56px;
+  width: auto;
+  max-width: 90px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+  border-radius: 6px;
+}
+
+/* Panel GELAP */
+.dark-title-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.dark-title-logo-wrap h2 {
+  margin: 0;
+}
+.logo-corner-dark {
+  height: 60px;
+  width: auto;
+  max-width: 100px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+  border-radius: 6px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .logo-corner{ height: 42px; max-width: 72px; }
+  .logo-corner-dark{ height: 46px; max-width: 80px; }
+  .title-logo-wrap, .dark-title-logo-wrap{ gap: 12px; }
+}
 .ps:last-of-type{border-bottom:none;}
 .ps-arrow{margin-left:auto;align-self:center;color:var(--g2);font-size:20px;padding-left:8px;flex-shrink:0;opacity:0;transform:translateX(-4px);transition:.2s;}
 .ps:hover .ps-arrow{opacity:1;transform:translateX(0);}
@@ -114,54 +248,65 @@ nav{
 .ptag{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:20px;}
 .ptag.g{background:var(--gp);color:var(--g2);} .ptag.b{background:var(--bp);color:var(--b2);}
 
-/* Slide KKP */
-.slide-kkp{display:grid;grid-template-columns:56% 44%;height:100%;}
-.sk2-l{background:#fff;padding:44px 40px;overflow-y:auto;display:flex;flex-direction:column;justify-content:flex-start;}
-.sk2-r{
-  background:linear-gradient(155deg,#071422,#0D2B6B,#0D47A1,#1565C0);
-  padding:52px 44px;display:flex;flex-direction:column;justify-content:center;
-  position:relative;overflow:hidden;
-}
-.sk2-r::after{content:'KKP';position:absolute;right:-15px;bottom:-24px;font-family:var(--serif);font-size:220px;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;}
-.sk2-creds{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:22px;}
-.skc2{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:9px 11px;}
-.skc2 .cl{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);}
-.skc2 .cv{font-size:11px;font-weight:600;color:rgba(255,255,255,.88);margin-top:2px;line-height:1.3;}
-
 /* Slider controls */
-.slider-dots{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:100;pointer-events:all;}
-.sdot{width:auto;height:32px;border-radius:16px;padding:0 16px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.9);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;cursor:pointer;transition:.3s;display:flex;align-items:center;gap:5px;box-shadow:0 2px 8px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.2);}
-.sdot.active{background:rgba(255,255,255,.95);color:#111;border-color:#fff;box-shadow:0 3px 12px rgba(0,0,0,.4),0 0 0 3px rgba(0,0,0,.25);font-weight:800;}
+.slider-dots{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  padding:12px 20px;
+  background:transparent;
+  z-index:50;
+  pointer-events:all;
+}
+.sdot{
+  width:auto;
+  height:34px;
+  border-radius:20px;
+  padding:0 18px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border:1.5px solid rgba(255,255,255,0.35);
+  color:rgba(255,255,255,0.85);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  cursor:pointer;
+  transition:all .3s ease;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  box-shadow:0 2px 12px rgba(0,0,0,.15);
+}
+.sdot:hover{
+  background:rgba(255,255,255,0.22);
+  border-color:rgba(255,255,255,0.6);
+  color:#fff;
+  transform:translateY(-1px);
+}
+.sdot.active{
+  background:rgba(255,255,255,0.92);
+  color:#111;
+  border-color:rgba(255,255,255,1);
+  box-shadow:0 4px 16px rgba(0,0,0,.2);
+  font-weight:800;
+}
 .slider-prev,.slider-next{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:16px;cursor:pointer;z-index:100;transition:.2s;display:flex;align-items:center;justify-content:center;}
 .slider-prev{left:16px;} .slider-next{right:16px;}
 .slider-prev:hover,.slider-next:hover{background:rgba(255,255,255,.28);}
 
-/* ══ SYSTEM SPA ROUTER (SHOW/HIDE SECTION) ══ */
-section {
-  min-height: 100vh;
-  width: 100%;
-  display: none;      /* Sembunyikan semua section secara default */
-}
-/* Section hero tidak perlu padding-top karena hero-slider punya margin-top sendiri */
-section#home {
-  padding: 0;
-  min-height: unset;
-}
-/* Section selain home dapat padding-top agar tidak tertutup navbar fixed */
-section:not(#home) {
-  padding-top: 100px;
-}
-/* Hanya tampilkan section yang aktif */
-section.active {
-  display: block;
-  animation: pageFadeIn 0.4s ease-in-out forwards;
-}
-@keyframes pageFadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* SPA sections */
+section{min-height:100vh;width:100%;display:none;}
+section#home{padding:0;min-height:unset;}
+section:not(#home){padding-top:100px;}
+section.active{display:block;animation:pageFadeIn 0.4s ease-in-out forwards;}
+@keyframes pageFadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
-/* ══ SECTIONS BELOW HERO ══════════════════════════════ */
+/* Sections below hero */
 section{padding:80px 0;}
 .container{max-width:1200px;margin:0 auto;padding:0 32px;}
 .sec-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:600;margin-bottom:10px;}
@@ -184,7 +329,7 @@ section{padding:80px 0;}
 .cs-text strong{display:block;color:#fff;font-size:12px;font-weight:700;}
 .cs-sep{color:var(--g2);font-size:18px;font-weight:700;padding:0 4px;flex-shrink:0;opacity:.7;}
 
-/* Layanan section */
+/* Layanan */
 #layanan{background:#fff;}
 .layanan-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--gray-m);border-radius:16px;overflow:hidden;}
 .lc{background:#fff;padding:36px;transition:.2s;cursor:pointer;}
@@ -203,7 +348,7 @@ section{padding:80px 0;}
 .lc-list li::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;}
 .lc-list.g li::before{background:var(--g2);} .lc-list.b li::before{background:var(--b2);}
 
-/* Profil section */
+/* Profil */
 #profil{background:var(--gray-l);}
 .profil-grid{display:grid;grid-template-columns:360px 1fr;gap:48px;align-items:start;}
 .profil-photo-wrap{position:relative;}
@@ -221,7 +366,7 @@ section{padding:80px 0;}
 .vm-card h4{font-family:var(--serif);font-size:16px;font-weight:600;margin-bottom:10px;}
 .vm-card p{font-size:12.5px;color:var(--gray);line-height:1.7;font-weight:300;}
 
-/* Legalitas section */
+/* Legalitas */
 #legalitas{background:#fff;}
 .leg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .cert{border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08);transition:.3s;cursor:pointer;}
@@ -232,28 +377,27 @@ section{padding:80px 0;}
 .cert-info p{font-size:11px;color:var(--gray);}
 .cert-badge{display:inline-block;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
 .cert-badge.g{background:var(--gp);color:var(--g2);} .cert-badge.b{background:var(--bp);color:var(--b2);}
-
-/* KJA 2-halaman slideshow dalam 1 kolom */
 .cert-slideshow{position:relative;overflow:hidden;background:#f5f5f5;}
 .cert-slide-item{display:none;}
 .cert-slide-item.active{display:block;}
 .cert-slide-item img{width:100%;height:220px;object-fit:cover;object-position:top;transition:opacity .3s;}
 .kja-nav{position:absolute;top:50%;transform:translateY(-60%);background:rgba(0,0,0,.45);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;z-index:10;transition:.2s;display:flex;align-items:center;justify-content:center;}
 .kja-nav:hover{background:rgba(0,0,0,.7);}
-.kja-prev{left:8px;}
-.kja-next{right:8px;}
+.kja-prev{left:8px;} .kja-next{right:8px;}
 .kja-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10;}
 .kja-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:.2s;}
 .kja-dot.kja-dot-on{background:#fff;transform:scale(1.2);}
 .cert-slide .cert-zoom-hint{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.5);color:#fff;font-size:10px;padding:4px 8px;border-radius:6px;cursor:zoom-in;z-index:10;}
 
-/* Foto kantor gallery */
+/* Galeri */
 #galeri{background:var(--gray-l);padding:60px 0;}
 .galeri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .galeri-grid .gi{border-radius:12px;overflow:hidden;position:relative;height:260px;}
 .galeri-grid .gi img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:.4s;}
 .galeri-grid .gi:hover img{transform:scale(1.05);}
-.gi-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff;font-size:.85rem;font-weight:600;padding:28px 14px 12px;text-align:center;border-radius:0 0 12px 12px;}
+.gi-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.75));color:#fff;padding:20px 14px 12px;border-radius:0 0 12px 12px;}
+.gi-caption strong{display:block;font-size:.9rem;font-weight:700;}
+.gi-caption span{display:block;font-size:.75rem;opacity:.85;margin-top:2px;line-height:1.4;}
 
 /* Testimoni */
 #testimoni{background:#fff;}
@@ -268,10 +412,9 @@ section{padding:80px 0;}
 .tc-name{font-size:13px;font-weight:600;color:#111;}
 .tc-pos{font-size:11px;color:var(--gray);}
 
-/* Kontak section */
+/* Kontak */
 #kontak{background:var(--dark);}
 .kontak-grid{display:grid;grid-template-columns:400px 1fr;gap:48px;}
-.kontak-info{}
 .kontak-info h3{font-family:var(--serif);font-size:32px;font-weight:500;color:#fff;line-height:1.2;margin-bottom:16px;}
 .kontak-info p{font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.8;font-weight:300;margin-bottom:28px;}
 .ki-items{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
@@ -293,17 +436,11 @@ section{padding:80px 0;}
 .form-group textarea{resize:vertical;min-height:90px;}
 .btn-submit{width:100%;background:var(--g2);color:#fff;padding:14px;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.2s;margin-top:4px;}
 .btn-submit:hover{background:var(--g1);transform:translateY(-1px);}
-
-/* Google Maps embed */
 .maps-wrap{border-radius:14px;overflow:hidden;margin-top:28px;}
 .maps-wrap iframe{display:block;width:100%;height:220px;border:none;}
-
-/* Floating WhatsApp */
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:900;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:.2s;text-decoration:none;animation:waPulse 2.5s infinite;}
 @keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4);}50%{box-shadow:0 4px 32px rgba(37,211,102,.65);}}
 .wa-float:hover{transform:scale(1.1);}
-
-/* Toast */
 .toast{position:fixed;bottom:100px;right:28px;z-index:910;background:var(--g2);color:#fff;padding:14px 22px;border-radius:10px;font-size:13px;font-weight:500;box-shadow:0 8px 24px rgba(46,125,50,.35);opacity:0;transform:translateY(10px);transition:.3s;pointer-events:none;}
 .toast.show{opacity:1;transform:translateY(0);}
 
@@ -322,352 +459,73 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
 .f-btm a{color:rgba(255,255,255,.4);text-decoration:none;}
 .f-btm a:hover{color:#fff;}
 
-/* ══ RESPONSIVE ══════════════════════════════════════ */
-@media(max-width:1024px){
-  .slide-home{grid-template-columns:55% 45%;}
-  .slide-kja,.slide-kkp{grid-template-columns:1fr;}
-  .sk2-r{min-height:300px;}
-  .profil-grid{grid-template-columns:1fr;}
-  .profil-photo-wrap{max-width:300px;}
-  .kontak-grid{grid-template-columns:1fr;}
-  .leg-grid{grid-template-columns:1fr 1fr;}
-  .footer-grid{grid-template-columns:1fr 1fr;}
-}
-@media(max-width:768px){
-  .nav-menu,.nav-pills,.nav-cta{display:none;}
-  .ham{display:block;margin-left:auto;}
-  .slide-home{grid-template-columns:1fr;}
-  .sh-r{display:none;}
-  .sh-l{padding:44px 28px;}
-  .slide-kja,.slide-kkp{grid-template-columns:1fr;}
-  .sk-r,.sk2-l{padding:28px;}
-  .sk-l,.sk2-r{padding:36px 28px;display:none;}
-  .slide-kja .sk-r,.slide-kkp .sk2-l{display:block;}
-  .layanan-grid{grid-template-columns:1fr;}
-  .testi-grid{grid-template-columns:1fr;}
-  .leg-grid{grid-template-columns:1fr;}
-  .galeri-grid{grid-template-columns:1fr 1fr;}
-  .footer-grid{grid-template-columns:1fr 1fr;}
-  .form-row{grid-template-columns:1fr;}
-  .cs-item{padding:0 24px;}
-  .profil-vm{grid-template-columns:1fr;}
-}
-@media(max-width:480px){
-  .galeri-grid{grid-template-columns:1fr;}
-  .footer-grid{grid-template-columns:1fr;}
-  .leg-grid{grid-template-columns:1fr;}
-}
-
-/* Scroll reveal */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-
-/* ══ KJA SERVICE MODAL ══════════════════════════════════ */
-.ps{cursor:pointer;transition:.2s;}
-.ps:hover{background:var(--gp);border-radius:8px;padding-left:8px;}
-.ps:hover .psn{color:var(--g2);}
-.kja-modal-overlay{
-  position:fixed;inset:0;z-index:10000;
-  background:rgba(7,26,7,.72);
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  display:flex;align-items:center;justify-content:center;
-  padding:16px;
-  opacity:0;visibility:hidden;
-  transition:opacity .3s ease,visibility .3s ease;
-}
-.kja-modal-overlay.open{opacity:1;visibility:visible;}
-.kja-modal-panel{
-  background:#fff;
-  border-radius:20px;
-  width:100%;max-width:640px;
-  max-height:88vh;
-  overflow-y:auto;
-  position:relative;
-  transform:translateY(28px) scale(.97);
-  transition:transform .38s cubic-bezier(.34,1.56,.64,1);
-  scrollbar-width:thin;scrollbar-color:#b6d9c0 transparent;
-}
-.kja-modal-panel::-webkit-scrollbar{width:4px;}
-.kja-modal-panel::-webkit-scrollbar-thumb{background:#b6d9c0;border-radius:4px;}
-.kja-modal-overlay.open .kja-modal-panel{transform:translateY(0) scale(1);}
-.kja-modal-stripe{height:4px;background:linear-gradient(90deg,var(--g1),#3dbe6e,var(--gold));border-radius:20px 20px 0 0;}
-.kja-modal-hd{
-  padding:36px 36px 24px;
-  background:linear-gradient(155deg,#f0faf4 0%,#fff 55%);
-  border-bottom:1px solid #e2f0e7;
-  position:relative;
-}
-.kja-modal-num{
-  display:inline-flex;align-items:center;gap:7px;
-  background:#e8f5ee;color:var(--g1);
-  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  padding:5px 13px;border-radius:20px;margin-bottom:16px;
-}
-.kja-modal-num::before{content:'';width:6px;height:6px;background:#3dbe6e;border-radius:50%;}
-.kja-modal-title{
-  font-family:var(--serif);font-size:28px;font-weight:600;
-  color:#1a2e22;line-height:1.15;margin-bottom:10px;
-}
-.kja-modal-sub{font-size:14px;color:#3d5c49;line-height:1.65;max-width:480px;}
-.kja-modal-icon{
-  position:absolute;top:30px;right:36px;
-  width:58px;height:58px;background:#fff;
-  border:1px solid #daeee3;border-radius:16px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:26px;box-shadow:0 4px 16px rgba(26,107,60,.08);
-}
-.kja-modal-close{
-  position:absolute;top:16px;right:16px;
-  width:34px;height:34px;border-radius:50%;
-  border:1px solid #daeee3;background:#fff;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  color:#7a9e8a;font-size:17px;font-weight:400;
-  transition:.2s;z-index:5;line-height:1;
-}
-.kja-modal-close:hover{background:#fee2e2;border-color:#fca5a5;color:#dc2626;}
-.kja-modal-body{padding:28px 36px 36px;}
-.kja-sec-lbl{
-  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--g2);margin-bottom:14px;
-}
-.kja-features{display:flex;flex-direction:column;gap:10px;}
-.kja-fi{
-  display:flex;align-items:flex-start;gap:13px;
-  padding:16px 18px;background:#f0faf4;
-  border:1px solid #daeee3;border-radius:12px;transition:.2s;
-}
-.kja-fi:hover{background:#e8f5ee;border-color:#a8d8bb;}
-.kja-fcheck{
-  width:26px;height:26px;background:var(--g1);border-radius:7px;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;
-}
-.kja-fcheck svg{width:13px;height:13px;stroke:#fff;stroke-width:2.5;fill:none;}
-.kja-ft strong{display:block;font-size:13.5px;font-weight:600;color:#1a2e22;margin-bottom:3px;}
-.kja-ft span{font-size:12.5px;color:#3d5c49;line-height:1.5;}
-.kja-divider{height:1px;background:#e2f0e7;margin:24px 0;}
-.kja-cta{
-  background:var(--g1);border-radius:14px;
-  padding:22px;display:flex;align-items:center;
-  justify-content:space-between;gap:14px;flex-wrap:wrap;
-}
-.kja-cta-txt{color:rgba(255,255,255,.82);font-size:13px;line-height:1.55;}
-.kja-cta-txt strong{display:block;color:#fff;font-size:15px;margin-bottom:3px;}
-.kja-cta-btn{
-  background:#fff;color:var(--g1);font-weight:700;font-size:13px;
-  padding:10px 20px;border-radius:9px;border:none;
-  cursor:pointer;white-space:nowrap;transition:.2s;
-  display:flex;align-items:center;gap:7px;text-decoration:none;font-family:'DM Sans',sans-serif;
-}
-.kja-cta-btn:hover{background:#e8f5ee;transform:translateY(-1px);}
-@media(max-width:600px){
-  .kja-modal-hd{padding:24px 22px 20px;}
-  .kja-modal-body{padding:22px 22px 28px;}
-  .kja-modal-title{font-size:22px;}
-  .kja-modal-icon{display:none;}
-  .kja-cta{flex-direction:column;}
-}
-/* ══ LIVE REVIEW FEED — POP-IN CARD STYLE ════════════ */
-.live-feed-wrap{
-  background:#0F1117;
-  padding:52px 0 56px;
-  margin:0;
-}
-.lfr-inner{
-  max-width:1280px;margin:0 auto;padding:0 40px;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:60px;align-items:center;
-}
-
-/* Left: heading */
-.lfr-label{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
-  padding:6px 16px;border-radius:20px;
-  font-size:9px;font-weight:700;letter-spacing:3px;
-  color:rgba(255,255,255,.55);text-transform:uppercase;
-  margin-bottom:20px;width:fit-content;
-}
-.lfr-dot{
-  width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;
-  animation:lfrPulse 1.6s ease-in-out infinite;
-}
-@keyframes lfrPulse{
-  0%,100%{box-shadow:0 0 0 2px rgba(34,197,94,.3);}
-  50%{box-shadow:0 0 0 7px rgba(34,197,94,.07);}
-}
-.lfr-heading{
-  font-family:var(--serif);
-  font-size:clamp(32px,4vw,54px);
-  font-weight:600;color:#fff;line-height:1.08;
-  margin-bottom:16px;
-}
-.lfr-heading em{
-  font-style:italic;
-  background:linear-gradient(135deg,var(--gold),var(--gold-l));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-.lfr-sub{
-  font-size:13.5px;color:rgba(255,255,255,.45);
-  font-weight:300;line-height:1.7;margin-bottom:28px;
-}
+/* Live Feed */
+.live-feed-wrap{background:#0F1117;padding:52px 0 56px;margin:0;}
+.lfr-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.lfr-label{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:6px 16px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.55);text-transform:uppercase;margin-bottom:20px;width:fit-content;}
+.lfr-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:lfrPulse 1.6s ease-in-out infinite;}
+@keyframes lfrPulse{0%,100%{box-shadow:0 0 0 2px rgba(34,197,94,.3);}50%{box-shadow:0 0 0 7px rgba(34,197,94,.07);}}
+.lfr-heading{font-family:var(--serif);font-size:clamp(32px,4vw,54px);font-weight:600;color:#fff;line-height:1.08;margin-bottom:16px;}
+.lfr-heading em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.lfr-sub{font-size:13.5px;color:rgba(255,255,255,.45);font-weight:300;line-height:1.7;margin-bottom:28px;}
 .lfr-sub strong{color:rgba(255,255,255,.8);font-weight:600;}
 .lfr-stats{display:flex;gap:28px;}
-.lfr-stat{}
 .lfr-stat-n{display:block;font-family:var(--serif);font-size:28px;font-weight:600;color:var(--gold-l);line-height:1;}
 .lfr-stat-l{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px;}
-
-/* Right: card slots */
-.lfr-right{
-  display:flex;flex-direction:column;gap:12px;
-}
+.lfr-right{display:flex;flex-direction:column;gap:12px;}
 .lfr-slot{min-height:130px;}
-
-/* Card */
-.lfr-card{
-  background:#1A1D27;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;
-  padding:18px 20px;
-  display:flex;flex-direction:column;gap:10px;
-  position:relative;overflow:hidden;
-}
-.lfr-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--g2),var(--gold-l));
-}
-/* Pop-in animation */
-.lfr-card.pop-in{
-  animation:lfrPopIn .4s cubic-bezier(.34,1.56,.64,1) forwards;
-}
-.lfr-card.pop-out{
-  animation:lfrPopOut .3s ease-in forwards;
-}
-@keyframes lfrPopIn{
-  from{opacity:0;transform:translateY(12px) scale(.97);}
-  to{opacity:1;transform:translateY(0) scale(1);}
-}
-@keyframes lfrPopOut{
-  from{opacity:1;transform:translateY(0) scale(1);}
-  to{opacity:0;transform:translateY(-8px) scale(.97);}
-}
-
+.lfr-card{background:#1A1D27;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;}
+.lfr-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--g2),var(--gold-l));}
+.lfr-card.pop-in{animation:lfrPopIn .4s cubic-bezier(.34,1.56,.64,1) forwards;}
+.lfr-card.pop-out{animation:lfrPopOut .3s ease-in forwards;}
+@keyframes lfrPopIn{from{opacity:0;transform:translateY(12px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+@keyframes lfrPopOut{from{opacity:1;transform:translateY(0) scale(1);}to{opacity:0;transform:translateY(-8px) scale(.97);}}
 .lfr-card-top{display:flex;align-items:center;gap:12px;}
-.lfr-av{
-  width:38px;height:38px;border-radius:50%;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:700;color:#fff;
-  box-shadow:0 2px 8px rgba(0,0,0,.35);
-}
+.lfr-av{width:38px;height:38px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.35);}
 .lfr-cname{font-size:13px;font-weight:600;color:#fff;line-height:1.2;}
 .lfr-cloc{font-size:10px;color:rgba(255,255,255,.35);margin-top:1px;}
 .lfr-stars{margin-left:auto;color:#F59E0B;font-size:12px;letter-spacing:2px;flex-shrink:0;}
-.lfr-tag{
-  font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-  padding:4px 11px;border-radius:20px;width:fit-content;
-}
+.lfr-tag{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 11px;border-radius:20px;width:fit-content;}
 .lfr-tag-g{background:rgba(46,125,50,.2);color:#81C784;border:1px solid rgba(46,125,50,.25);}
 .lfr-tag-b{background:rgba(13,71,161,.2);color:#90CAF9;border:1px solid rgba(13,71,161,.25);}
-.lfr-quote{
-  font-size:12.5px;color:rgba(255,255,255,.6);
-  line-height:1.6;font-weight:300;font-style:italic;
-}
-.lfr-time{
-  font-size:9px;color:rgba(255,255,255,.2);
-  letter-spacing:1px;text-transform:uppercase;
-  border-top:1px solid rgba(255,255,255,.05);
-  padding-top:8px;
-}
+.lfr-quote{font-size:12.5px;color:rgba(255,255,255,.6);line-height:1.6;font-weight:300;font-style:italic;}
+.lfr-time{font-size:9px;color:rgba(255,255,255,.2);letter-spacing:1px;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.05);padding-top:8px;}
 
-
-/* ══ CERT ZOOM HINT ══ */
+/* Cert zoom */
 .cert{position:relative;overflow:hidden;}
-.cert-zoom-hint{
-  position:absolute;bottom:0;left:0;right:0;
-  background:rgba(0,0,0,.55);backdrop-filter:blur(4px);
-  color:#fff;font-size:11px;font-weight:500;letter-spacing:1px;
-  text-align:center;padding:8px;
-  opacity:0;transition:.25s;pointer-events:none;
-}
+.cert-zoom-hint{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);color:#fff;font-size:11px;font-weight:500;letter-spacing:1px;text-align:center;padding:8px;opacity:0;transition:.25s;pointer-events:none;}
 .cert:hover .cert-zoom-hint{opacity:1;}
 .cert:hover img{transform:scale(1.03);transition:.3s;}
 .cert img{transition:.3s;}
 
-/* ══ LIGHTBOX ══ */
-#lbOverlay{
-  display:none;position:fixed;inset:0;z-index:9999;
-  background:rgba(0,0,0,.92);backdrop-filter:blur(8px);
-  align-items:center;justify-content:center;
-}
+/* Lightbox */
+#lbOverlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);align-items:center;justify-content:center;}
 #lbOverlay.open{display:flex;}
-#lbImg{
-  max-width:90vw;max-height:90vh;
-  object-fit:contain;border-radius:4px;
-  box-shadow:0 24px 80px rgba(0,0,0,.6);
-  transition:opacity .25s;
-  user-select:none;
-}
-#lbClose{
-  position:fixed;top:20px;right:24px;
-  width:44px;height:44px;border-radius:50%;
-  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
-  color:#fff;font-size:22px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:.2s;z-index:10000;
-}
+#lbImg{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px;box-shadow:0 24px 80px rgba(0,0,0,.6);transition:opacity .25s;user-select:none;}
+#lbClose{position:fixed;top:20px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;z-index:10000;}
 #lbClose:hover{background:rgba(255,255,255,.25);}
-#lbPrev,#lbNext{
-  position:fixed;top:50%;transform:translateY(-50%);
-  width:48px;height:48px;border-radius:50%;
-  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
-  color:#fff;font-size:24px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:.2s;z-index:10000;
-}
+#lbPrev,#lbNext{position:fixed;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;z-index:10000;}
 #lbPrev{left:16px;} #lbNext{right:16px;}
 #lbPrev:hover,#lbNext:hover{background:rgba(255,255,255,.28);}
-#lbCounter{
-  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
-  color:rgba(255,255,255,.6);font-size:12px;letter-spacing:2px;
-  z-index:10000;background:rgba(0,0,0,.4);padding:6px 16px;border-radius:20px;
-}
-#lbCaption{
-  position:fixed;bottom:60px;left:50%;transform:translateX(-50%);
-  color:#fff;font-size:13px;font-weight:500;letter-spacing:.5px;
-  z-index:10000;background:rgba(0,0,0,.5);padding:8px 20px;border-radius:8px;
-  max-width:80vw;text-align:center;
-}
+#lbCounter{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:12px;letter-spacing:2px;z-index:10000;background:rgba(0,0,0,.4);padding:6px 16px;border-radius:20px;}
+#lbCaption{position:fixed;bottom:60px;left:50%;transform:translateX(-50%);color:#fff;font-size:13px;font-weight:500;letter-spacing:.5px;z-index:10000;background:rgba(0,0,0,.5);padding:8px 20px;border-radius:8px;max-width:80vw;text-align:center;}
 
-/* ══ HERO PHOTO SLIDESHOW ══════════════════════════ */
+/* Hero Photo Slideshow */
 #heroPhotoPanel{position:relative;overflow:hidden;}
-.hp-slide{
-  position:absolute;inset:0;opacity:0;
-  transition:opacity 1s ease-in-out;
-  pointer-events:none;
-}
+.hp-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease-in-out;pointer-events:none;}
 .hp-slide.hp-active{opacity:1;pointer-events:all;}
 .hp-slide img{width:100%;height:100%;object-fit:cover;}
-.hp-dots{
-  position:absolute;bottom:60px;right:20px;
-  display:flex;flex-direction:column;gap:7px;z-index:5;
-}
-.hp-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:rgba(255,255,255,.35);border:1.5px solid rgba(255,255,255,.6);
-  cursor:pointer;transition:.25s;
-}
+.hp-dots{position:absolute;bottom:60px;right:20px;display:flex;flex-direction:column;gap:7px;z-index:5;}
+.hp-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);border:1.5px solid rgba(255,255,255,.6);cursor:pointer;transition:.25s;}
 .hp-dot.hp-dot-on{background:#fff;transform:scale(1.25);}
-/* ══ VISI MISI ACCORDION ══════════════════════════════ */
+
+/* Visi Misi */
 .vm-card{transition:.25s;user-select:none;}
 .vm-card:hover{box-shadow:0 6px 24px rgba(46,125,50,.12);border-color:var(--g2) !important;}
 .vm-header{display:flex;align-items:center;justify-content:space-between;}
 .vm-arrow{font-size:11px;color:var(--g2);transition:.3s;opacity:.7;}
 .vm-card.vm-closed .vm-arrow{transform:rotate(180deg);opacity:1;}
-.vm-body{
-  max-height:600px;overflow:hidden;
-  transition:max-height .4s ease, opacity .3s ease, padding .3s ease;
-  opacity:1;padding-top:12px;
-}
+.vm-body{max-height:600px;overflow:hidden;transition:max-height .4s ease, opacity .3s ease, padding .3s ease;opacity:1;padding-top:12px;}
 .vm-card.vm-closed .vm-body{max-height:0;opacity:0;padding-top:0;}
 .vm-list{padding-left:18px;margin:0 0 12px;}
 .vm-list li{font-size:13.5px;color:#444;line-height:1.7;margin-bottom:6px;}
@@ -678,17 +536,9 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
 .vm-services li strong{color:#222;font-weight:600;}
 .vm-tagline{font-size:12px;font-style:italic;color:var(--g2);font-weight:500;text-align:center;padding:8px;border-top:1px solid var(--gray-m);}
 
-/* ══ FILTER TABS LAYANAN ══════════════════════════════ */
-.filter-tabs{
-  display:flex;align-items:center;justify-content:center;
-  gap:8px;margin-bottom:40px;flex-wrap:wrap;
-}
-.ftab{
-  padding:9px 22px;border-radius:24px;border:1.5px solid var(--gray-m);
-  background:#fff;color:#555;font-size:12px;font-weight:600;
-  letter-spacing:.5px;cursor:pointer;transition:.25s;
-  display:flex;align-items:center;gap:7px;
-}
+/* Filter Tabs */
+.filter-tabs{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:40px;flex-wrap:wrap;}
+.ftab{padding:9px 22px;border-radius:24px;border:1.5px solid var(--gray-m);background:#fff;color:#555;font-size:12px;font-weight:600;letter-spacing:.5px;cursor:pointer;transition:.25s;display:flex;align-items:center;gap:7px;}
 .ftab:hover{border-color:var(--g2);color:var(--g2);}
 .ftab.active-all{background:var(--dark);border-color:var(--dark);color:#fff;}
 .ftab.active-kja{background:var(--g2);border-color:var(--g2);color:#fff;}
@@ -700,21 +550,102 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
 .ftab.active-kja .ftab-dot-kja{background:#fff;}
 .ftab-dot-kkp{background:var(--b2);}
 .ftab.active-kkp .ftab-dot-kkp{background:#fff;}
+.lc{transition:opacity .3s ease, transform .3s ease;}
+.lc.lc-hidden{opacity:0;transform:scale(.96);pointer-events:none;position:absolute;visibility:hidden;}
 
-/* Kartu hide/show dengan transisi */
-.lc{
-  transition:opacity .3s ease, transform .3s ease;
+/* KJA Modal */
+.ps{cursor:pointer;transition:.2s;}
+.ps:hover{background:var(--gp);border-radius:8px;padding-left:8px;}
+.ps:hover .psn{color:var(--g2);}
+.kja-modal-overlay{position:fixed;inset:0;z-index:10000;background:rgba(7,26,7,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;}
+.kja-modal-overlay.open{opacity:1;visibility:visible;}
+.kja-modal-panel{background:#fff;border-radius:20px;width:100%;max-width:640px;max-height:88vh;overflow-y:auto;position:relative;transform:translateY(28px) scale(.97);transition:transform .38s cubic-bezier(.34,1.56,.64,1);scrollbar-width:thin;scrollbar-color:#b6d9c0 transparent;}
+.kja-modal-panel::-webkit-scrollbar{width:4px;}
+.kja-modal-panel::-webkit-scrollbar-thumb{background:#b6d9c0;border-radius:4px;}
+.kja-modal-overlay.open .kja-modal-panel{transform:translateY(0) scale(1);}
+.kja-modal-stripe{height:4px;background:linear-gradient(90deg,var(--g1),#3dbe6e,var(--gold));border-radius:20px 20px 0 0;}
+.kja-modal-hd{padding:36px 36px 24px;background:linear-gradient(155deg,#f0faf4 0%,#fff 55%);border-bottom:1px solid #e2f0e7;position:relative;}
+.kja-modal-num{display:inline-flex;align-items:center;gap:7px;background:#e8f5ee;color:var(--g1);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 13px;border-radius:20px;margin-bottom:16px;}
+.kja-modal-num::before{content:'';width:6px;height:6px;background:#3dbe6e;border-radius:50%;}
+.kja-modal-title{font-family:var(--serif);font-size:28px;font-weight:600;color:#1a2e22;line-height:1.15;margin-bottom:10px;}
+.kja-modal-sub{font-size:14px;color:#3d5c49;line-height:1.65;max-width:480px;}
+.kja-modal-icon{position:absolute;top:30px;right:36px;width:58px;height:58px;background:#fff;border:1px solid #daeee3;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 16px rgba(26,107,60,.08);}
+.kja-modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:1px solid #daeee3;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#7a9e8a;font-size:17px;font-weight:400;transition:.2s;z-index:5;line-height:1;}
+.kja-modal-close:hover{background:#fee2e2;border-color:#fca5a5;color:#dc2626;}
+.kja-modal-body{padding:28px 36px 36px;}
+.kja-sec-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:14px;}
+.kja-features{display:flex;flex-direction:column;gap:10px;}
+.kja-fi{display:flex;align-items:flex-start;gap:13px;padding:16px 18px;background:#f0faf4;border:1px solid #daeee3;border-radius:12px;transition:.2s;}
+.kja-fi:hover{background:#e8f5ee;border-color:#a8d8bb;}
+.kja-fcheck{width:26px;height:26px;background:var(--g1);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.kja-fcheck svg{width:13px;height:13px;stroke:#fff;stroke-width:2.5;fill:none;}
+.kja-ft strong{display:block;font-size:13.5px;font-weight:600;color:#1a2e22;margin-bottom:3px;}
+.kja-ft span{font-size:12.5px;color:#3d5c49;line-height:1.5;}
+.kja-divider{height:1px;background:#e2f0e7;margin:24px 0;}
+.kja-cta{background:var(--g1);border-radius:14px;padding:22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.kja-cta-txt{color:rgba(255,255,255,.82);font-size:13px;line-height:1.55;}
+.kja-cta-txt strong{display:block;color:#fff;font-size:15px;margin-bottom:3px;}
+.kja-cta-btn{background:#fff;color:var(--g1);font-weight:700;font-size:13px;padding:10px 20px;border-radius:9px;border:none;cursor:pointer;white-space:nowrap;transition:.2s;display:flex;align-items:center;gap:7px;text-decoration:none;font-family:'DM Sans',sans-serif;}
+.kja-cta-btn:hover{background:#e8f5ee;transform:translateY(-1px);}
+
+/* ══ RESPONSIVE — FIXED ══ */
+@media(max-width:1024px){
+  .slide-home{grid-template-columns:55% 45%;}
+  .slide-kja{grid-template-columns:1fr;}
+  .slide-kkp{grid-template-columns:1fr;}
+  .sk-l{display:flex !important;min-height:280px;height:auto;}
+  .sk2-r{display:flex !important;min-height:280px;height:auto;}
+  .sk-r{height:auto;}
+  .sk2-l{height:auto;}
+  .profil-grid{grid-template-columns:1fr;}
+  .profil-photo-wrap{max-width:300px;}
+  .kontak-grid{grid-template-columns:1fr;}
+  .leg-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
 }
-.lc.lc-hidden{
-  opacity:0;transform:scale(.96);pointer-events:none;
-  position:absolute;visibility:hidden;
+@media(max-width:768px){
+  .nav-menu,.nav-pills,.nav-cta{display:none;}
+  .ham{display:block;margin-left:auto;}
+  .slide-home{grid-template-columns:1fr;}
+  .sh-r{display:none;}
+  .sh-l{padding:44px 28px;height:auto;}
+  .slide-kja{grid-template-columns:1fr;}
+  .sk-l{display:flex !important;height:auto;min-height:260px;padding:28px;}
+  .sk-r{padding:28px;height:auto;}
+  .slide-kkp{grid-template-columns:1fr;}
+  .sk2-r{display:flex !important;height:auto;min-height:260px;padding:28px;order:-1;}
+  .sk2-l{padding:28px;height:auto;}
+  .layanan-grid{grid-template-columns:1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .leg-grid{grid-template-columns:1fr;}
+  .galeri-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .cs-item{padding:0 24px;}
+  .profil-vm{grid-template-columns:1fr;}
+  .lfr-inner{grid-template-columns:1fr;gap:32px;}
+}
+@media(max-width:480px){
+  .galeri-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .leg-grid{grid-template-columns:1fr;}
 }
 
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:600px){
+  .kja-modal-hd{padding:24px 22px 20px;}
+  .kja-modal-body{padding:22px 22px 28px;}
+  .kja-modal-title{font-size:22px;}
+  .kja-modal-icon{display:none;}
+  .kja-cta{flex-direction:column;}
+}
 </style>
 </head>
 <body>
-
-<!-- ══ LIGHTBOX ══════════════════════════════════════ -->
+<!-- ══ LIGHTBOX ══ -->
 <div id="lbOverlay">
   <button id="lbClose">&#10005;</button>
   <button id="lbPrev">&#8249;</button>
@@ -724,8 +655,7 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
   <div id="lbCounter">1 / 5</div>
 </div>
 
-
-<!-- ══ NAV ══════════════════════════════════════════════ -->
+<!-- ══ NAV ══ -->
 <nav>
   <div class="nav-w">
     <a href="#home" class="nav-brand">
@@ -740,12 +670,14 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
       <a href="#galeri" id="menu-galeri">Galeri</a>
       <a href="#kontak" id="menu-kontak">Kontak</a>
     </div>
-    <a href="https://wa.me/6281338983753?text=Halo%20Pak%20Suastawa%2C%20saya%20tertarik%20dengan%20layanan%20KJA%20%26%20KKP%20Suastawa%20Consulting.%20Boleh%20saya%20mendapatkan%20konsultasi%20gratis%20untuk%20kebutuhan%20akuntansi%2Fpajak%20bisnis%20saya%3F%20Terima%20kasih%20%F0%9F%99%8F" target="_blank" class="nav-cta">💬 Konsultasi</a>
+    <a href="https://wa.me/6281338983753?text=Halo%20Pak%20Suastawa%2C%20saya%20tertarik%20dengan%20layanan%20KJA%20%26%20KKP%20Suastawa%20Consulting." target="_blank" class="nav-cta">💬 Konsultasi</a>
     <button class="ham" onclick="toggleMenu()" id="hamBtn" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+
+<!-- slider-dots moved inside hero-slider -->
 
 <!-- Mobile Menu -->
 <div class="mob-menu" id="mobMenu">
@@ -759,20 +691,15 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
   <a href="https://wa.me/6281338983753" target="_blank" style="background:#25D366;color:#fff;font-weight:600;">💬 WhatsApp Konsultasi</a>
 </div>
 
-<!-- ══ HOME SECTION (SPA) ══════════════════════════════ -->
+<!-- ══ HOME SECTION ══ -->
 <section id="home" class="hero active">
-
-<!-- ══ HERO SLIDER ══════════════════════════════════════ -->
 <div class="hero-slider" id="heroSlider">
 
   <!-- SLIDE 0: HOME -->
   <div class="slide active" id="slide0">
     <div class="slide-home">
       <div class="sh-l">
-        <div class="badge-live">
-          <span class="dot-pulse"></span>
-          Resmi Terdaftar · Kemenkeu RI
-        </div>
+        <div class="badge-live"><span class="dot-pulse"></span>Resmi Terdaftar · Kemenkeu RI</div>
         <h1 class="sh-h1">Kantor Jasa<br><em>Akuntan</em> &amp;<br>Konsultan Pajak</h1>
         <p class="sh-tagline">"Your Trusted Partner in Accounting and Tax Compliance"</p>
         <p class="sh-desc">Solusi akuntansi dan perpajakan terpercaya di Bali sejak 2015. Ditangani langsung oleh akuntan bersertifikat CA, Ak., BKP dengan izin resmi Kemenkeu RI &amp; IKPI.</p>
@@ -787,50 +714,22 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
         </div>
       </div>
       <div class="sh-r" id="heroPhotoPanel">
-  <!-- Photo slideshow -->
-  <div class="hp-slide hp-active" id="hpSlide0">
-    <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780089720/WhatsApp_Image_2026-05-26_at_08.43.26_1_xyxeii.jpg" alt="Kantor Suastawa Consulting">
-  </div>
-  <div class="hp-slide" id="hpSlide1">
-    <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780089720/WhatsApp_Image_2026-05-26_at_08.43.26_jrdwar.jpg" alt="Suasana Kantor Suastawa">
-  </div>
-  <div class="hp-slide" id="hpSlide2">
-    <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780089720/WhatsApp_Image_2026-05-26_at_08.43.24_j8jjhg.jpg" alt="Area Konsultasi Suastawa">
-  </div>
-  <div class="hp-slide" id="hpSlide3">
-    <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780089720/WhatsApp_Image_2026-05-26_at_08.43.25_3_gygmdx.jpg" alt="Ruang Kerja Suastawa Consulting">
-  </div>
-  <div class="hp-dots">
-    <span class="hp-dot hp-dot-on" onclick="hpGo(0)"></span>
-    <span class="hp-dot" onclick="hpGo(1)"></span>
-    <span class="hp-dot" onclick="hpGo(2)"></span>
-    <span class="hp-dot" onclick="hpGo(3)"></span>
-  </div>    <div class="sh-r-overlay"></div>
-  </div>
-  <div class="hp-slide" id="hpSlide1">
-    <img src="PLACEHOLDER_2_ruang-konsultasi" alt="Ruang Konsultasi">
-    <div class="sh-r-overlay"></div>
-  </div>
-  <div class="hp-slide" id="hpSlide2">
-    <img src="PLACEHOLDER_3_area-konsultasi-terbuka" alt="Area Konsultasi Terbuka">
-    <div class="sh-r-overlay"></div>
-  </div>
-  <div class="hp-slide" id="hpSlide3">
-    <img src="PLACEHOLDER_4_kantor-suastawa-consulting" alt="Kantor Suastawa Consulting">
-    <div class="sh-r-overlay"></div>
-  </div>
-  <!-- Dot indicators -->
-  <div class="hp-dots">
-    <span class="hp-dot hp-dot-on" onclick="hpGo(0)"></span>
-    <span class="hp-dot" onclick="hpGo(1)"></span>
-    <span class="hp-dot" onclick="hpGo(2)"></span>
-    <span class="hp-dot" onclick="hpGo(3)"></span>
-  </div>
-  <div class="sh-r-badge">
-    <div class="bb-title">Jl. Melati No. 14, Abiansemal</div>
-    <div class="bb-sub">Badung, Bali 80352</div>
-  </div>
-</div>
+        <div class="hp-slide hp-active" id="hpSlide0"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780089720/WhatsApp_Image_2026-05-26_at_08.43.26_1_xyxeii.jpg" alt="Kantor Suastawa Consulting"></div>
+        <div class="hp-slide" id="hpSlide1"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780089720/WhatsApp_Image_2026-05-26_at_08.43.26_jrdwar.jpg" alt="Suasana Kantor"></div>
+        <div class="hp-slide" id="hpSlide2"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780089720/WhatsApp_Image_2026-05-26_at_08.43.24_j8jjhg.jpg" alt="Area Konsultasi"></div>
+        <div class="hp-slide" id="hpSlide3"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780089720/WhatsApp_Image_2026-05-26_at_08.43.25_3_gygmdx.jpg" alt="Ruang Kerja"></div>
+        <div class="hp-dots">
+          <span class="hp-dot hp-dot-on" onclick="hpGo(0)"></span>
+          <span class="hp-dot" onclick="hpGo(1)"></span>
+          <span class="hp-dot" onclick="hpGo(2)"></span>
+          <span class="hp-dot" onclick="hpGo(3)"></span>
+        </div>
+        <div class="sh-r-overlay"></div>
+        <div class="sh-r-badge">
+          <div class="bb-title">Jl. Melati No. 14, Abiansemal</div>
+          <div class="bb-sub">Badung, Bali 80352</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -838,14 +737,11 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
   <div class="slide" id="slide1">
     <div class="slide-kja">
       <div class="sk-l">
-        <div style="margin-bottom:16px;">
-          <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);">Kantor Jasa Akuntan</span>
+        <div style="margin-bottom:16px;"><span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);">Kantor Jasa Akuntan</span></div>
+        <div class="dark-title-logo-wrap">
+          <h2 style="font-family:var(--serif);font-size:clamp(26px,3vw,42px);font-weight:500;color:#fff;line-height:1.1;margin-bottom:0;">Kantor Jasa<br><span style="color:var(--gold-l);font-style:italic;">Akuntan</span><br>Suastawa</h2>
+          <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780124191/Logo_KJA_SUASTAWA_CONSULTING_cekjhj.png" alt="Logo KJA Suastawa" class="logo-corner-dark">
         </div>
-        <!-- Logo Suastawa Consulting -->
-        <div style="margin-bottom:18px;">
-          <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780124191/Logo_KJA_SUASTAWA_CONSULTING_cekjhj.png" alt="Suastawa Consulting" style="height:52px;width:auto;max-width:180px;object-fit:contain;opacity:0.95;background:rgba(255,255,255,0.08);border-radius:8px;padding:6px 10px;">
-        </div>
-        <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:500;color:#fff;line-height:1.1;margin-bottom:8px;">Kantor Jasa<br><span style="color:var(--gold-l);font-style:italic;">Akuntan</span><br>Suastawa</h2>
         <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:18px;">Anggota IAI · Izin Kemenkeu RI · Berdiri 2015</p>
         <p style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.85;font-weight:300;max-width:360px;margin-bottom:22px;">Solusi akuntansi komprehensif dengan standar SAK tertinggi. Laporan keuangan akurat, tepat waktu, dan sesuai regulasi untuk bisnis Anda.</p>
         <div class="sk-creds">
@@ -857,51 +753,34 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
         <span class="btn-ow" onclick="goSlide(2)" style="width:fit-content;font-size:11px;">Lihat KKP →</span>
       </div>
       <div class="sk-r">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-          <span class="pt g" style="margin-bottom:0;">Kantor Jasa Akuntan</span>
-          <!-- Logo IAI -->
-          <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780124191/Logo_IAI_uakoj1.jpg" alt="IAI" style="height:22px;width:auto;object-fit:contain;opacity:0.85;flex-shrink:0;border-radius:3px;" title="Anggota IAI — Ikatan Akuntan Indonesia">
+        <div class="title-logo-wrap">
+          <h2 class="ph2" style="margin-bottom:0;">Layanan <em class="g">Akuntansi</em><br>Profesional</h2>
+          <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780124191/Logo_IAI_uakoj1.jpg" alt="Logo IAI" class="logo-corner">
         </div>
-        <h2 class="ph2">Layanan <em class="g">Akuntansi</em><br>Profesional</h2>
         <p class="pdesc">KJA Suastawa Consulting melayani berbagai kebutuhan akuntansi, pembukuan, dan laporan keuangan sesuai standar IAI dan regulasi Kemenkeu RI.</p>
         <div class="ps" data-kja-id="1" role="button" tabindex="0">
           <div class="pi g">💼</div>
-          <div class="ps-content">
-            <div class="psn">Jasa Akuntan &amp; Pembukuan</div>
-            <div class="psd">Pengelolaan administrasi keuangan harian secara sistematis.</div>
-          </div>
+          <div class="ps-content"><div class="psn">Jasa Akuntan &amp; Pembukuan</div><div class="psd">Pengelolaan administrasi keuangan harian secara sistematis.</div></div>
           <span class="ps-arrow">›</span>
         </div>
         <div class="ps" data-kja-id="2" role="button" tabindex="0">
           <div class="pi g">📊</div>
-          <div class="ps-content">
-            <div class="psn">Kompilasi Laporan Keuangan</div>
-            <div class="psd">Transformasi data menjadi informasi strategis sesuai SAK.</div>
-          </div>
+          <div class="ps-content"><div class="psn">Kompilasi Laporan Keuangan</div><div class="psd">Transformasi data menjadi informasi strategis sesuai SAK.</div></div>
           <span class="ps-arrow">›</span>
         </div>
         <div class="ps" data-kja-id="3" role="button" tabindex="0">
           <div class="pi g">⚖️</div>
-          <div class="ps-content">
-            <div class="psn">Tax Compliance (KJA)</div>
-            <div class="psd">Memastikan data akuntansi Tax-Ready untuk meminimalkan risiko sanksi.</div>
-          </div>
+          <div class="ps-content"><div class="psn">Tax Compliance (KJA)</div><div class="psd">Memastikan data akuntansi Tax-Ready untuk meminimalkan risiko sanksi.</div></div>
           <span class="ps-arrow">›</span>
         </div>
         <div class="ps" data-kja-id="4" role="button" tabindex="0">
           <div class="pi g">⚙️</div>
-          <div class="ps-content">
-            <div class="psn">Penyusunan Sistem Akuntan</div>
-            <div class="psd">Digitalisasi infrastruktur keuangan melalui SOP dan sistem cloud terintegrasi.</div>
-          </div>
+          <div class="ps-content"><div class="psn">Penyusunan Sistem Akuntan</div><div class="psd">Digitalisasi infrastruktur keuangan melalui SOP dan sistem cloud terintegrasi.</div></div>
           <span class="ps-arrow">›</span>
         </div>
         <div class="ps" data-kja-id="5" role="button" tabindex="0">
           <div class="pi g">📈</div>
-          <div class="ps-content">
-            <div class="psn">Konsultasi Manajemen Keuangan</div>
-            <div class="psd">Wawasan strategis dan proyeksi arus kas untuk keputusan bisnis.</div>
-          </div>
+          <div class="ps-content"><div class="psn">Konsultasi Manajemen Keuangan</div><div class="psd">Wawasan strategis dan proyeksi arus kas untuk keputusan bisnis.</div></div>
           <span class="ps-arrow">›</span>
         </div>
         <div class="ptags">
@@ -918,13 +797,16 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
   <div class="slide" id="slide2">
     <div class="slide-kkp">
       <div class="sk2-l">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;"><span class="pt b" style="margin-bottom:0;">Kantor Konsultan Pajak</span><!-- Logo IKPI --><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780124164/Logo_IKPI_x0vvrm.jpg" alt="IKPI" style="height:22px;width:auto;object-fit:contain;opacity:0.88;flex-shrink:0;border-radius:3px;" title="Anggota IKPI — Ikatan Konsultan Pajak Indonesia"></div><h2 class="ph2">Layanan <em class="b">Perpajakan</em><br>Profesional</h2>
+        <div class="title-logo-wrap">
+          <h2 class="ph2" style="margin-bottom:0;">Layanan <em class="b">Perpajakan</em><br>Profesional</h2>
+          <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780124164/Logo_IKPI_x0vvrm.jpg" alt="Logo IKPI" class="logo-corner">
+        </div>
         <p class="pdesc">KKP Suastawa Consulting adalah mitra perpajakan terpercaya untuk bisnis dan perorangan. Izin resmi DJP &amp; keanggotaan IKPI menjamin kepatuhan pajak Anda.</p>
-        <div class="ps"><div class="pi b">💰</div><div><div class="psn">Pajak Penghasilan (PPh) Badan</div><div class="psd">Perhitungan, pelaporan SPT Tahunan PPh Badan, optimasi pajak yang legal dan efisien untuk perusahaan.</div></div></div>
-        <div class="ps"><div class="pi b">👤</div><div><div class="psn">PPh Orang Pribadi</div><div class="psd">Pendampingan pelaporan SPT Tahunan PPh OP — wirausaha, profesional, dan karyawan expatriat.</div></div></div>
+        <div class="ps"><div class="pi b">💰</div><div><div class="psn">Pajak Penghasilan (PPh) Badan</div><div class="psd">Perhitungan, pelaporan SPT Tahunan PPh Badan, optimasi pajak yang legal dan efisien.</div></div></div>
+        <div class="ps"><div class="pi b">👤</div><div><div class="psn">PPh Orang Pribadi</div><div class="psd">Pendampingan pelaporan SPT Tahunan PPh OP — wirausaha, profesional, dan expatriat.</div></div></div>
         <div class="ps"><div class="pi b">🧾</div><div><div class="psn">Pajak Pertambahan Nilai (PPN)</div><div class="psd">Pengkreditan pajak masukan, pelaporan SPT Masa PPN, dan rekonsiliasi faktur pajak.</div></div></div>
         <div class="ps"><div class="pi b">🔍</div><div><div class="psn">Perencanaan Pajak (Tax Planning)</div><div class="psd">Strategi perencanaan pajak yang efisien dan legal untuk meminimalkan beban pajak.</div></div></div>
-        <div class="ps"><div class="pi b">⚖️</div><div><div class="psn">Pendampingan Sengketa Pajak</div><div class="psd">Pendampingan pemeriksaan dan penyelesaian sengketa di KPP Pratama — melindungi hak wajib pajak.</div></div></div>
+        <div class="ps"><div class="pi b">⚖️</div><div><div class="psn">Pendampingan Sengketa Pajak</div><div class="psd">Pendampingan pemeriksaan dan penyelesaian sengketa di KPP Pratama.</div></div></div>
         <div class="ptags">
           <span class="ptag b">Izin DJP: SI-1543/PJ/2008</span>
           <span class="ptag b">KEP-6378/IP.C/PJ/2020</span>
@@ -933,14 +815,11 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
         </div>
       </div>
       <div class="sk2-r">
-        <div style="margin-bottom:16px;">
-          <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);">Kantor Konsultan Pajak</span>
+        <div style="margin-bottom:16px;"><span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);">Kantor Konsultan Pajak</span></div>
+        <div class="dark-title-logo-wrap">
+          <h2 style="font-family:var(--serif);font-size:clamp(26px,3vw,42px);font-weight:500;color:#fff;line-height:1.1;margin-bottom:0;">Kantor Konsultan<br><span style="color:#90CAF9;font-style:italic;">Pajak</span><br>Suastawa</h2>
+          <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780124165/Logo_KKP_SUASTAWA_CONSULTING_tzymhg.png" alt="Logo KKP Suastawa" class="logo-corner-dark">
         </div>
-        <!-- Logo KKP Suastawa Consulting -->
-        <div style="margin-bottom:18px;">
-          <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780124165/Logo_KKP_SUASTAWA_CONSULTING_tzymhg.png" alt="Suastawa Consulting KKP" style="height:52px;width:auto;max-width:180px;object-fit:contain;opacity:0.95;background:rgba(255,255,255,0.08);border-radius:8px;padding:6px 10px;">
-        </div>
-        <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:500;color:#fff;line-height:1.1;margin-bottom:8px;">Kantor Konsultan<br><span style="color:#90CAF9;font-style:italic;">Pajak</span><br>Suastawa</h2>
         <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:18px;">Anggota IKPI · Izin DJP RI · Sertifikat C</p>
         <p style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.85;font-weight:300;max-width:360px;margin-bottom:22px;">Konsultan pajak bersertifikat tingkat C dengan pengalaman mendampingi klien dalam kepatuhan perpajakan, tax planning, dan sengketa pajak.</p>
         <div class="sk2-creds">
@@ -954,20 +833,20 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
     </div>
   </div>
 
-  <!-- Slider controls -->
-  <button class="slider-prev" onclick="slideBy(-1)">&#8249;</button>
-  <button class="slider-next" onclick="slideBy(1)">&#8250;</button>
-  <div class="slider-dots">
+  <!-- SLIDER DOTS — floating inside hero, above marquee -->
+  <div class="slider-dots" id="sliderDots">
     <div class="sdot active" onclick="goSlide(0)">🏠 Home</div>
     <div class="sdot" onclick="goSlide(1)">📊 KJA</div>
     <div class="sdot" onclick="goSlide(2)">🧾 KKP</div>
   </div>
+
+  <button class="slider-prev" onclick="slideBy(-1)">&#8249;</button>
+  <button class="slider-next" onclick="slideBy(1)">&#8250;</button>
 </div>
 
-<!-- ══ CERT STRIP ══════════════════════════════════════ -->
+<!-- ══ CERT STRIP ══ -->
 <div class="cert-strip">
   <div class="ticker-track">
-    <!-- Set 1 -->
     <div class="cs-item"><span class="cs-icon">🏛️</span><div class="cs-text"><strong>Kemenkeu RI</strong>Izin 357/KM.1/PPPK/2022</div></div>
     <span class="cs-sep">★</span>
     <div class="cs-item"><span class="cs-icon">📊</span><div class="cs-text"><strong>IAI — CA</strong>RNA 10235 / D-45.010</div></div>
@@ -984,7 +863,6 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
     <span class="cs-sep">★</span>
     <div class="cs-item"><span class="cs-icon">💼</span><div class="cs-text"><strong>KKP Suastawa</strong>Konsultan Pajak Terdaftar</div></div>
     <span class="cs-sep">★</span>
-    <!-- Set 2 — duplikat untuk seamless loop -->
     <div class="cs-item"><span class="cs-icon">🏛️</span><div class="cs-text"><strong>Kemenkeu RI</strong>Izin 357/KM.1/PPPK/2022</div></div>
     <span class="cs-sep">★</span>
     <div class="cs-item"><span class="cs-icon">📊</span><div class="cs-text"><strong>IAI — CA</strong>RNA 10235 / D-45.010</div></div>
@@ -994,8 +872,6 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
     <div class="cs-item"><span class="cs-icon">📋</span><div class="cs-text"><strong>DJP — Tingkat C</strong>KEP-6378/IP.C/PJ/2020</div></div>
     <span class="cs-sep">★</span>
     <div class="cs-item"><span class="cs-icon">🌏</span><div class="cs-text"><strong>ACPACC</strong>ASEAN Chartered Accountant</div></div>
-    <span class="cs-sep">★</span>
-    <div class="cs-item"><span class="cs-icon">📜</span><div class="cs-text"><strong>PERADI</strong>Pendidikan Khusus Profesi Advokat</div></div>
     <span class="cs-sep">★</span>
     <div class="cs-item"><span class="cs-icon">🏢</span><div class="cs-text"><strong>KJA Suastawa</strong>Berdiri 30 Oktober 2015</div></div>
     <span class="cs-sep">★</span>
@@ -1004,11 +880,9 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
   </div>
 </div>
 
-<!-- ══ LIVE REVIEW FEED ═══════════════════════════════ -->
+<!-- ══ LIVE REVIEW FEED ══ -->
 <div class="live-feed-wrap">
   <div class="lfr-inner">
-
-    <!-- Kiri: Heading -->
     <div class="lfr-left">
       <div class="lfr-label"><span class="lfr-dot"></span>// ULASAN KLIEN TERBARU</div>
       <h2 class="lfr-heading">Dipercaya Klien<br>di Seluruh <em>Bali.</em></h2>
@@ -1018,312 +892,85 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
         <div class="lfr-stat"><span class="lfr-stat-n">10+</span><span class="lfr-stat-l">Tahun Pengalaman</span></div>
       </div>
     </div>
-
-    <!-- Kanan: Live notification cards -->
     <div class="lfr-right">
       <div class="lfr-slot" id="lfrSlot0"></div>
       <div class="lfr-slot" id="lfrSlot1"></div>
       <div class="lfr-slot" id="lfrSlot2"></div>
     </div>
-
   </div>
 </div>
 
-<script>
-(function() {
-    var lfrData = [
-    // Bali
-    { init:'IW', name:'I Wayan Sudarsana', loc:'Kuta, Badung', color:'#1B5E20', tag:'PPh Badan', tagType:'g', quote:'"Laporan keuangan kami jauh lebih rapi, audit berjalan lancar tanpa kendala."' },
-    { init:'NM', name:'Ni Made Rastini', loc:'Denpasar', color:'#0D47A1', tag:'Tax Planning', tagType:'b', quote:'"Beban pajak perusahaan kami turun signifikan secara legal. Sangat profesional!"' },
-    { init:'KS', name:'Ketut Suardika', loc:'Seminyak, Bali', color:'#4A148C', tag:'Pembukuan', tagType:'g', quote:'"Pembukuan bisnis vila kami tertata baik. Laporan bulanan selalu tepat waktu."' },
-    { init:'PH', name:'PT Harmoni Bali', loc:'Gianyar, Bali', color:'#BF360C', tag:'SPT Tahunan', tagType:'b', quote:'"SPT Tahunan beres tanpa ribet. Pak Suastawa memahami betul regulasi DJP terbaru."' },
-    { init:'GW', name:'Gusti Widiarta', loc:'Tabanan, Bali', color:'#2E7D32', tag:'Lap. Keuangan', tagType:'g', quote:'"Laporan keuangan SAK ETAP kami selesai cepat, akurat, siap untuk pengajuan kredit."' },
-    { init:'AB', name:'Anak Agung Budi', loc:'Nusa Dua', color:'#0D47A1', tag:'Sengketa Pajak', tagType:'b', quote:'"Sengketa pajak kami selesai dengan hasil terbaik. Pendampingan di KPP sangat tenang."' },
-    { init:'MH', name:'Made Hendra', loc:'Ubud, Gianyar', color:'#1B5E20', tag:'Sistem Akuntan', tagType:'g', quote:'"Sistem pencatatan keuangan bisnis cafe kami jauh lebih terstruktur dan efisien."' },
-    { init:'DK', name:'Dewi Komala', loc:'Jimbaran, Badung', color:'#1565C0', tag:'PPN', tagType:'b', quote:'"Rekonsiliasi faktur PPN kami beres tanpa selisih. Terima kasih Pak Suastawa!"' },
-    { init:'IS', name:'I Gst. Suardana', loc:'Mengwi, Badung', color:'#2E7D32', tag:'GCG Audit', tagType:'g', quote:'"Tata kelola perusahaan kami kini sesuai standar GCG. Proses audit berjalan mulus."' },
-    { init:'PR', name:'Putu Rahayu', loc:'Kerobokan, Bali', color:'#6A1B9A', tag:'PPh OP', tagType:'b', quote:'"SPT pribadi saya sebagai wiraswasta ditangani cepat dan benar. Tidak khawatir lagi."' },
-    { init:'NK', name:'Ni Ketut Suryani', loc:'Sanur, Denpasar', color:'#1B5E20', tag:'Pembukuan', tagType:'g', quote:'"Laporan bulanan selalu tepat waktu dan akurat. Sangat membantu bisnis saya."' },
-    { init:'IG', name:'I Gede Mahendra', loc:'Badung, Bali', color:'#0D47A1', tag:'Tax Planning', tagType:'b', quote:'"Perencanaan pajak yang sangat efisien dan legal. Kami hemat banyak dari sebelumnya."' },
-    { init:'NW', name:'Ni Wayan Sari', loc:'Singaraja, Buleleng', color:'#2E7D32', tag:'SPT Tahunan', tagType:'g', quote:'"Proses pengisian SPT sangat mudah dengan bantuan Pak Suastawa. Highly recommended!"' },
-    { init:'IB', name:'I Bagus Kertanegara', loc:'Klungkung, Bali', color:'#4A148C', tag:'Lap. Keuangan', tagType:'g', quote:'"Laporan keuangan perusahaan kami kini jauh lebih transparan dan mudah dibaca."' },
-    { init:'CN', name:'CV Nusantara Bali', loc:'Denpasar Selatan', color:'#BF360C', tag:'PPh Badan', tagType:'b', quote:'"Konsultasi pajak badan sangat membantu. Kami tidak perlu khawatir soal compliance lagi."' },
-    { init:'PS', name:'Putu Santosa', loc:'Tabanan, Bali', color:'#1565C0', tag:'PPN', tagType:'b', quote:'"Rekonsiliasi PPN bulanan kami selalu beres tepat waktu. Sangat profesional!"' },
-    { init:'ND', name:'Ni Putu Darmiati', loc:'Bangli, Bali', color:'#1B5E20', tag:'Pembukuan', tagType:'g', quote:'"Pembukuan usaha kecil saya kini rapi dan teratur. Pak Suastawa sangat sabar menjelaskan."' },
-    { init:'WS', name:'Wayan Sudiarta', loc:'Karangasem, Bali', color:'#0D47A1', tag:'Sistem Akuntan', tagType:'b', quote:'"Sistem akuntansi baru yang disetup Pak Suastawa sangat memudahkan operasional kami."' },
-    { init:'MR', name:'Made Riantika', loc:'Mengwi, Badung', color:'#2E7D32', tag:'Konsultasi', tagType:'g', quote:'"Konsultasi manajemen keuangan sangat bermanfaat untuk pengembangan bisnis kami."' },
-    { init:'IK', name:'I Ketut Darma', loc:'Jembrana, Bali', color:'#6A1B9A', tag:'SPT Tahunan', tagType:'b', quote:'"SPT tahunan saya selalu beres tanpa masalah. Terima kasih banyak Pak Suastawa!"' },
-    // Luar Bali - Indonesia
-    { init:'AS', name:'Andi Setiawan', loc:'Surabaya, Jawa Timur', color:'#E65100', tag:'PPh Badan', tagType:'b', quote:'"Kami punya cabang di Bali dan urusan pajak ditangani Pak Suastawa. Sangat profesional!"' },
-    { init:'RH', name:'Rini Hartono', loc:'Jakarta Selatan', color:'#1565C0', tag:'Tax Planning', tagType:'b', quote:'"Bisnis properti kami di Bali tax-compliant berkat Suastawa Consulting. Sangat recommend!"' },
-    { init:'BW', name:'Budi Wijaya', loc:'Bandung, Jawa Barat', color:'#2E7D32', tag:'Lap. Keuangan', tagType:'g', quote:'"Laporan keuangan bisnis restoran kami di Bali selalu akurat dan tepat waktu."' },
-    { init:'SR', name:'Siti Rahayu', loc:'Semarang, Jawa Tengah', color:'#4A148C', tag:'PPN', tagType:'b', quote:'"Urusan PPN bisnis kami di Bali ditangani dengan sangat baik. Tidak ada selisih sama sekali."' },
-    { init:'DM', name:'Dian Maulana', loc:'Medan, Sumatera Utara', color:'#BF360C', tag:'SPT Tahunan', tagType:'b', quote:'"Walaupun saya di Medan, konsultasi online dengan Pak Suastawa sangat efektif!"' },
-    { init:'YP', name:'Yusuf Pramono', loc:'Yogyakarta', color:'#1B5E20', tag:'Sistem Akuntan', tagType:'g', quote:'"Sistem akuntansi yang dibangun Pak Suastawa sangat sesuai kebutuhan UKM kami."' },
-    { init:'LW', name:'Linda Wahyuni', loc:'Makassar, Sulawesi', color:'#0D47A1', tag:'Pembukuan', tagType:'g', quote:'"Pembukuan bisnis resort kami di Bali tertangani dengan sangat baik dan profesional."' },
-    { init:'HK', name:'Hendra Kusuma', loc:'Palembang, Sumatra', color:'#2E7D32', tag:'PPh OP', tagType:'b', quote:'"Pelaporan SPT saya sebagai investor properti di Bali sangat terbantu oleh Pak Suastawa."' },
-    { init:'FA', name:'Farida Aisyah', loc:'Malang, Jawa Timur', color:'#6A1B9A', tag:'Konsultasi', tagType:'g', quote:'"Konsultasi keuangan bisnis kuliner kami di Bali sangat informatif dan bermanfaat."' },
-    { init:'TN', name:'Teguh Nugroho', loc:'Bekasi, Jawa Barat', color:'#E65100', tag:'Tax Planning', tagType:'b', quote:'"Tax planning untuk investasi kami di Bali sangat efisien dan sesuai regulasi."' },
-    { init:'MW', name:'Maya Wulandari', loc:'Surakarta, Jawa Tengah', color:'#1565C0', tag:'Lap. Keuangan', tagType:'g', quote:'"Laporan keuangan villa kami di Ubud selalu rapi dan mudah dipahami investor."' },
-    { init:'AR', name:'Ahmad Rizki', loc:'Balikpapan, Kalimantan', color:'#2E7D32', tag:'SPT Tahunan', tagType:'b', quote:'"Sangat puas dengan layanan konsultasi pajak Pak Suastawa. Tepat waktu dan akurat!"' },
-    { init:'DS', name:'Dinda Safitri', loc:'Pontianak, Kalimantan', color:'#4A148C', tag:'Pembukuan', tagType:'g', quote:'"Bisnis spa kami di Bali kini punya pembukuan yang rapi berkat Suastawa Consulting."' },
-    { init:'RP', name:'Rizal Pratama', loc:'Pekanbaru, Riau', color:'#BF360C', tag:'PPN', tagType:'b', quote:'"Urusan PPN bisnis F&B kami di Seminyak ditangani dengan sangat profesional!"' },
-    { init:'EL', name:'Eka Lestari', loc:'Manado, Sulawesi Utara', color:'#1B5E20', tag:'PPh Badan', tagType:'g', quote:'"Pajak badan perusahaan kami di Bali selalu tepat dan tidak pernah ada sanksi."' },
-    { init:'FH', name:'Faisal Hakim', loc:'Samarinda, Kalimantan', color:'#0D47A1', tag:'Konsultasi', tagType:'b', quote:'"Konsultasi GCG untuk perusahaan kami sangat membantu dalam proses audit eksternal."' },
-    { init:'VR', name:'Vera Ratnasari', loc:'Tangerang, Banten', color:'#2E7D32', tag:'Sistem Akuntan', tagType:'g', quote:'"Sistem akuntansi cloud yang diimplementasi Pak Suastawa sangat memudahkan tim kami."' },
-    { init:'MF', name:'Muhammad Fauzi', loc:'Depok, Jawa Barat', color:'#6A1B9A', tag:'Tax Planning', tagType:'b', quote:'"Perencanaan pajak yang matang membuat bisnis properti kami di Bali lebih efisien."' },
-    { init:'IS', name:'Indah Sari', loc:'Bogor, Jawa Barat', color:'#E65100', tag:'Lap. Keuangan', tagType:'g', quote:'"Laporan keuangan bisnis butik kami di Kuta selalu akurat. Pak Suastawa sangat teliti!"' },
-    { init:'RB', name:'Rudi Budiman', loc:'Batam, Kepulauan Riau', color:'#1565C0', tag:'PPh OP', tagType:'b', quote:'"SPT tahunan saya sebagai pengusaha dengan aset di Bali ditangani dengan sangat baik."' },
-    // Luar Negeri - Expat & Turis Bisnis
-    { init:'JS', name:'John Smith', loc:'Melbourne, Australia', color:'#1B5E20', tag:'Expat Tax', tagType:'b', quote:'"Managing my villa business tax in Bali has never been easier. Very professional service!"' },
-    { init:'SW', name:'Sarah Williams', loc:'Sydney, Australia', color:'#0D47A1', tag:'PPN', tagType:'b', quote:'"Excellent accounting service for my Bali business. Always on time and very accurate."' },
-    { init:'DL', name:'David Lee', loc:'Singapore', color:'#2E7D32', tag:'Tax Planning', tagType:'b', quote:'"The best tax consultant for foreign investors in Bali. Highly recommended!"' },
-    { init:'MK', name:'Michael Kim', loc:'Seoul, South Korea', color:'#4A148C', tag:'Lap. Keuangan', tagType:'g', quote:'"Professional and reliable. Our restaurant in Seminyak financial report is always perfect."' },
-    { init:'AT', name:'Amanda Thompson', loc:'London, UK', color:'#BF360C', tag:'Expat Tax', tagType:'b', quote:'"As a British expat running a business in Bali, Pak Suastawa made tax compliance stress-free!"' },
-    { init:'YT', name:'Yuki Tanaka', loc:'Tokyo, Japan', color:'#1565C0', tag:'Pembukuan', tagType:'g', quote:'"Very reliable bookkeeping service. My Bali business accounts are always in perfect order."' },
-    { init:'CM', name:'Chen Ming', loc:'Shanghai, China', color:'#2E7D32', tag:'PPh Badan', tagType:'b', quote:'"Excellent corporate tax service. Our Bali investment company is fully compliant now."' },
-    { init:'KP', name:'Kevin Parker', loc:'New York, USA', color:'#6A1B9A', tag:'Konsultasi', tagType:'g', quote:'"Outstanding financial consulting for our Bali resort investment. Very knowledgeable!"' },
-    { init:'LB', name:'Laura Brown', loc:'Paris, France', color:'#E65100', tag:'Tax Planning', tagType:'b', quote:'"Superb tax planning service! Our boutique hotel in Ubud runs smoothly tax-wise."' },
-    { init:'RM', name:'Roberto Martinez', loc:'Madrid, Spain', color:'#1B5E20', tag:'Lap. Keuangan', tagType:'g', quote:'"Profesional y confiable. Nuestro negocio en Bali siempre tiene reportes perfectos."' },
-    { init:'HM', name:'Hans Mueller', loc:'Berlin, Germany', color:'#0D47A1', tag:'Expat Tax', tagType:'b', quote:'"Als Expat in Bali ist Pak Suastawa unersetzlich für unsere Steuerangelegenheiten."' },
-    { init:'AV', name:'Anna Volkov', loc:'Moscow, Russia', color:'#2E7D32', tag:'PPN', tagType:'b', quote:'"Very professional VAT handling for our Bali spa business. No issues at all!"' },
-    { init:'PC', name:'Pierre Clement', loc:'Lyon, France', color:'#4A148C', tag:'Sistem Akuntan', tagType:'g', quote:'"The accounting system setup was flawless. Our Bali business runs much more efficiently now."' },
-    { init:'JO', name:'James Oliver', loc:'Toronto, Canada', color:'#BF360C', tag:'Tax Planning', tagType:'b', quote:'"Best tax advisor for foreign business owners in Bali. Saved us a lot legally!"' },
-    { init:'MN', name:'Maria Nguyen', loc:'Ho Chi Minh, Vietnam', color:'#1565C0', tag:'Pembukuan', tagType:'g', quote:'"Excellent bookkeeping service for our Bali branch. Always punctual and accurate."' },
-    { init:'TP', name:'Thomas Park', loc:'Kuala Lumpur, Malaysia', color:'#2E7D32', tag:'PPh Badan', tagType:'b', quote:'"Corporate tax compliance in Bali made easy. Very satisfied with the professional service."' },
-    { init:'EA', name:'Emma Anderson', loc:'Auckland, New Zealand', color:'#6A1B9A', tag:'Expat Tax', tagType:'g', quote:'"Running a villa rental in Bali is so much easier with Pak Suastawa handling the taxes!"' },
-    { init:'WC', name:'William Chen', loc:'Taipei, Taiwan', color:'#E65100', tag:'Lap. Keuangan', tagType:'b', quote:'"Financial reports for our Bali investment are always clean and investor-ready."' },
-    { init:'SL', name:'Sophie Laurent', loc:'Brussels, Belgium', color:'#1B5E20', tag:'Konsultasi', tagType:'g', quote:'"Amazing financial consulting service. Our Bali eco-resort finances are in great shape."' },
-    { init:'RG', name:'Raj Gupta', loc:'Mumbai, India', color:'#0D47A1', tag:'Tax Planning', tagType:'b', quote:'"Professional tax planning for our Bali hospitality business. Very impressive service!"' },
-    // More Bali locals
-    { init:'IS', name:'I Nyoman Suardika', loc:'Abiansemal, Badung', color:'#1B5E20', tag:'Pembukuan', tagType:'g', quote:'"Sudah 5 tahun menggunakan jasa Pak Suastawa. Tidak pernah ada masalah pajak sama sekali."' },
-    { init:'NK', name:'Ni Komang Dewi', loc:'Denpasar Utara', color:'#0D47A1', tag:'SPT Tahunan', tagType:'b', quote:'"SPT tahunan selalu selesai lebih awal dari deadline. Sangat profesional dan teliti!"' },
-    { init:'IB', name:'I Wayan Budiasa', loc:'Sukawati, Gianyar', color:'#2E7D32', tag:'Lap. Keuangan', tagType:'g', quote:'"Laporan keuangan toko seni kami kini sangat rapi. Pembeli asing percaya dengan bisnis kami."' },
-    { init:'PT', name:'PT Bali Indah Resort', loc:'Legian, Badung', color:'#4A148C', tag:'PPh Badan', tagType:'b', quote:'"Pajak badan resort kami ditangani dengan sangat baik. Tidak ada sanksi selama 3 tahun!"' },
-    { init:'MD', name:'Made Darmika', loc:'Negara, Jembrana', color:'#BF360C', tag:'Konsultasi', tagType:'g', quote:'"Konsultasi keuangan sangat bermanfaat untuk pengembangan bisnis peternakan kami."' },
-    { init:'GN', name:'Gusti Ngurah Oka', loc:'Klungkung, Bali', color:'#1565C0', tag:'PPN', tagType:'b', quote:'"PPN usaha kerajinan kami selalu tepat. Pak Suastawa sangat detail dan teliti!"' },
-    { init:'NL', name:'Ni Luh Putu Sari', loc:'Buleleng, Bali', color:'#2E7D32', tag:'Tax Planning', tagType:'g', quote:'"Perencanaan pajak yang baik membuat bisnis kami lebih efisien dan berkembang pesat."' },
-    { init:'WP', name:'Wayan Pastika', loc:'Karangasem, Bali', color:'#6A1B9A', tag:'Sistem Akuntan', tagType:'b', quote:'"Sistem akuntansi baru sangat memudahkan pencatatan keuangan bisnis pertanian kami."' },
-    { init:'KM', name:'Ketut Mudana', loc:'Bangli, Bali', color:'#E65100', tag:'SPT Tahunan', tagType:'g', quote:'"SPT tahunan saya selalu beres tepat waktu. Pak Suastawa sangat sabar dan profesional."' },
-    { init:'PW', name:'Putu Windari', loc:'Tabanan, Bali', color:'#1B5E20', tag:'Pembukuan', tagType:'b', quote:'"Pembukuan salon kecantikan kami kini rapi. Laporan laba rugi mudah dipahami."' },
-    // More Indonesia
-    { init:'ZA', name:'Zulfikar Ahmad', loc:'Banda Aceh, Aceh', color:'#1565C0', tag:'PPh Badan', tagType:'b', quote:'"Bisnis perkebunan kami di Bali tax-compliant berkat bantuan Pak Suastawa!"' },
-    { init:'NR', name:'Nurul Rizky', loc:'Banjarmasin, Kalimantan', color:'#2E7D32', tag:'Konsultasi', tagType:'g', quote:'"Konsultasi keuangan untuk ekspansi bisnis kami ke Bali sangat informatif dan membantu."' },
-    { init:'AH', name:'Agus Hermawan', loc:'Cirebon, Jawa Barat', color:'#4A148C', tag:'Tax Planning', tagType:'b', quote:'"Perencanaan pajak yang matang untuk investasi properti kami di Bali. Sangat puas!"' },
-    { init:'RN', name:'Rina Novitasari', loc:'Kediri, Jawa Timur', color:'#BF360C', tag:'Lap. Keuangan', tagType:'g', quote:'"Laporan keuangan bisnis fashion kami di Bali selalu akurat dan investor-ready."' },
-    { init:'HS', name:'Hasan Santoso', loc:'Purwokerto, Jawa Tengah', color:'#1B5E20', tag:'SPT Tahunan', tagType:'b', quote:'"SPT tahunan dan bulanan bisnis kami di Bali ditangani dengan sangat profesional!"' },
-    { init:'DW', name:'Dewi Wulandari', loc:'Padang, Sumatera Barat', color:'#0D47A1', tag:'Pembukuan', tagType:'g', quote:'"Pembukuan warung makan kami di Ubud kini sangat teratur. Sangat membantu!"' },
-    { init:'BI', name:'Bambang Irianto', loc:'Magelang, Jawa Tengah', color:'#2E7D32', tag:'PPN', tagType:'b', quote:'"Rekonsiliasi PPN bisnis manufaktur kami di Bali selalu akurat tanpa selisih."' },
-    { init:'SF', name:'Sari Fitriani', loc:'Tasikmalaya, Jawa Barat', color:'#6A1B9A', tag:'Sistem Akuntan', tagType:'g', quote:'"Sistem akuntansi digital yang disetup Pak Suastawa sangat memudahkan laporan kami."' },
-    { init:'WN', name:'Wahyu Nugroho', loc:'Salatiga, Jawa Tengah', color:'#E65100', tag:'PPh OP', tagType:'b', quote:'"SPT pribadi saya sebagai investor di Bali selalu tepat dan tidak pernah kena sanksi."' },
-    { init:'LH', name:'Lina Hartati', loc:'Cilegon, Banten', color:'#1B5E20', tag:'Konsultasi', tagType:'g', quote:'"Konsultasi GCG untuk perusahaan kami di Bali sangat bermanfaat untuk audit internal."' },
-    // More International
-    { init:'BJ', name:'Benjamin Jones', loc:'Brisbane, Australia', color:'#1565C0', tag:'Expat Tax', tagType:'b', quote:'"Fantastic tax service for Australians with business interests in Bali. 5 stars!"' },
-    { init:'CL', name:'Catherine Liu', loc:'Hong Kong', color:'#2E7D32', tag:'Tax Planning', tagType:'g', quote:'"Excellent cross-border tax planning for our Bali hotel investment. Very professional!"' },
-    { init:'GR', name:'Giorgio Rossi', loc:'Milan, Italy', color:'#4A148C', tag:'Lap. Keuangan', tagType:'b', quote:'"Servizio eccellente! I nostri conti aziendali a Bali sono sempre in perfetto ordine."' },
-    { init:'NK', name:'Natasha Kozlov', loc:'St. Petersburg, Russia', color:'#BF360C', tag:'Pembukuan', tagType:'g', quote:'"Professional bookkeeping for our Bali spa. Always accurate and well-organized!"' },
-    { init:'OA', name:'Oliver Adams', loc:'Chicago, USA', color:'#1B5E20', tag:'Expat Tax', tagType:'b', quote:'"As an American business owner in Bali, Pak Suastawa is my go-to tax advisor. Excellent!"' },
-    { init:'YS', name:'Yoon-Ji Shin', loc:'Busan, South Korea', color:'#0D47A1', tag:'PPh Badan', tagType:'g', quote:'"Corporate tax in Bali is complex, but Pak Suastawa made it simple and compliant!"' },
-    { init:'AM', name:'Ahmed Mohammed', loc:'Dubai, UAE', color:'#2E7D32', tag:'Konsultasi', tagType:'b', quote:'"Excellent financial consulting for our Bali resort development project. Very trustworthy!"' },
-    { init:'FD', name:'Francois Dubois', loc:'Bordeaux, France', color:'#6A1B9A', tag:'Tax Planning', tagType:'g', quote:'"Planning fiscal irréprochable pour notre villa à Bali. Service très professionnel!"' },
-    { init:'LM', name:'Lars Müller', loc:'Hamburg, Germany', color:'#E65100', tag:'Sistem Akuntan', tagType:'b', quote:'"Perfekte Buchhaltungsimplementierung für unser Bali-Geschäft. Sehr empfehlenswert!"' },
-    { init:'PI', name:'Priya Iyer', loc:'Bangalore, India', color:'#1B5E20', tag:'Lap. Keuangan', tagType:'g', quote:'"Financial reports for our Bali tech hub are always impeccable. Great service!"' },
-    { init:'KW', name:'Katie Wilson', loc:'Edinburgh, Scotland', color:'#1565C0', tag:'Expat Tax', tagType:'b', quote:'"Running a yoga retreat in Ubud is stress-free with Pak Suastawa handling all the taxes!"' },
-    { init:'TY', name:'Takeshi Yamamoto', loc:'Osaka, Japan', color:'#2E7D32', tag:'PPN', tagType:'g', quote:'"VAT compliance for our Bali restaurant chain is handled perfectly. Very reliable!"' },
-    { init:'EB', name:'Elena Bianchi', loc:'Rome, Italy', color:'#4A148C', tag:'Pembukuan', tagType:'b', quote:'"Contabilità impeccabile per il nostro boutique hotel a Seminyak. Grazie mille!"' },
-    { init:'NP', name:'Nicolas Petit', loc:'Geneva, Switzerland', color:'#BF360C', tag:'Tax Planning', tagType:'g', quote:'"Optimal tax structure for our Bali investment portfolio. Very professional advice!"' },
-    // More Bali & Indonesia mix
-    { init:'KD', name:'Kadek Dwi Purnama', loc:'Canggu, Badung', color:'#1B5E20', tag:'Pembukuan', tagType:'g', quote:'"Usaha surf school kami kini punya pembukuan yang rapi. Terima kasih Pak Suastawa!"' },
-    { init:'NP', name:'Ni Putu Arianti', loc:'Buleleng, Bali', color:'#0D47A1', tag:'SPT Tahunan', tagType:'b', quote:'"SPT tahunan bisnis oleh-oleh kami selalu beres sebelum deadline. Sangat puas!"' },
-    { init:'IW', name:'I Wayan Karma', loc:'Petang, Badung', color:'#2E7D32', tag:'Lap. Keuangan', tagType:'g', quote:'"Laporan keuangan usaha agrowisata kami sangat membantu dalam pengajuan bantuan modal."' },
-    { init:'GR', name:'Gde Ramantha', loc:'Payangan, Gianyar', color:'#4A148C', tag:'Tax Planning', tagType:'b', quote:'"Perencanaan pajak untuk usaha glamping kami sangat efisien dan legal. Recommended!"' },
-    { init:'SK', name:'Sri Kumalaningsih', loc:'Amlapura, Karangasem', color:'#BF360C', tag:'Konsultasi', tagType:'g', quote:'"Konsultasi keuangan sangat membantu kami dalam mengembangkan usaha tenun tradisional."' },
-    { init:'MD', name:'Muhammad Daud', loc:'Lombok, NTB', color:'#1565C0', tag:'PPh Badan', tagType:'b', quote:'"Bisnis kami yang punya kantor di Bali tax-compliant berkat Suastawa Consulting!"' },
-    { init:'TR', name:'Tanwir Rachman', loc:'Mataram, NTB', color:'#2E7D32', tag:'Pembukuan', tagType:'g', quote:'"Pembukuan bisnis pariwisata kami di Bali kini sangat teratur. Sangat memuaskan!"' },
-    { init:'YS', name:'Yanti Supriati', loc:'Kupang, NTT', color:'#6A1B9A', tag:'SPT Tahunan', tagType:'b', quote:'"SPT tahunan bisnis kami di Bali selalu tepat waktu. Tidak pernah kena denda!"' },
-    { init:'JS', name:'Johanes Soebianto', loc:'Surabaya, Jawa Timur', color:'#E65100', tag:'Sistem Akuntan', tagType:'g', quote:'"Implementasi sistem akuntansi Pak Suastawa sangat meningkatkan efisiensi tim kami."' },
-    { init:'FI', name:'Fitri Indriati', loc:'Yogyakarta', color:'#1B5E20', tag:'Lap. Keuangan', tagType:'b', quote:'"Laporan keuangan bisnis batik kami di Bali selalu akurat dan mudah dipahami investor."' },
-    // International continued
-    { init:'RB', name:'Robert Brown', loc:'Vancouver, Canada', color:'#1565C0', tag:'Expat Tax', tagType:'b', quote:'"Best tax consultant in Bali for Canadian expats. Very knowledgeable and reliable!"' },
-    { init:'AL', name:'Amelie Lefevre', loc:'Toulouse, France', color:'#2E7D32', tag:'Konsultasi', tagType:'g', quote:'"Conseil financier exceptionnel pour notre projet immobilier à Bali. Très satisfaite!"' },
-    { init:'MO', name:'Marco Oliveira', loc:'Lisbon, Portugal', color:'#4A148C', tag:'Tax Planning', tagType:'b', quote:'"Excelente planeamento fiscal para o nosso negócio em Bali. Muito profissional!"' },
-    { init:'SH', name:'Stefan Hansen', loc:'Copenhagen, Denmark', color:'#BF360C', tag:'Lap. Keuangan', tagType:'g', quote:'"Perfect financial reporting for our Bali wellness center. Always accurate and on time!"' },
-    { init:'VL', name:'Viktor Larsson', loc:'Stockholm, Sweden', color:'#1B5E20', tag:'Pembukuan', tagType:'b', quote:'"Excellent bookkeeping service. Our Bali business accounts are always perfectly maintained!"' },
-    { init:'AK', name:'Alexander Kowalski', loc:'Warsaw, Poland', color:'#0D47A1', tag:'Expat Tax', tagType:'g', quote:'"Podatki w Bali to nie problem z Pak Suastawa. Profesjonalna i rzetelna obsługa!"' },
-    { init:'MB', name:'Maria Barros', loc:'Buenos Aires, Argentina', color:'#2E7D32', tag:'PPh Badan', tagType:'b', quote:'"Servicio profesional excelente para nuestro negocio en Bali. Muy recomendado!"' },
-    { init:'JK', name:'James Kennedy', loc:'Dublin, Ireland', color:'#6A1B9A', tag:'Konsultasi', tagType:'g', quote:'"Outstanding financial consulting for our Bali surf resort. Brilliant service!"' },
-    { init:'PN', name:'Patel Nikhil', loc:'Ahmedabad, India', color:'#E65100', tag:'Sistem Akuntan', tagType:'b', quote:'"Cloud accounting setup by Pak Suastawa transformed our Bali business operations!"' },
-    { init:'CK', name:'Chloe Kim', loc:'Los Angeles, USA', color:'#1B5E20', tag:'Tax Planning', tagType:'g', quote:'"Incredible tax planning service for our Bali content creator business. So helpful!"' },
-    // Final batch
-    { init:'WA', name:'Wulan Agustina', loc:'Tangerang Selatan', color:'#1565C0', tag:'PPN', tagType:'b', quote:'"PPN bisnis retail kami di Bali selalu tepat. Tidak pernah ada masalah dengan DJP!"' },
-    { init:'HR', name:'Heri Ramadhan', loc:'Bekasi, Jawa Barat', color:'#2E7D32', tag:'Pembukuan', tagType:'g', quote:'"Pembukuan bisnis laundry kami di Kuta sangat rapi. Terima kasih Pak Suastawa!"' },
-    { init:'DS', name:'Denny Saputra', loc:'Lampung', color:'#4A148C', tag:'SPT Tahunan', tagType:'b', quote:'"SPT tahunan bisnis perkebunan kami selalu tepat. Konsultasi online sangat membantu!"' },
-    { init:'AI', name:'Ayu Indrawati', loc:'Mataram, Lombok', color:'#BF360C', tag:'Konsultasi', tagType:'g', quote:'"Konsultasi manajemen keuangan sangat bermanfaat untuk ekspansi bisnis kami ke Bali."' },
-    { init:'SB', name:'Surya Bakti', loc:'Ambon, Maluku', color:'#1B5E20', tag:'Tax Planning', tagType:'b', quote:'"Perencanaan pajak untuk investasi kami di Bali sangat efisien. Sangat recommended!"' },
-    { init:'FP', name:'Felix Prasetyo', loc:'Manokwari, Papua Barat', color:'#0D47A1', tag:'Lap. Keuangan', tagType:'g', quote:'"Laporan keuangan bisnis kami di Bali selalu akurat meski kami operasional dari Papua."' },
-    { init:'IG', name:'Irene Gunawan', loc:'Jayapura, Papua', color:'#2E7D32', tag:'Pembukuan', tagType:'b', quote:'"Pembukuan online dengan Pak Suastawa sangat efektif walau kami berjauhan."' },
-    { init:'TB', name:'Thomas Becker', loc:'Munich, Germany', color:'#6A1B9A', tag:'Expat Tax', tagType:'g', quote:'"Steuerprofis für Expats in Bali! Pak Suastawa hat unser Steuerproblem perfekt gelöst."' },
-    { init:'SN', name:'Sophia Nielsen', loc:'Oslo, Norway', color:'#E65100', tag:'Konsultasi', tagType:'b', quote:'"Brilliant financial consulting for our eco-tourism project in Bali. Very trustworthy!"' },
-    { init:'JP', name:'Jean-Paul Rousseau', loc:'Montreal, Canada', color:'#1B5E20', tag:'Tax Planning', tagType:'g', quote:'"Excellent service de conseil fiscal pour notre villa à Canggu. Très professionnel!"' },
-    { init:'LT', name:'Lena Tran', loc:'Melbourne, Australia', color:'#1565C0', tag:'Pembukuan', tagType:'b', quote:'"My Bali flower farm bookkeeping is always perfect thanks to Pak Suastawa. Love it!"' },
-    { init:'KN', name:'Kenji Nakamura', loc:'Nagoya, Japan', color:'#2E7D32', tag:'PPh Badan', tagType:'g', quote:'"Corporate tax filing for our Bali hospitality chain is always perfect. Very reliable!"' },
-    { init:'EP', name:'Eduardo Perez', loc:'Mexico City, Mexico', color:'#4A148C', tag:'Expat Tax', tagType:'b', quote:'"Excelente asesor fiscal para extranjeros en Bali. Pak Suastawa es muy confiable!"' },
-    { init:'AB', name:'Aisha Bakr', loc:'Cairo, Egypt', color:'#BF360C', tag:'Konsultasi', tagType:'g', quote:'"Outstanding financial advice for our Bali halal tourism business. Very professional!"' },
-    { init:'IW', name:'I Wayan Murdana', loc:'Klungkung, Bali', color:'#1B5E20', tag:'Sistem Akuntan', tagType:'g', quote:'"Sistem akuntansi baru sangat memudahkan pengelolaan keuangan koperasi kami di Bali."' },
-    { init:'NK', name:'Ni Kadek Ayu', loc:'Buleleng, Bali', color:'#0D47A1', tag:'SPT Tahunan', tagType:'b', quote:'"SPT tahunan bisnis kami selalu beres tepat waktu. Pak Suastawa sangat profesional!"' },
-    { init:'IB', name:'Ida Bagus Putra', loc:'Denpasar Barat', color:'#2E7D32', tag:'Lap. Keuangan', tagType:'g', quote:'"Laporan keuangan perusahaan kami selalu akurat dan tepat waktu. Sangat memuaskan!"' },
-    { init:'GS', name:'Gusti Surya', loc:'Tabanan, Bali', color:'#6A1B9A', tag:'Tax Planning', tagType:'b', quote:'"Perencanaan pajak yang sangat baik. Bisnis pertanian kami kini lebih efisien secara fiskal."' },
-    { init:'MK', name:'Made Kusuma', loc:'Gianyar, Bali', color:'#E65100', tag:'Pembukuan', tagType:'g', quote:'"Pembukuan usaha seni kami kini sangat rapi. Laporan selalu siap saat dibutuhkan investor."' },
-  ];
-
-  function buildCard(d) {
-    return '<div class="lfr-card pop-in">' +
-      '<div class="lfr-card-top">' +
-        '<span class="lfr-av" style="background:' + d.color + '">' + d.init + '</span>' +
-        '<div><div class="lfr-cname">' + d.name + '</div><div class="lfr-cloc">&#128205; ' + d.loc + '</div></div>' +
-        '<span class="lfr-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' +
-      '</div>' +
-      '<div class="lfr-tag lfr-tag-' + d.tagType + '">' + d.tag + '</div>' +
-      '<div class="lfr-quote">' + d.quote + '</div>' +
-      '<div class="lfr-time">Baru saja &middot; Terverifikasi &#10003;</div>' +
-    '</div>';
-  }
-
-  function initLFR() {
-    var slots = [
-      document.getElementById('lfrSlot0'),
-      document.getElementById('lfrSlot1'),
-      document.getElementById('lfrSlot2')
-    ];
-    if (!slots[0]) return;
-
-    var next = 0;
-
-    // Render awal
-    for (var i = 0; i < slots.length; i++) {
-      slots[i].innerHTML = buildCard(lfrData[next % lfrData.length]);
-      next++;
-    }
-
-    var slotCursor = 0;
-
-    setInterval(function() {
-      var slotEl = slots[slotCursor];
-      var card = slotEl.querySelector('.lfr-card');
-      if (card) {
-        card.classList.remove('pop-in');
-        card.classList.add('pop-out');
-        var capturedSlot = slotEl;
-        var capturedNext = next;
-        setTimeout(function() {
-          capturedSlot.innerHTML = buildCard(lfrData[capturedNext % lfrData.length]);
-        }, 320);
-        next++;
-      }
-      slotCursor = (slotCursor + 1) % slots.length;
-    }, 2800);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLFR);
-  } else {
-    initLFR();
-  }
-})();
-</script>
-
 </section><!-- /#home -->
 
-<!-- ══ LAYANAN ══════════════════════════════════════════ -->
+<!-- ══ LAYANAN ══ -->
 <section id="layanan">
   <div class="container">
     <div class="sec-head">
       <p class="sec-label g">Layanan Kami</p>
       <h2 class="sec-h2">Solusi Akuntansi &amp; Perpajakan<br>Terpadu di Bali</h2>
-      <p class="sec-desc">Kami menyediakan layanan KJA (Kantor Jasa Akuntan) dan KKP (Kantor Konsultan Pajak) yang terintegrasi — semua kebutuhan keuangan dan pajak bisnis Anda di satu tempat.</p>
+      <p class="sec-desc">Kami menyediakan layanan KJA dan KKP yang terintegrasi — semua kebutuhan keuangan dan pajak bisnis Anda di satu tempat.</p>
     </div>
-
-    <!-- Filter Tabs -->
     <div class="filter-tabs">
-      <button class="ftab active-all" onclick="filterLayanan('all', this)">
-        <span class="ftab-dot ftab-dot-all"></span> Semua
-      </button>
-      <button class="ftab" onclick="filterLayanan('kja', this)">
-        <span class="ftab-dot ftab-dot-kja"></span> Layanan KJA
-      </button>
-      <button class="ftab" onclick="filterLayanan('kkp', this)">
-        <span class="ftab-dot ftab-dot-kkp"></span> Layanan KKP
-      </button>
+      <button class="ftab active-all" onclick="filterLayanan('all', this)"><span class="ftab-dot ftab-dot-all"></span> Semua</button>
+      <button class="ftab" onclick="filterLayanan('kja', this)"><span class="ftab-dot ftab-dot-kja"></span> Layanan KJA</button>
+      <button class="ftab" onclick="filterLayanan('kkp', this)"><span class="ftab-dot ftab-dot-kkp"></span> Layanan KKP</button>
     </div>
-
     <div class="layanan-grid reveal" id="layananGrid">
       <div class="lc" data-group="kja" onclick="goSlide(1)">
-        <div class="lc-top">
-          <div class="lc-ic g">📊</div>
-          <span class="lc-tag g">KJA</span>
-        </div>
+        <div class="lc-top"><div class="lc-ic g">📊</div><span class="lc-tag g">KJA</span></div>
         <h3 class="lc-h3">Jasa Akuntan &amp; Pembukuan</h3>
-        <p class="lc-desc">Pencatatan transaksi sistematis, penyusunan laporan keuangan sesuai Standar Akuntansi Keuangan (SAK), dan kontrol internal yang akurat.</p>
+        <p class="lc-desc">Pencatatan transaksi sistematis, penyusunan laporan keuangan sesuai SAK, dan kontrol internal yang akurat.</p>
         <ul class="lc-list g">
           <li>Penyusunan Laporan Keuangan Utama (Neraca, Laba Rugi, &amp; Arus Kas)</li>
-          <li>Kesesuaian Standar Terbaru (SAK Umum, SAK Entitas Privat, &amp; SAK EMKM)</li>
+          <li>Kesesuaian Standar Terbaru (SAK Umum, SAK EP, &amp; SAK EMKM)</li>
           <li>Pengelolaan buku besar, rekonsiliasi bank, laporan bulanan &amp; tahunan</li>
         </ul>
       </div>
       <div class="lc" data-group="kja" onclick="goSlide(1)">
-        <div class="lc-top">
-          <div class="lc-ic g">⚙️</div>
-          <span class="lc-tag g">KJA</span>
-        </div>
+        <div class="lc-top"><div class="lc-ic g">⚙️</div><span class="lc-tag g">KJA</span></div>
         <h3 class="lc-h3">Sistem &amp; Konsultasi Akuntansi</h3>
         <p class="lc-desc">Perancangan sistem keuangan, kepatuhan administrasi pelaporan, dan konsultasi manajemen keuangan strategis.</p>
         <ul class="lc-list g">
-          <li>Penyusunan sistem akuntansi dan Standar Operasional Prosedur (SOP) keuangan</li>
-          <li>Administrasi pelaporan (Tax-Ready) untuk SPT Masa &amp; Tahunan (KJA)</li>
+          <li>Penyusunan sistem akuntansi dan SOP keuangan</li>
+          <li>Administrasi pelaporan (Tax-Ready) untuk SPT Masa &amp; Tahunan</li>
           <li>Tata Kelola Perusahaan (Good Corporate Governance / GCG)</li>
         </ul>
       </div>
       <div class="lc blue" data-group="kkp" onclick="goSlide(2)">
-        <div class="lc-top">
-          <div class="lc-ic b">💰</div>
-          <span class="lc-tag b">KKP</span>
-        </div>
+        <div class="lc-top"><div class="lc-ic b">💰</div><span class="lc-tag b">KKP</span></div>
         <h3 class="lc-h3">Pajak Penghasilan &amp; PPN</h3>
-        <p class="lc-desc">Penghitungan dan pelaporan PPh Badan, PPh OP, dan PPN secara akurat sesuai ketentuan Direktorat Jenderal Pajak (DJP).</p>
+        <p class="lc-desc">Penghitungan dan pelaporan PPh Badan, PPh OP, dan PPN secara akurat sesuai ketentuan DJP.</p>
         <ul class="lc-list b">
           <li>SPT Tahunan PPh Badan &amp; Orang Pribadi (OP)</li>
           <li>SPT Masa PPN &amp; rekonsiliasi faktur pajak bulanan</li>
-          <li>Perpajakan ekspat &amp; lintas batas (Expatriate &amp; cross-border taxation)</li>
+          <li>Perpajakan ekspat &amp; lintas batas</li>
         </ul>
       </div>
       <div class="lc blue" data-group="kkp" onclick="goSlide(2)">
-        <div class="lc-top">
-          <div class="lc-ic b">⚖️</div>
-          <span class="lc-tag b">KKP</span>
-        </div>
+        <div class="lc-top"><div class="lc-ic b">⚖️</div><span class="lc-tag b">KKP</span></div>
         <h3 class="lc-h3">Tax Planning &amp; Sengketa Pajak</h3>
-        <p class="lc-desc">Strategi perencanaan pajak yang efisien dan pendampingan profesional dalam menghadapi pemeriksaan serta sengketa pajak.</p>
+        <p class="lc-desc">Strategi perencanaan pajak yang efisien dan pendampingan profesional dalam sengketa pajak.</p>
         <ul class="lc-list b">
           <li>Perencanaan pajak (Tax Planning) yang legal, aman, &amp; efisien</li>
-          <li>Pendampingan Pemeriksaan Pajak (SP2DK), Keberatan, hingga Banding</li>
-          <li>Penetapan harga transfer (Transfer Pricing) &amp; pajak internasional</li>
+          <li>Pendampingan Pemeriksaan Pajak, Keberatan, hingga Banding</li>
+          <li>Transfer Pricing &amp; pajak internasional</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ PROFIL ══════════════════════════════════════════ -->
+<!-- ══ PROFIL ══ -->
 <section id="profil">
   <div class="container">
     <div class="sec-head">
       <p class="sec-label neutral">Profil Pimpinan</p>
       <h2 class="sec-h2">I Gusti Nyoman Suastawa,<br>S.E., S.H., Ak., CA., BKP</h2>
-      <p class="sec-desc">Akuntan Berpraktik (Chartered Accountant) dengan lebih dari satu dekade pengalaman di bidang akuntansi dan perpajakan di Bali. I Gusti Nyoman Suastawa berkomitmen kuat untuk terus menjaga dan melestarikan kebudayaan serta nilai luhur profesi yang berintegritas, transparan, dan profesional dalam mengawal setiap pertumbuhan bisnis Anda.</p>
+      <p class="sec-desc">Akuntan Berpraktik (Chartered Accountant) dengan lebih dari satu dekade pengalaman di bidang akuntansi dan perpajakan di Bali.</p>
     </div>
     <div class="profil-grid">
       <div class="profil-photo-wrap reveal">
-        <img class="profil-photo" src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780089720/WhatsApp_Image_2026-05-26_at_17.22.21_wfdjun.jpg" alt="I Gusti Nyoman Suastawa - Pimpinan Suastawa Consulting">
+        <img class="profil-photo" src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780089720/WhatsApp_Image_2026-05-26_at_17.22.21_wfdjun.jpg" alt="I Gusti Nyoman Suastawa">
         <div class="profil-badge-float">
           <div class="pbf-name">I Gusti Nyoman Suastawa</div>
           <div class="pbf-title">Pemilik &amp; Pemimpin · Berdiri 2015</div>
@@ -1338,43 +985,21 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
           <span class="pg b">BKP — IKPI</span>
           <span class="pg b">ACPACC — ASEAN</span>
         </div>
-        <p class="profil-text">
-          I Gusti Nyoman Suastawa adalah akuntan dan konsultan pajak berpengalaman yang mendirikan Suastawa Consulting pada 30 Oktober 2015 di Abiansemal, Badung, Bali. Beliau merupakan akuntan terdaftar resmi di Kementerian Keuangan RI dengan Register Negara Akuntan No. RNA 10235 / D-45.010 dan memegang gelar Chartered Accountant (CA) dari Ikatan Akuntan Indonesia (IAI).
-        </p>
-        <p class="profil-text">
-          Di bidang perpajakan, beliau telah memperoleh Sertifikat Konsultan Pajak Tingkat C dari KP3SKP dan terdaftar sebagai Bersertifikat Konsultan Pajak (BKP) di IKPI dengan izin praktik DJP No. SI-1543/PJ/2008, yang ditingkatkan melalui KEP-6378/IP.C/PJ/2020. Selain itu, beliau juga merupakan ASEAN Chartered Professional Accountant (ACPACC) yang diakui di seluruh negara ASEAN.
-        </p>
-        <p class="profil-text">
-          Suastawa Consulting hadir untuk memberikan solusi finansial yang komprehensif bagi pelaku usaha perorangan maupun badan hukum. Dengan komitmen tinggi terhadap integritas, akurasi data, dan kepatuhan hukum, kami membantu klien merapikan laporan keuangan, mengoptimalkan pelaporan pajak, serta memberikan arahan strategis guna mendukung pertumbuhan bisnis yang berkelanjutan. Berbekal pengalaman panjang di industri finansial, KJA Suastawa Consulting siap menjadi mitra terpercaya dalam menavigasi setiap kebutuhan akuntansi dan kepatuhan perpajakan perusahaan Anda.
-        </p>
+        <p class="profil-text">I Gusti Nyoman Suastawa adalah akuntan dan konsultan pajak berpengalaman yang mendirikan Suastawa Consulting pada 30 Oktober 2015 di Abiansemal, Badung, Bali. Beliau merupakan akuntan terdaftar resmi di Kementerian Keuangan RI dengan Register Negara Akuntan No. RNA 10235 / D-45.010 dan memegang gelar Chartered Accountant (CA) dari IAI.</p>
+        <p class="profil-text">Di bidang perpajakan, beliau telah memperoleh Sertifikat Konsultan Pajak Tingkat C dari KP3SKP dan terdaftar sebagai BKP di IKPI dengan izin praktik DJP No. SI-1543/PJ/2008, yang ditingkatkan melalui KEP-6378/IP.C/PJ/2020. Beliau juga merupakan ASEAN Chartered Professional Accountant (ACPACC).</p>
         <div class="profil-vm">
           <div class="vm-card reveal" onclick="toggleVM(this)" style="cursor:pointer;">
-            <div class="vm-header">
-              <h4>🎯 Visi</h4>
-              <span class="vm-arrow">▼</span>
-            </div>
-            <div class="vm-body">
-              <p>Menjadi Kantor Jasa Akuntansi dan Konsultan Pajak terkemuka di Bali yang tepercaya, profesional, serta berkontribusi nyata dalam mendorong transparansi dan kemajuan finansial dunia usaha.</p>
-            </div>
+            <div class="vm-header"><h4>🎯 Visi</h4><span class="vm-arrow">▼</span></div>
+            <div class="vm-body"><p>Menjadi Kantor Jasa Akuntansi dan Konsultan Pajak terkemuka di Bali yang tepercaya, profesional, serta berkontribusi nyata dalam mendorong transparansi dan kemajuan finansial dunia usaha.</p></div>
           </div>
           <div class="vm-card reveal" onclick="toggleVM(this)" style="cursor:pointer;">
-            <div class="vm-header">
-              <h4>💡 Misi</h4>
-              <span class="vm-arrow">▼</span>
-            </div>
+            <div class="vm-header"><h4>💡 Misi</h4><span class="vm-arrow">▼</span></div>
             <div class="vm-body">
               <ol class="vm-list">
-                <li>Menyajikan layanan jasa akuntansi pembukuan yang akurat, tepat waktu, dan sesuai dengan Standar Akuntansi Keuangan yang berlaku.</li>
-                <li>Memberikan solusi kepatuhan perpajakan yang efektif dan sesuai dengan regulasi Direktorat Jenderal Pajak RI.</li>
-                <li>Membangun kemitraan jangka panjang bersama klien berlandaskan asas integritas, profesionalisme, dan kerahasiaan data tingkat tinggi.</li>
+                <li>Menyajikan layanan jasa akuntansi pembukuan yang akurat, tepat waktu, dan sesuai SAK.</li>
+                <li>Memberikan solusi kepatuhan perpajakan yang efektif sesuai regulasi DJP RI.</li>
+                <li>Membangun kemitraan jangka panjang berlandaskan integritas dan profesionalisme.</li>
               </ol>
-              <div class="vm-divider"></div>
-              <p class="vm-sub-label">Layanan Utama</p>
-              <ul class="vm-services">
-                <li><strong>Jasa Akuntansi &amp; Pembukuan</strong> — Penyusunan laporan keuangan berkala (Neraca, Laba Rugi, Arus Kas) untuk kebutuhan internal maupun eksternal perusahaan.</li>
-                <li><strong>Konsultasi Perpajakan</strong> — Pendampingan perhitungan, penyetoran, hingga pelaporan SPT Masa dan SPT Tahunan secara patuh dan efisien.</li>
-                <li><strong>Penyusunan Sistem Akuntansi</strong> — Perancangan sistem pencatatan keuangan dan kontrol internal yang sesuai dengan skala bisnis klien.</li>
-              </ul>
               <div class="vm-tagline">"Mitra Terpercaya dalam Akuntansi dan Kepatuhan Perpajakan"</div>
             </div>
           </div>
@@ -1384,116 +1009,73 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
   </div>
 </section>
 
-<!-- ══ LEGALITAS ══════════════════════════════════════ -->
+<!-- ══ LEGALITAS ══ -->
 <section id="legalitas">
   <div class="container">
     <div class="sec-head">
       <p class="sec-label g">Legalitas &amp; Sertifikasi</p>
       <h2 class="sec-h2">Izin Resmi &amp; Sertifikasi<br>Profesional</h2>
-      <p class="sec-desc">Semua izin dan sertifikasi yang dipegang oleh Suastawa Consulting diterbitkan oleh lembaga berwenang resmi Pemerintah RI dan organisasi profesi internasional.</p>
+      <p class="sec-desc">Semua izin dan sertifikasi diterbitkan oleh lembaga berwenang resmi Pemerintah RI dan organisasi profesi internasional.</p>
     </div>
     <div class="leg-grid">
-      <!-- Cert 0: Piagam RNA -->
       <div class="cert reveal" data-cert="0" onclick="openLightbox(0)" style="cursor:zoom-in;">
-        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/Piagam_kementrian_keuangan_eyju5f.jpg" alt="Piagam Register Negara Akuntan Kemenkeu RI"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
-        <div class="cert-info">
-          <span class="cert-badge g">KJA</span>
-          <h4>Piagam RNA — Kemenkeu RI</h4>
-          <p>Register Negara Akuntan No. RNA 10235 · Diterbitkan 30 September 2015</p>
-        </div>
+        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/Piagam_kementrian_keuangan_eyju5f.jpg" alt="Piagam RNA Kemenkeu RI"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
+        <div class="cert-info"><span class="cert-badge g">KJA</span><h4>Piagam RNA — Kemenkeu RI</h4><p>Register Negara Akuntan No. RNA 10235 · 30 September 2015</p></div>
       </div>
-      <!-- Cert 1: Sertifikat CA -->
       <div class="cert reveal" data-cert="1" onclick="openLightbox(1)" style="cursor:zoom-in;">
-        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961715/sertifikat_CA_scehi5.jpg" alt="Sertifikat CA ASEAN Chartered Professional Accountant"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
-        <div class="cert-info">
-          <span class="cert-badge g">KJA</span>
-          <h4>Sertifikat CA — ASEAN CPA</h4>
-          <p>ASEAN Chartered Professional Accountant · Reg. ACPACC-ID.0001468 · 30 April 2018</p>
-        </div>
+        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961715/sertifikat_CA_scehi5.jpg" alt="Sertifikat CA"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
+        <div class="cert-info"><span class="cert-badge g">KJA</span><h4>Sertifikat CA — ASEAN CPA</h4><p>ASEAN Chartered Professional Accountant · Reg. ACPACC-ID.0001468</p></div>
       </div>
-      <!-- Cert 2: KP3SKP -->
       <div class="cert reveal" data-cert="2" onclick="openLightbox(2)" style="cursor:zoom-in;">
-        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/sertifikat_KP3SKP_vr2mjs.jpg" alt="Sertifikat C KP3SKP Konsultan Pajak"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
-        <div class="cert-info">
-          <span class="cert-badge b">KKP</span>
-          <h4>Sertifikat C — KP3SKP</h4>
-          <p>Sertifikasi Konsultan Pajak Tingkat C · No. C.19.VI/KP3SKP/L-0057 · 2019</p>
-        </div>
+        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/sertifikat_KP3SKP_vr2mjs.jpg" alt="Sertifikat KP3SKP"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
+        <div class="cert-info"><span class="cert-badge b">KKP</span><h4>Sertifikat C — KP3SKP</h4><p>Sertifikasi Konsultan Pajak Tingkat C · No. C.19.VI/KP3SKP/L-0057</p></div>
       </div>
-      <!-- Cert 3: SK DJP Izin Praktik -->
       <div class="cert reveal" data-cert="3" onclick="openLightbox(3)" style="cursor:zoom-in;">
-        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_praktik_ogmzhy.jpg" alt="SK Dirjen Pajak Izin Praktik Konsultan Pajak"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
-        <div class="cert-info">
-          <span class="cert-badge b">KKP</span>
-          <h4>SK DJP — Izin Praktik Tingkat C</h4>
-          <p>KEP-6378/IP.C/PJ/2020 · Kementerian Keuangan RI Direktorat Jenderal Pajak</p>
-        </div>
+        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_praktik_ogmzhy.jpg" alt="SK DJP"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
+        <div class="cert-info"><span class="cert-badge b">KKP</span><h4>SK DJP — Izin Praktik Tingkat C</h4><p>KEP-6378/IP.C/PJ/2020 · Kementerian Keuangan RI Direktorat Jenderal Pajak</p></div>
       </div>
-      <!-- Cert 4: PERADI -->
       <div class="cert reveal" data-cert="4" onclick="openLightbox(4)" style="cursor:zoom-in;">
-        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961715/sertifikat_peradi_eukcjy.jpg" alt="Sertifikat PERADI Perhimpunan Advokat Indonesia"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
-        <div class="cert-info">
-          <span class="cert-badge b">KKP</span>
-          <h4>PERADI — PKPA</h4>
-          <p>Pendidikan Khusus Profesi Advokat · No. 12-04395/PERADI-KP2A1/XII/13 · 2013</p>
-        </div>
+        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961715/sertifikat_peradi_eukcjy.jpg" alt="Sertifikat PERADI"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
+        <div class="cert-info"><span class="cert-badge b">KKP</span><h4>PERADI — PKPA</h4><p>Pendidikan Khusus Profesi Advokat · No. 12-04395/PERADI-KP2A1/XII/13</p></div>
       </div>
-      <!-- Cert 5: Izin KJA — 2 halaman slide dalam 1 kolom -->
       <div class="cert cert-slide reveal" data-cert="5" style="cursor:zoom-in;">
         <div class="cert-slideshow" id="kjaSS">
-          <div class="cert-slide-item active" onclick="openLightboxKJA(event)" style="cursor:zoom-in;">
-            <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_1_verzvv.jpg" alt="Surat Izin KJA Halaman 1">
-          </div>
-          <div class="cert-slide-item" onclick="openLightboxKJA(event)" style="cursor:zoom-in;">
-            <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_2_p8zmki.jpg" alt="Surat Izin KJA Halaman 2">
-          </div>
-          <!-- Navigasi slide -->
-          <button class="kja-nav kja-prev" onclick="kjaSlide(-1,event)" title="Halaman sebelumnya">&#8249;</button>
-          <button class="kja-nav kja-next" onclick="kjaSlide(1,event)" title="Halaman berikutnya">&#8250;</button>
+          <div class="cert-slide-item active" onclick="openLightboxKJA(event)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_1_verzvv.jpg" alt="Surat Izin KJA Halaman 1"></div>
+          <div class="cert-slide-item" onclick="openLightboxKJA(event)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_2_p8zmki.jpg" alt="Surat Izin KJA Halaman 2"></div>
+          <button class="kja-nav kja-prev" onclick="kjaSlide(-1,event)">&#8249;</button>
+          <button class="kja-nav kja-next" onclick="kjaSlide(1,event)">&#8250;</button>
           <div class="kja-dots">
             <span class="kja-dot kja-dot-on" onclick="kjaGo(0,event)"></span>
             <span class="kja-dot" onclick="kjaGo(1,event)"></span>
           </div>
           <div class="cert-zoom-hint" onclick="openLightboxKJA(event)">🔍 Klik untuk perbesar</div>
         </div>
-        <div class="cert-info">
-          <span class="cert-badge g">KJA</span>
-          <h4>Izin Usaha KJA — No. 357/KM.1/PPPK/2022</h4>
-          <p>Surat Izin Kantor Jasa Akuntan · Diterbitkan Kementerian Keuangan RI · 2 Halaman</p>
-        </div>
+        <div class="cert-info"><span class="cert-badge g">KJA</span><h4>Izin Usaha KJA — No. 357/KM.1/PPPK/2022</h4><p>Surat Izin Kantor Jasa Akuntan · Kementerian Keuangan RI · 2 Halaman</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="galeri-grid reveal">
-  <div class="gi">
-    <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_14.34.56_vecz3k.jpg" alt="Tampak Depan Kantor">
-    <div class="gi-caption">🏠 Tampak Depan Kantor</div>
+<!-- ══ GALERI ══ -->
+<section id="galeri">
+  <div class="container">
+    <div class="sec-head">
+      <p class="sec-label neutral">Galeri Kantor</p>
+      <h2 class="sec-h2">Suasana Kantor<br>Bergaya Bali Tradisional</h2>
+      <p class="sec-desc">Kantor kami berlokasi di Jl. Melati No. 14, Abiansemal, Badung — dirancang dengan nuansa arsitektur Bali yang asri dan nyaman untuk konsultasi.</p>
+    </div>
+    <div class="galeri-grid reveal">
+      <div class="gi" onclick="openGaleri(0)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_14.34.56_vecz3k.jpg" alt="Tampak Depan Kantor"><div class="gi-caption"><strong>Tampak Depan Kantor</strong><span>Selamat datang di KJA Suastawa Consulting.</span></div></div>
+      <div class="gi" onclick="openGaleri(1)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.42_srpdkh.jpg" alt="Ruang Tunggu"><div class="gi-caption"><strong>Ruang Tunggu Klien</strong><span>Ruang semi-terbuka dengan atmosfer rileks.</span></div></div>
+      <div class="gi" onclick="openGaleri(2)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.43_k3v1we.jpg" alt="Ruang Konsultasi"><div class="gi-caption"><strong>Ruang Konsultasi</strong><span>Privasi dan fokus adalah prioritas kami.</span></div></div>
+      <div class="gi" onclick="openGaleri(3)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_1_ev1eqa.jpg" alt="Area Kerja Tim"><div class="gi-caption"><strong>Area Kerja Tim</strong><span>Tim ahli bekerja kolaboratif dengan presisi.</span></div></div>
+      <div class="gi" onclick="openGaleri(4)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_ovbkfz.jpg" alt="Taman Kantor"><div class="gi-caption"><strong>Taman &amp; Area Santai</strong><span>Area taman terbuka hijau untuk diskusi santai.</span></div></div>
+      <div class="gi" onclick="openGaleri(5)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_2_ywrccj.jpg" alt="Suasana Kantor"><div class="gi-caption"><strong>Suasana Kantor Bali</strong><span>Nuansa tradisional Bali yang autentik.</span></div></div>
+    </div>
   </div>
-  <div class="gi">
-    <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.42_srpdkh.jpg" alt="Ruang Tunggu">
-    <div class="gi-caption">🛋️ Ruang Tunggu Klien</div>
-  </div>
-  <div class="gi">
-    <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.43_k3v1we.jpg" alt="Ruang Konsultasi">
-    <div class="gi-caption">📋 Ruang Konsultasi</div>
-  </div>
-  <div class="gi">
-    <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_1_ev1eqa.jpg" alt="Area Kerja Tim">
-    <div class="gi-caption">💼 Area Kerja Tim</div>
-  </div>
-  <div class="gi">
-    <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_ovbkfz.jpg" alt="Taman Kantor">
-    <div class="gi-caption">🌿 Taman & Area Santai</div>
-  </div>
-  <div class="gi">
-    <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_2_ywrccj.jpg" alt="Suasana Kantor">
-    <div class="gi-caption">✨ Suasana Kantor Bali</div>
-  </div>
-</div>
+</section>
 
-<!-- ══ TESTIMONI ══════════════════════════════════════ -->
+<!-- ══ TESTIMONI ══ -->
 <section id="testimoni">
   <div class="container">
     <div class="sec-head">
@@ -1501,76 +1083,39 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
       <h2 class="sec-h2">Kepercayaan Klien<br>adalah Prioritas Kami</h2>
     </div>
     <div class="testi-grid">
-      <div class="tc reveal">
-        <div class="tc-quote">"</div>
-        <div class="tc-stars">★★★★★</div>
-        <p class="tc-text">Pak Suastawa sangat profesional dan detail dalam menangani laporan keuangan perusahaan kami. Berkat beliau, SPT tahunan kami selalu tepat waktu dan akurat. Sangat direkomendasikan!</p>
-        <div class="tc-author">
-          <div class="tc-av g">PT</div>
-          <div><div class="tc-name">Putu Ariana</div><div class="tc-pos">Direktur, PT Bali Property Group</div></div>
-        </div>
-      </div>
-      <div class="tc reveal">
-        <div class="tc-quote">"</div>
-        <div class="tc-stars">★★★★★</div>
-        <p class="tc-text">Konsultasi pajak yang sangat membantu bisnis kami. Beliau memahami betul peraturan DJP terbaru dan membantu kami mengoptimalkan kewajiban pajak secara legal dan efisien.</p>
-        <div class="tc-author">
-          <div class="tc-av b">ID</div>
-          <div><div class="tc-name">I Dewa Gede Raharta</div><div class="tc-pos">Owner, CV Raharta Konstruksi</div></div>
-        </div>
-      </div>
-      <div class="tc reveal">
-        <div class="tc-quote">"</div>
-        <div class="tc-stars">★★★★★</div>
-        <p class="tc-text">Kantor yang nyaman dengan suasana Bali yang asri, dan yang terpenting Pak Suastawa sangat kompeten. Kami percayakan seluruh urusan akuntansi dan pajak perusahaan kepada beliau sejak 2018.</p>
-        <div class="tc-author">
-          <div class="tc-av g">NK</div>
-          <div><div class="tc-name">Ni Ketut Suryani</div><div class="tc-pos">Pemilik, UD Suryani Trading</div></div>
-        </div>
-      </div>
+      <div class="tc reveal"><div class="tc-quote">"</div><div class="tc-stars">★★★★★</div><p class="tc-text">Pak Suastawa sangat profesional dan detail dalam menangani laporan keuangan perusahaan kami. SPT tahunan selalu tepat waktu dan akurat. Sangat direkomendasikan!</p><div class="tc-author"><div class="tc-av g">PT</div><div><div class="tc-name">Putu Ariana</div><div class="tc-pos">Direktur, PT Bali Property Group</div></div></div></div>
+      <div class="tc reveal"><div class="tc-quote">"</div><div class="tc-stars">★★★★★</div><p class="tc-text">Konsultasi pajak yang sangat membantu bisnis kami. Beliau memahami betul peraturan DJP terbaru dan membantu kami mengoptimalkan kewajiban pajak secara legal.</p><div class="tc-author"><div class="tc-av b">ID</div><div><div class="tc-name">I Dewa Gede Raharta</div><div class="tc-pos">Owner, CV Raharta Konstruksi</div></div></div></div>
+      <div class="tc reveal"><div class="tc-quote">"</div><div class="tc-stars">★★★★★</div><p class="tc-text">Kantor yang nyaman dengan suasana Bali yang asri. Pak Suastawa sangat kompeten. Kami percayakan seluruh urusan akuntansi dan pajak perusahaan sejak 2018.</p><div class="tc-author"><div class="tc-av g">NK</div><div><div class="tc-name">Ni Ketut Suryani</div><div class="tc-pos">Pemilik, UD Suryani Trading</div></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ KONTAK ══════════════════════════════════════════ -->
+<!-- ══ KONTAK ══ -->
 <section id="kontak">
   <div class="container">
     <div class="kontak-grid">
       <div class="kontak-info">
         <p style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600;margin-bottom:12px;">Hubungi Kami</p>
         <h3>Konsultasi Gratis<br>Hari Ini</h3>
-        <p>Tim kami siap membantu kebutuhan akuntansi dan perpajakan bisnis Anda. Jadwalkan konsultasi awal tanpa biaya.</p>
+        <p>Tim kami siap membantu kebutuhan akuntansi dan perpajakan bisnis Anda.</p>
         <div class="ki-items">
           <div class="ki"><div class="ki-ic">📍</div><div class="ki-text"><div class="kl">Alamat Kantor</div><div class="kv">Jl. Melati No. 14, Banjar Bindu<br>Mekar Bhuwana, Abiansemal<br>Badung, Bali 80352</div></div></div>
           <div class="ki"><div class="ki-ic">📱</div><div class="ki-text"><div class="kl">WhatsApp / Telepon</div><div class="kv"><a href="https://wa.me/6281338983753">081 338 983 753</a></div></div></div>
           <div class="ki"><div class="ki-ic">✉️</div><div class="ki-text"><div class="kl">Email</div><div class="kv"><a href="mailto:suastawaconsulting@gmail.com">suastawaconsulting@gmail.com</a></div></div></div>
           <div class="ki"><div class="ki-ic">🕐</div><div class="ki-text"><div class="kl">Jam Operasional</div><div class="kv">Senin – Jumat, 08.00 – 17.00 WITA</div></div></div>
         </div>
-        <a href="https://wa.me/6281338983753?text=Halo%20Pak%20Suastawa%2C%20saya%20ingin%20berkonsultasi%20mengenai%20layanan%20akuntansi%2Fpajak." target="_blank" class="wa-btn">
-          💬 Chat WhatsApp Sekarang
-        </a>
-        <div class="maps-wrap">
-          <iframe src="https://maps.google.com/maps?q=-8.548965,115.230858&z=16&output=embed" allowfullscreen loading="lazy"></iframe>
-        </div>
+        <a href="https://wa.me/6281338983753?text=Halo%20Pak%20Suastawa%2C%20saya%20ingin%20berkonsultasi." target="_blank" class="wa-btn">💬 Chat WhatsApp Sekarang</a>
+        <div class="maps-wrap"><iframe src="https://maps.google.com/maps?q=-8.548965,115.230858&z=16&output=embed" allowfullscreen loading="lazy"></iframe></div>
       </div>
       <div class="kontak-form reveal">
         <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600;margin-bottom:18px;">Form Konsultasi</p>
         <form id="konsulForm" onsubmit="submitForm(event)">
           <div class="form-row">
-            <div class="form-group">
-              <label>Nama Lengkap *</label>
-              <input type="text" id="f-nama" placeholder="Nama Anda" required>
-            </div>
-            <div class="form-group">
-              <label>No. HP / WhatsApp *</label>
-              <input type="tel" id="f-hp" placeholder="08xxxxxxxx" required>
-            </div>
+            <div class="form-group"><label>Nama Lengkap *</label><input type="text" id="f-nama" placeholder="Nama Anda" required></div>
+            <div class="form-group"><label>No. HP / WhatsApp *</label><input type="tel" id="f-hp" placeholder="08xxxxxxxx" required></div>
           </div>
           <div class="form-row">
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" id="f-email" placeholder="email@domain.com">
-            </div>
+            <div class="form-group"><label>Email</label><input type="email" id="f-email" placeholder="email@domain.com"></div>
             <div class="form-group">
               <label>Jenis Layanan</label>
               <select id="f-layanan">
@@ -1581,7 +1126,6 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
                   <option>Tax Compliance (KJA)</option>
                   <option>Penyusunan Sistem Akuntan</option>
                   <option>Konsultasi Manajemen Keuangan</option>
-                  <option>Tata Kelola Perusahaan (GCG)</option>
                 </optgroup>
                 <optgroup label="KKP — Kantor Konsultan Pajak">
                   <option>PPh Badan</option>
@@ -1589,19 +1133,12 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
                   <option>Pajak Pertambahan Nilai (PPN)</option>
                   <option>Tax Planning</option>
                   <option>Pendampingan Sengketa Pajak</option>
-                  <option>Pajak Internasional</option>
                 </optgroup>
               </select>
             </div>
           </div>
-          <div class="form-group" style="margin-bottom:14px;">
-            <label>Alamat / Kota</label>
-            <input type="text" id="f-alamat" placeholder="Kota / Kabupaten Anda">
-          </div>
-          <div class="form-group" style="margin-bottom:16px;">
-            <label>Kebutuhan / Permasalahan *</label>
-            <textarea id="f-masalah" rows="4" placeholder="Ceritakan kebutuhan Anda..." required></textarea>
-          </div>
+          <div class="form-group" style="margin-bottom:14px;"><label>Alamat / Kota</label><input type="text" id="f-alamat" placeholder="Kota / Kabupaten Anda"></div>
+          <div class="form-group" style="margin-bottom:16px;"><label>Kebutuhan / Permasalahan *</label><textarea id="f-masalah" rows="4" placeholder="Ceritakan kebutuhan Anda..." required></textarea></div>
           <button type="submit" class="btn-submit">📨 Kirim via WhatsApp</button>
         </form>
       </div>
@@ -1609,21 +1146,21 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
   </div>
 </section>
 
-<!-- ══ FOOTER ══════════════════════════════════════════ -->
+<!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
         <div class="fn">Suastawa Consulting</div>
         <span class="fs">KJA &amp; KKP · Badung, Bali, Indonesia</span>
-        <p class="fbp">Kantor Jasa Akuntan &amp; Konsultan Pajak yang terdaftar resmi di Kemenkeu RI serta menjadi anggota IAI dan IKPI. Melayani klien di seluruh indonesia sejak 2015 dengan integritas dan profesionalisme.</p>
+        <p class="fbp">Kantor Jasa Akuntan &amp; Konsultan Pajak yang terdaftar resmi di Kemenkeu RI serta menjadi anggota IAI dan IKPI. Melayani klien di seluruh Indonesia sejak 2015.</p>
         <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;">
           <span style="font-size:9px;background:rgba(46,125,50,.2);color:#81C784;border:1px solid rgba(46,125,50,.3);padding:4px 10px;border-radius:20px;font-weight:600;letter-spacing:1px;">KJA: 357/KM.1/PPPK/2022</span>
           <span style="font-size:9px;background:rgba(13,71,161,.2);color:#90CAF9;border:1px solid rgba(13,71,161,.3);padding:4px 10px;border-radius:20px;font-weight:600;letter-spacing:1px;">KKP: SI-1543/PJ/2008</span>
         </div>
       </div>
-      <div class="fc"><h4>KJA</h4><a href="#home" onclick="event.preventDefault();goSlide(1)">Profil KJA</a><a href="#home" onclick="event.preventDefault();goSlide(1)">Pembukuan</a><a href="#home" onclick="event.preventDefault();goSlide(1)">Laporan Keuangan</a><a href="#home" onclick="event.preventDefault();goSlide(1)">Sistem Akuntan</a><a href="#home" onclick="event.preventDefault();goSlide(1)">GCG</a></div>
-      <div class="fc"><h4>KKP</h4><a href="#home" onclick="event.preventDefault();goSlide(2)">Profil KKP</a><a href="#home" onclick="event.preventDefault();goSlide(2)">PPh Badan &amp; OP</a><a href="#home" onclick="event.preventDefault();goSlide(2)">PPN</a><a href="#home" onclick="event.preventDefault();goSlide(2)">Tax Planning</a><a href="#home" onclick="event.preventDefault();goSlide(2)">Sengketa Pajak</a></div>
+      <div class="fc"><h4>KJA</h4><a href="#home" onclick="event.preventDefault();goSlide(1)">Profil KJA</a><a href="#home" onclick="event.preventDefault();goSlide(1)">Pembukuan</a><a href="#home" onclick="event.preventDefault();goSlide(1)">Laporan Keuangan</a><a href="#home" onclick="event.preventDefault();goSlide(1)">Sistem Akuntan</a></div>
+      <div class="fc"><h4>KKP</h4><a href="#home" onclick="event.preventDefault();goSlide(2)">Profil KKP</a><a href="#home" onclick="event.preventDefault();goSlide(2)">PPh Badan &amp; OP</a><a href="#home" onclick="event.preventDefault();goSlide(2)">PPN</a><a href="#home" onclick="event.preventDefault();goSlide(2)">Tax Planning</a></div>
       <div class="fc"><h4>Navigasi</h4><a href="#layanan">Layanan</a><a href="#profil">Profil</a><a href="#legalitas">Legalitas</a><a href="#galeri">Galeri</a><a href="#kontak">Kontak</a><a href="https://wa.me/6281338983753" target="_blank">WhatsApp</a></div>
     </div>
     <div class="f-btm">
@@ -1633,79 +1170,49 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
   </div>
 </footer>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/6281338983753?text=Halo%20Pak%20Suastawa%2C%20saya%20ingin%20berkonsultasi." target="_blank" class="wa-float" title="Chat WhatsApp">💬</a>
-
-<!-- Toast -->
+<a href="https://wa.me/6281338983753?text=Halo%20Pak%20Suastawa%2C%20saya%20ingin%20berkonsultasi." target="_blank" class="wa-float">💬</a>
 <div class="toast" id="toast">✅ Pesan terkirim! Pak Suastawa akan segera menghubungi Anda.</div>
 
 <script>
-// ══ SLIDER ═════════════════════════════════════════════
+// ══ SLIDER ══
 let current = 0;
 const total = 3;
-
 function goSlide(idx) {
-  // ── Aktifkan section#home via SPA jika belum aktif ──
   const allSections = document.querySelectorAll('section');
   const homeSection = document.getElementById('home');
   allSections.forEach(sec => sec.classList.remove('active'));
   if (homeSection) homeSection.classList.add('active');
-  // Update active state menu navbar ke Home
   document.querySelectorAll('.nav-menu a, .mob-menu a').forEach(link => {
     link.classList.toggle('active', link.getAttribute('href') === '#home');
   });
-
-  // Tutup mobile menu jika terbuka
   const mobMenu = document.getElementById('mobMenu');
   if (mobMenu) mobMenu.classList.remove('open');
-
-  // ── Ganti slide ──
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.sdot');
+  if (!slides.length || idx < 0 || idx >= slides.length) return;
   slides[current].classList.remove('active');
   dots[current].classList.remove('active');
   current = idx;
   slides[current].classList.add('active');
   dots[current].classList.add('active');
-  // Sync nav pills highlight
-  document.querySelector('.np.g').classList.toggle('on', idx===1);
-  document.querySelector('.np.b').classList.toggle('on', idx===2);
-  window.scrollTo({top:0,behavior:'smooth'});
 }
+function slideBy(dir) { goSlide((current + dir + total) % total); }
 
-function slideBy(dir) {
-  goSlide((current + dir + total) % total);
-}
+// ══ MOBILE MENU ══
+function toggleMenu() { document.getElementById('mobMenu').classList.toggle('open'); }
 
-// ══ MOBILE MENU ════════════════════════════════════════
-function toggleMenu() {
-  const m = document.getElementById('mobMenu');
-  m.classList.toggle('open');
-}
-function closeMob() {
-  document.getElementById('mobMenu').classList.remove('open');
-}
-
-// ══ SPA ROUTER SYSTEM (SHOW/HIDE) ══════════════════════════
+// ══ SPA ROUTER ══
 document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll(".nav-menu a, .mob-menu a, .btn-gold, .btn-ow");
+  const navLinks = document.querySelectorAll(".nav-menu a, .mob-menu a");
   const allSections = document.querySelectorAll("section");
   function switchPage(targetId) {
     const targetSection = document.querySelector(targetId);
     if (targetSection) {
-      // Sembunyikan semua section
       allSections.forEach(sec => sec.classList.remove("active"));
-      // Tampilkan section target
       targetSection.classList.add("active");
-      // Reset scroll ke atas halaman baru
       window.scrollTo({ top: 0, behavior: "instant" });
-      // Update class active pada navbar
       document.querySelectorAll(".nav-menu a, .mob-menu a").forEach(link => {
-        if (link.getAttribute("href") === targetId) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
-        }
+        link.classList.toggle("active", link.getAttribute("href") === targetId);
       });
     }
   }
@@ -1715,54 +1222,33 @@ document.addEventListener("DOMContentLoaded", function () {
       if (href && href.startsWith("#")) {
         e.preventDefault();
         switchPage(href);
-        // Otomatis tutup menu mobile jika terbuka
         const mobileMenu = document.getElementById("mobMenu");
         if (mobileMenu) mobileMenu.classList.remove("open");
       }
     });
   });
-
-  // Set menu Home aktif saat halaman pertama kali dibuka
   document.querySelectorAll(".nav-menu a, .mob-menu a").forEach(link => {
-    if (link.getAttribute("href") === "#home") {
-      link.classList.add("active");
-    }
+    if (link.getAttribute("href") === "#home") link.classList.add("active");
   });
 });
 
-// ══ FORM ════════════════════════════════════════════════
-const API_URL = 'https://worthy-nature-production-69e5.up.railway.app';
-
+// ══ FORM ══
 async function submitForm(e) {
   e.preventDefault();
-  const nama    = document.getElementById('f-nama').value;
-  const hp      = document.getElementById('f-hp').value;
-  const email   = document.getElementById('f-email').value;
+  const nama = document.getElementById('f-nama').value;
+  const hp = document.getElementById('f-hp').value;
+  const email = document.getElementById('f-email').value;
   const layanan = document.getElementById('f-layanan').value;
-  const alamat  = document.getElementById('f-alamat').value;
+  const alamat = document.getElementById('f-alamat').value;
   const masalah = document.getElementById('f-masalah').value;
-
-  // Kirim ke backend API (simpan ke MongoDB)
   try {
-    await fetch(`${API_URL}/api/kontak`, {
+    await fetch('https://worthy-nature-production-69e5.up.railway.app/api/kontak', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        nama, hp, email,
-        layanan: layanan || 'Konsultasi Umum',
-        alamat: alamat || '-',
-        pesan: masalah
-      })
+      body: JSON.stringify({ nama, hp, email, layanan: layanan || 'Konsultasi Umum', alamat: alamat || '-', pesan: masalah })
     });
-  } catch(err) {
-    console.log('API tidak tersedia, lanjut ke WhatsApp');
-  }
-
-  // Tetap kirim ke WhatsApp
-  const msg = encodeURIComponent(
-    `*FORM KONSULTASI — Suastawa Consulting*\n\n` +
-    `*Nama:* ${nama}\n*No. HP/WA:* ${hp}\n*Email:* ${email||'-'}\n*Layanan:* ${layanan||'Konsultasi Umum'}\n*Alamat:* ${alamat||'-'}\n\n*Permasalahan:*\n${masalah}`
-  );
+  } catch(err) { console.log('API tidak tersedia'); }
+  const msg = encodeURIComponent(`*FORM KONSULTASI — Suastawa Consulting*\n\n*Nama:* ${nama}\n*No. HP/WA:* ${hp}\n*Email:* ${email||'-'}\n*Layanan:* ${layanan||'Konsultasi Umum'}\n*Alamat:* ${alamat||'-'}\n\n*Permasalahan:*\n${masalah}`);
   window.open(`https://wa.me/6281338983753?text=${msg}`, '_blank');
   const toast = document.getElementById('toast');
   toast.classList.add('show');
@@ -1770,18 +1256,16 @@ async function submitForm(e) {
   document.getElementById('konsulForm').reset();
 }
 
-// ══ SCROLL REVEAL ══════════════════════════════════════
+// ══ SCROLL REVEAL ══
 const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) e.target.classList.add('visible');
-  });
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, {threshold:.08});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
+
 <script>
-// ══ LIGHTBOX ═════════════════════════════════════════
+// ══ LIGHTBOX ══
 (function(){
-  // certImgs[5] = array 2 URL untuk KJA (halaman 1 & 2)
   var certImgs = [
     'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/Piagam_kementrian_keuangan_eyju5f.jpg',
     'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961715/sertifikat_CA_scehi5.jpg',
@@ -1792,63 +1276,39 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_2_p8zmki.jpg'
   ];
   var certCaptions = [
-    'Piagam RNA — Kemenkeu RI · Register Negara Akuntan No. RNA 10235 · 30 September 2015',
-    'Sertifikat CA — ASEAN CPA · ASEAN Chartered Professional Accountant · Reg. ACPACC-ID.0001468 · 30 April 2018',
-    'Sertifikat C — KP3SKP · Sertifikasi Konsultan Pajak Tingkat C · No. C.19.VI/KP3SKP/L-0057 · 2019',
-    'SK DJP — Izin Praktik Tingkat C · KEP-6378/IP.C/PJ/2020 · Kementerian Keuangan RI',
-    'PERADI — PKPA · Pendidikan Khusus Profesi Advokat · No. 12-04395/PERADI-KP2A1/XII/13 · 2013',
-    'Izin Usaha KJA — Halaman 1 · No. 357/KM.1/PPPK/2022 · Kementerian Keuangan RI',
-    'Izin Usaha KJA — Halaman 2 · No. 357/KM.1/PPPK/2022 · Kementerian Keuangan RI'
+    'Piagam RNA — Kemenkeu RI · RNA 10235 · 30 September 2015',
+    'Sertifikat CA — ASEAN CPA · ACPACC-ID.0001468 · 30 April 2018',
+    'Sertifikat C — KP3SKP · No. C.19.VI/KP3SKP/L-0057 · 2019',
+    'SK DJP — Izin Praktik Tingkat C · KEP-6378/IP.C/PJ/2020',
+    'PERADI — PKPA · No. 12-04395/PERADI-KP2A1/XII/13 · 2013',
+    'Izin Usaha KJA — Halaman 1 · No. 357/KM.1/PPPK/2022',
+    'Izin Usaha KJA — Halaman 2 · No. 357/KM.1/PPPK/2022'
   ];
-  var current = 0;
-  var total = certImgs.length;
-
-  window.openLightbox = function(idx) {
-    current = idx;
-    showImg(current);
-    document.getElementById('lbOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
-
-  // Buka lightbox KJA dari tombol zoom hint (mulai dari halaman 1)
+  var cur = 0, total = certImgs.length;
+  window.openLightbox = function(idx) { cur = idx; showImg(cur); document.getElementById('lbOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; };
   window.openLightboxKJA = function(e) {
     e.stopPropagation();
-    // Deteksi halaman KJA yang sedang aktif
     var slides = document.querySelectorAll('#kjaSS .cert-slide-item');
     var page = 0;
-    slides.forEach(function(s, i){ if(s.classList.contains('active')) page = i; });
-    current = 5 + page; // index 5 = KJA hal1, index 6 = KJA hal2
-    showImg(current);
-    document.getElementById('lbOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
+    slides.forEach(function(s,i){ if(s.classList.contains('active')) page = i; });
+    cur = 5 + page;
+    showImg(cur); document.getElementById('lbOverlay').classList.add('open'); document.body.style.overflow = 'hidden';
   };
-
   function showImg(idx) {
     var img = document.getElementById('lbImg');
     img.style.opacity = '0';
-    setTimeout(function(){
-      img.src = certImgs[idx];
-      img.style.opacity = '1';
-    }, 150);
+    setTimeout(function(){ img.src = certImgs[idx]; img.style.opacity = '1'; }, 150);
     document.getElementById('lbCounter').textContent = (idx+1) + ' / ' + total;
     document.getElementById('lbCaption').textContent = certCaptions[idx] || '';
   }
-
-  function closeLb() {
-    document.getElementById('lbOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function prev() { current = (current - 1 + total) % total; showImg(current); }
-  function next() { current = (current + 1) % total; showImg(current); }
-
+  function closeLb() { document.getElementById('lbOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+  function prev() { cur = (cur - 1 + total) % total; showImg(cur); }
+  function next() { cur = (cur + 1) % total; showImg(cur); }
   document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('lbClose').addEventListener('click', closeLb);
     document.getElementById('lbPrev').addEventListener('click', prev);
     document.getElementById('lbNext').addEventListener('click', next);
-    document.getElementById('lbOverlay').addEventListener('click', function(e){
-      if(e.target === this) closeLb();
-    });
+    document.getElementById('lbOverlay').addEventListener('click', function(e){ if(e.target === this) closeLb(); });
     document.addEventListener('keydown', function(e){
       var lb = document.getElementById('lbOverlay');
       if(!lb.classList.contains('open')) return;
@@ -1859,54 +1319,38 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   });
 })();
 
-// ══ KJA SLIDESHOW (2 halaman dalam 1 kolom) ══════════
+// ══ KJA SLIDESHOW ══
 var _kjaCur = 0;
 function kjaSlide(dir, e) {
   e.stopPropagation();
   var slides = document.querySelectorAll('#kjaSS .cert-slide-item');
-  var dots   = document.querySelectorAll('#kjaSS .kja-dot');
-  slides[_kjaCur].classList.remove('active');
-  dots[_kjaCur].classList.remove('kja-dot-on');
+  var dots = document.querySelectorAll('#kjaSS .kja-dot');
+  slides[_kjaCur].classList.remove('active'); dots[_kjaCur].classList.remove('kja-dot-on');
   _kjaCur = (_kjaCur + dir + slides.length) % slides.length;
-  slides[_kjaCur].classList.add('active');
-  dots[_kjaCur].classList.add('kja-dot-on');
+  slides[_kjaCur].classList.add('active'); dots[_kjaCur].classList.add('kja-dot-on');
 }
 function kjaGo(idx, e) {
   e.stopPropagation();
   var slides = document.querySelectorAll('#kjaSS .cert-slide-item');
-  var dots   = document.querySelectorAll('#kjaSS .kja-dot');
-  slides[_kjaCur].classList.remove('active');
-  dots[_kjaCur].classList.remove('kja-dot-on');
-  _kjaCur = idx;
-  slides[_kjaCur].classList.add('active');
-  dots[_kjaCur].classList.add('kja-dot-on');
+  var dots = document.querySelectorAll('#kjaSS .kja-dot');
+  slides[_kjaCur].classList.remove('active'); dots[_kjaCur].classList.remove('kja-dot-on');
+  _kjaCur = idx; slides[_kjaCur].classList.add('active'); dots[_kjaCur].classList.add('kja-dot-on');
 }
 </script>
-<script>
-// ══ HERO PHOTO SLIDESHOW ═════════════════════════
-(function(){
-  var hpCur = 0;
-  var hpTotal = 4;
-  var hpTimer;
 
+<script>
+// ══ HERO PHOTO SLIDESHOW ══
+(function(){
+  var hpCur = 0, hpTotal = 4, hpTimer;
   window.hpGo = function(idx) {
     var slides = document.querySelectorAll('.hp-slide');
-    var dots   = document.querySelectorAll('.hp-dot');
-    slides[hpCur].classList.remove('hp-active');
-    dots[hpCur].classList.remove('hp-dot-on');
-    hpCur = idx;
-    slides[hpCur].classList.add('hp-active');
-    dots[hpCur].classList.add('hp-dot-on');
+    var dots = document.querySelectorAll('.hp-dot');
+    slides[hpCur].classList.remove('hp-active'); dots[hpCur].classList.remove('hp-dot-on');
+    hpCur = idx; slides[hpCur].classList.add('hp-active'); dots[hpCur].classList.add('hp-dot-on');
   };
-
-  function hpNext() {
-    hpGo((hpCur + 1) % hpTotal);
-  }
-
+  function hpNext() { hpGo((hpCur + 1) % hpTotal); }
   document.addEventListener('DOMContentLoaded', function(){
-    // Auto-advance setiap 4 detik
     hpTimer = setInterval(hpNext, 4000);
-    // Pause saat hover
     var panel = document.getElementById('heroPhotoPanel');
     if(panel){
       panel.addEventListener('mouseenter', function(){ clearInterval(hpTimer); });
@@ -1914,89 +1358,132 @@ function kjaGo(idx, e) {
     }
   });
 })();
-// ══ VISI MISI TOGGLE ══════════════════════════════
-function toggleVM(card) {
-  card.classList.toggle('vm-closed');
-}
-// Pastikan keduanya terbuka saat load
+
+// ══ VISI MISI TOGGLE ══
+function toggleVM(card) { card.classList.toggle('vm-closed'); }
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.vm-card').forEach(function(c){ c.classList.remove('vm-closed'); });
 });
 
-// ══ FILTER TABS LAYANAN ══════════════════════════════
-function switchTab(tabId, element) {
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.classList.remove('active');
-    btn.setAttribute('aria-selected', 'false');
-  });
-  document.querySelectorAll('.tab-content').forEach(content => {
-    content.classList.remove('active');
-    content.style.opacity = '0';
-    content.style.transform = 'translateY(6px)';
-  });
-  element.classList.add('active');
-  element.setAttribute('aria-selected', 'true');
-  const targetTab = document.getElementById('tab-' + tabId);
-  if (targetTab) {
-    targetTab.classList.add('active');
-    requestAnimationFrame(() => {
-      targetTab.style.opacity = '1';
-      targetTab.style.transform = 'translateY(0)';
-      targetTab.style.transition = 'opacity .3s ease, transform .3s ease';
-    });
-  }
-  element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-}
-  // Menghapus kelas active dari semua tombol tab
-  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-  // Menghapus kelas active dari semua konten tab
-  document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-  // Menambahkan kelas active pada elemen yang diklik dan konten yang sesuai
-  document.getElementById('tab-' + tabId).classList.add('active');
-  element.classList.add('active');
-}
-
+// ══ FILTER TABS LAYANAN ══
 function filterLayanan(group, btn) {
   var cards = document.querySelectorAll('#layananGrid .lc');
-  var tabs  = document.querySelectorAll('.ftab');
-
-  // Update active tab style
-  tabs.forEach(function(t) {
-    t.className = 'ftab';
-  });
+  var tabs = document.querySelectorAll('.ftab');
+  tabs.forEach(function(t){ t.className = 'ftab'; });
   if (group === 'all') btn.classList.add('active-all');
   if (group === 'kja') btn.classList.add('active-kja');
   if (group === 'kkp') btn.classList.add('active-kkp');
-
-  // Show/hide cards
-  cards.forEach(function(card) {
+  cards.forEach(function(card){
     if (group === 'all' || card.getAttribute('data-group') === group) {
       card.classList.remove('lc-hidden');
     } else {
       card.classList.add('lc-hidden');
     }
   });
-
-  // Update grid layout: 1 col when only 2 cards visible
   var grid = document.getElementById('layananGrid');
-  if (group === 'all') {
-    grid.style.gridTemplateColumns = '';
-  } else {
-    grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
-  }
+  grid.style.gridTemplateColumns = group === 'all' ? '' : 'repeat(2, 1fr)';
 }
-
 </script>
 
-<!-- ══════════════════════════════════════════════════════════ -->
-<!-- ══  SINGLE DYNAMIC KJA MODAL — diisi via JavaScript  ══  -->
-<!-- ══════════════════════════════════════════════════════════ -->
+<script>
+// ══ LIVE REVIEW FEED ══
+(function() {
+  var lfrData = [
+    { init:'FA', name:'Farida Aisyah', loc:'Malang, Jawa Timur', color:'#E65100', tag:'PPh Badan', tagType:'b', quote:'"Proses pengisian SPT sangat mudah dengan bantuan beliau. Recommended!"' },
+    { init:'DL', name:'David Lee', loc:'Singapore', color:'#0D47A1', tag:'Lap. Keuangan', tagType:'g', quote:'"Corporate tax compliance in Bali made easy. Very satisfied!"' },
+    { init:'MF', name:'Muhammad Fauzi', loc:'Depok, Jawa Barat', color:'#BF360C', tag:'Sengketa Pajak', tagType:'b', quote:'"Beban pajak perusahaan turun signifikan secara legal. Sangat profesional!"' },
+    { init:'CL', name:'Catherine Liu', loc:'Hong Kong', color:'#BF360C', tag:'Konsultasi', tagType:'g', quote:'"Excellent accounting service. Always on time and very accurate."' },
+    { init:'BJ', name:'Benjamin Jones', loc:'Brisbane, Australia', color:'#1B5E20', tag:'Sistem Akuntan', tagType:'g', quote:'"Professional and reliable. Our financial report is always perfect."' },
+    { init:'CM', name:'Chen Ming', loc:'Shanghai, China', color:'#1B5E20', tag:'Sistem Akuntan', tagType:'g', quote:'"Tax compliance made stress-free! Truly excellent service."' },
+    { init:'ZA', name:'Zulfikar Ahmad', loc:'Banda Aceh, Aceh', color:'#6A1B9A', tag:'PPh OP', tagType:'b', quote:'"Tata kelola perusahaan kini sesuai standar GCG. Audit berjalan mulus."' },
+    { init:'GN', name:'Gusti Ngurah Oka', loc:'Klungkung, Bali', color:'#BF360C', tag:'Tax Planning', tagType:'b', quote:'"Konsultasi keuangan sangat bermanfaat untuk pengembangan bisnis kami."' },
+    { init:'MH', name:'Made Hendra', loc:'Ubud, Gianyar', color:'#0D47A1', tag:'PPh OP', tagType:'b', quote:'"Sengketa pajak selesai dengan hasil terbaik. Pendampingan sangat tenang."' },
+    { init:'NK', name:'Ni Ketut Suryani', loc:'Sanur, Denpasar', color:'#4A148C', tag:'GCG Audit', tagType:'g', quote:'"SPT Tahunan beres tanpa ribet. Memahami betul regulasi DJP terbaru."' },
+    { init:'KS', name:'Ketut Suardika', loc:'Seminyak, Bali', color:'#6A1B9A', tag:'PPh Badan', tagType:'b', quote:'"Pembukuan bisnis kami tertata baik. Laporan bulanan selalu tepat waktu."' },
+    { init:'LB', name:'Laura Brown', loc:'Paris, France', color:'#1B5E20', tag:'PPh OP', tagType:'b', quote:'"Corporate tax compliance in Bali made easy. Very satisfied!"' },
+    { init:'IB', name:'I Bagus Kertanegara', loc:'Klungkung, Bali', color:'#6A1B9A', tag:'Tax Planning', tagType:'b', quote:'"Laporan keuangan selesai cepat, akurat, siap untuk pengajuan kredit."' },
+    { init:'IW', name:'I Wayan Sudarsana', loc:'Kuta, Badung', color:'#0D47A1', tag:'Lap. Keuangan', tagType:'g', quote:'"Pembukuan bisnis kami tertata baik. Laporan bulanan selalu tepat waktu."' },
+    { init:'TP', name:'Thomas Park', loc:'Kuala Lumpur, Malaysia', color:'#2E7D32', tag:'Lap. Keuangan', tagType:'g', quote:'"Corporate tax compliance in Bali made easy. Very satisfied!"' },
+    { init:'WP', name:'Wayan Pastika', loc:'Karangasem, Bali', color:'#BF360C', tag:'SPT Tahunan', tagType:'b', quote:'"Pembukuan bisnis kami tertata baik. Laporan bulanan selalu tepat waktu."' },
+    { init:'RH', name:'Rini Hartono', loc:'Jakarta Selatan', color:'#6A1B9A', tag:'PPN', tagType:'b', quote:'"Konsultasi keuangan sangat bermanfaat untuk pengembangan bisnis kami."' },
+    { init:'AM', name:'Ahmed Mohammed', loc:'Dubai, UAE', color:'#BF360C', tag:'Pembukuan', tagType:'g', quote:'"Professional and reliable. Our financial report is always perfect."' },
+    { init:'KM', name:'Ketut Mudana', loc:'Bangli, Bali', color:'#4A148C', tag:'PPh Badan', tagType:'b', quote:'"Laporan keuangan selesai cepat, akurat, siap untuk pengajuan kredit."' },
+    { init:'VR', name:'Vera Ratnasari', loc:'Tangerang, Banten', color:'#2E7D32', tag:'PPN', tagType:'b', quote:'"Sistem pencatatan keuangan kami jauh lebih terstruktur dan efisien."' },
+    { init:'NW', name:'Ni Wayan Sari', loc:'Singaraja, Buleleng', color:'#4A148C', tag:'PPN', tagType:'b', quote:'"Konsultasi keuangan sangat bermanfaat untuk pengembangan bisnis kami."' },
+    { init:'RB', name:'Rudi Budiman', loc:'Batam, Kepulauan Riau', color:'#4A148C', tag:'GCG Audit', tagType:'g', quote:'"Proses pengisian SPT sangat mudah dengan bantuan beliau. Recommended!"' },
+    { init:'MK', name:'Michael Kim', loc:'Seoul, South Korea', color:'#1565C0', tag:'PPh OP', tagType:'b', quote:'"Outstanding financial consulting for our Bali resort. Very knowledgeable!"' },
+    { init:'DK', name:'Dewi Komala', loc:'Jimbaran, Badung', color:'#0D47A1', tag:'PPh OP', tagType:'b', quote:'"Laporan keuangan selesai cepat, akurat, siap untuk pengajuan kredit."' },
+    { init:'EA', name:'Emma Anderson', loc:'Auckland, New Zealand', color:'#BF360C', tag:'PPh Badan', tagType:'b', quote:'"Professional and reliable. Our financial report is always perfect."' },
+    { init:'JS', name:'John Smith', loc:'Melbourne, Australia', color:'#BF360C', tag:'Expat Tax', tagType:'b', quote:'"Professional and reliable. Our financial report is always perfect."' },
+    { init:'IS', name:'I Gst. Suardana', loc:'Mengwi, Badung', color:'#6A1B9A', tag:'PPN', tagType:'b', quote:'"Proses pengisian SPT sangat mudah dengan bantuan beliau. Recommended!"' },
+    { init:'NL', name:'Ni Luh Putu Sari', loc:'Buleleng, Bali', color:'#6A1B9A', tag:'Lap. Keuangan', tagType:'g', quote:'"Rekonsiliasi faktur PPN beres tanpa selisih. Terima kasih Pak Suastawa!"' },
+    { init:'AT', name:'Amanda Thompson', loc:'London, UK', color:'#E65100', tag:'SPT Tahunan', tagType:'b', quote:'"Excellent accounting service. Always on time and very accurate."' },
+    { init:'PR', name:'Putu Rahayu', loc:'Kerobokan, Bali', color:'#1B5E20', tag:'SPT Tahunan', tagType:'b', quote:'"Pembukuan bisnis kami tertata baik. Laporan bulanan selalu tepat waktu."' },
+    { init:'HK', name:'Hendra Kusuma', loc:'Palembang, Sumatra', color:'#6A1B9A', tag:'Expat Tax', tagType:'b', quote:'"Laporan keuangan kami jauh lebih rapi, audit berjalan lancar tanpa kendala."' },
+    { init:'KD', name:'Kadek Dwi Purnama', loc:'Canggu, Badung', color:'#0D47A1', tag:'Pembukuan', tagType:'g', quote:'"SPT Tahunan beres tanpa ribet. Memahami betul regulasi DJP terbaru."' },
+    { init:'DM', name:'Dian Maulana', loc:'Medan, Sumatera Utara', color:'#0D47A1', tag:'Lap. Keuangan', tagType:'g', quote:'"Pembukuan bisnis kami tertata baik. Laporan bulanan selalu tepat waktu."' },
+    { init:'NM', name:'Ni Made Rastini', loc:'Denpasar', color:'#4A148C', tag:'Konsultasi', tagType:'g', quote:'"Laporan keuangan kami jauh lebih rapi, audit berjalan lancar tanpa kendala."' },
+    { init:'AS', name:'Andi Setiawan', loc:'Surabaya, Jawa Timur', color:'#6A1B9A', tag:'Sistem Akuntan', tagType:'g', quote:'"SPT Tahunan beres tanpa ribet. Memahami betul regulasi DJP terbaru."' },
+    { init:'KP', name:'Kevin Parker', loc:'New York, USA', color:'#1565C0', tag:'SPT Tahunan', tagType:'b', quote:'"Corporate tax compliance in Bali made easy. Very satisfied!"' },
+    { init:'AB', name:'Anak Agung Budi', loc:'Nusa Dua', color:'#2E7D32', tag:'GCG Audit', tagType:'g', quote:'"Rekonsiliasi faktur PPN beres tanpa selisih. Terima kasih Pak Suastawa!"' },
+    { init:'PW', name:'Putu Windari', loc:'Tabanan, Bali', color:'#4A148C', tag:'PPh OP', tagType:'b', quote:'"SPT pribadi saya ditangani cepat dan benar. Tidak khawatir lagi."' },
+    { init:'YP', name:'Yusuf Pramono', loc:'Yogyakarta', color:'#BF360C', tag:'Sengketa Pajak', tagType:'b', quote:'"Perencanaan pajak sangat efisien dan legal. Kami hemat banyak."' },
+    { init:'SW', name:'Sarah Williams', loc:'Sydney, Australia', color:'#0D47A1', tag:'Tax Planning', tagType:'b', quote:'"The best tax consultant for foreign investors in Bali. Highly recommended!"' },
+    { init:'MW', name:'Maya Wulandari', loc:'Surakarta, Jawa Tengah', color:'#4A148C', tag:'SPT Tahunan', tagType:'b', quote:'"Sengketa pajak selesai dengan hasil terbaik. Pendampingan sangat tenang."' },
+    { init:'LW', name:'Linda Wahyuni', loc:'Makassar, Sulawesi', color:'#1565C0', tag:'SPT Tahunan', tagType:'b', quote:'"Konsultasi keuangan sangat bermanfaat untuk pengembangan bisnis kami."' },
+    { init:'HR', name:'Heri Ramadhan', loc:'Bekasi, Jawa Barat', color:'#BF360C', tag:'PPh Badan', tagType:'b', quote:'"SPT pribadi saya ditangani cepat dan benar. Tidak khawatir lagi."' },
+    { init:'RG', name:'Raj Gupta', loc:'Mumbai, India', color:'#1B5E20', tag:'PPh Badan', tagType:'b', quote:'"The best tax consultant for foreign investors in Bali. Highly recommended!"' },
+    { init:'AR', name:'Ahmad Rizki', loc:'Balikpapan, Kalimantan', color:'#BF360C', tag:'PPN', tagType:'b', quote:'"Konsultasi keuangan sangat bermanfaat untuk pengembangan bisnis kami."' },
+    { init:'GW', name:'Gusti Widiarta', loc:'Tabanan, Bali', color:'#4A148C', tag:'Konsultasi', tagType:'g', quote:'"Laporan keuangan kami jauh lebih rapi, audit berjalan lancar tanpa kendala."' },
+    { init:'YT', name:'Yuki Tanaka', loc:'Tokyo, Japan', color:'#6A1B9A', tag:'GCG Audit', tagType:'g', quote:'"Professional and reliable. Our financial report is always perfect."' },
+    { init:'HM', name:'Hans Mueller', loc:'Berlin, Germany', color:'#6A1B9A', tag:'GCG Audit', tagType:'g', quote:'"Managing my villa business tax in Bali has never been easier. Very professional!"' },
+    { init:'SR', name:'Siti Rahayu', loc:'Semarang, Jawa Tengah', color:'#6A1B9A', tag:'PPh OP', tagType:'b', quote:'"Tata kelola perusahaan kini sesuai standar GCG. Audit berjalan mulus."' },
+    { init:'BW', name:'Budi Wijaya', loc:'Bandung, Jawa Barat', color:'#E65100', tag:'Pembukuan', tagType:'g', quote:'"Pembukuan bisnis kami tertata baik. Laporan bulanan selalu tepat waktu."' },
+    { init:'MD', name:'Made Darmika', loc:'Negara, Jembrana', color:'#6A1B9A', tag:'SPT Tahunan', tagType:'b', quote:'"Konsultasi keuangan sangat bermanfaat untuk pengembangan bisnis kami."' },
+    { init:'TN', name:'Teguh Nugroho', loc:'Bekasi, Jawa Barat', color:'#6A1B9A', tag:'GCG Audit', tagType:'g', quote:'"Perencanaan pajak sangat efisien dan legal. Kami hemat banyak."' },
+    { init:'IG', name:'I Gede Mahendra', loc:'Badung, Bali', color:'#2E7D32', tag:'PPh Badan', tagType:'b', quote:'"Laporan keuangan selesai cepat, akurat, siap untuk pengajuan kredit."' },
+    { init:'AI', name:'Ayu Indrawati', loc:'Mataram, Lombok', color:'#4A148C', tag:'GCG Audit', tagType:'g', quote:'"Sistem pencatatan keuangan kami jauh lebih terstruktur dan efisien."' },
+  ];
+  function buildCard(d) {
+    return '<div class="lfr-card pop-in">' +
+      '<div class="lfr-card-top">' +
+        '<span class="lfr-av" style="background:' + d.color + '">' + d.init + '</span>' +
+        '<div><div class="lfr-cname">' + d.name + '</div><div class="lfr-cloc">&#128205; ' + d.loc + '</div></div>' +
+        '<span class="lfr-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' +
+      '</div>' +
+      '<div class="lfr-tag lfr-tag-' + d.tagType + '">' + d.tag + '</div>' +
+      '<div class="lfr-quote">' + d.quote + '</div>' +
+      '<div class="lfr-time">Baru saja &middot; Terverifikasi &#10003;</div>' +
+    '</div>';
+  }
+  function initLFR() {
+    var slots = [document.getElementById('lfrSlot0'), document.getElementById('lfrSlot1'), document.getElementById('lfrSlot2')];
+    if (!slots[0]) return;
+    var next = 0;
+    for (var i = 0; i < slots.length; i++) { slots[i].innerHTML = buildCard(lfrData[next % lfrData.length]); next++; }
+    var slotCursor = 0;
+    setInterval(function() {
+      var slotEl = slots[slotCursor];
+      var card = slotEl.querySelector('.lfr-card');
+      if (card) {
+        card.classList.remove('pop-in'); card.classList.add('pop-out');
+        var capturedSlot = slotEl, capturedNext = next;
+        setTimeout(function() { capturedSlot.innerHTML = buildCard(lfrData[capturedNext % lfrData.length]); }, 320);
+        next++;
+      }
+      slotCursor = (slotCursor + 1) % slots.length;
+    }, 2800);
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initLFR); } else { initLFR(); }
+})();
+</script>
+
+<!-- ══ KJA MODAL ══ -->
 <div class="kja-modal-overlay" id="kjaModalOverlay">
   <div class="kja-modal-panel">
     <div class="kja-modal-stripe"></div>
     <div class="kja-modal-hd">
-      <button class="kja-modal-close" id="closeKjaModal" aria-label="Tutup modal">✕</button>
+      <button class="kja-modal-close" id="closeKjaModal">✕</button>
       <div class="kja-modal-num" id="kjaModalBadge">Layanan 01</div>
       <h2 class="kja-modal-title" id="kjaModalTitle">Nama Layanan</h2>
       <p class="kja-modal-sub" id="kjaModalDesc">Deskripsi ringkas layanan.</p>
@@ -2006,156 +1493,109 @@ function filterLayanan(group, btn) {
       <div class="kja-features" id="kjaModalFeatures"></div>
       <div class="kja-divider"></div>
       <div class="kja-cta">
-        <div class="kja-cta-txt">
-          <strong>Butuh Implementasi Layanan Ini?</strong>
-          <span>Konsultasikan kebutuhan bisnis Anda bersama praktisi akuntan senior kami.</span>
-        </div>
-        <a href="https://wa.me/6281338983753" target="_blank" rel="noopener" class="kja-cta-btn" id="kjaModalWaBtn">
-          💬 Konsultasi Sekarang
-        </a>
+        <div class="kja-cta-txt"><strong>Butuh Implementasi Layanan Ini?</strong><span>Konsultasikan kebutuhan bisnis Anda bersama praktisi akuntan senior kami.</span></div>
+        <a href="https://wa.me/6281338983753" target="_blank" class="kja-cta-btn" id="kjaModalWaBtn">💬 Konsultasi Sekarang</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ KJA MODAL — DATA + LOGIC ═══════════════════════════════ -->
 <script>
-// === LOGIKA DINAMIS INTERAKTIF MODAL KJA ===
 const kjaDatabase = {
-  "1": {
-    badge: "Layanan KJA 01",
-    title: "Jasa Akuntan & Pembukuan",
-    desc: "Pengelolaan administrasi keuangan harian secara sistematis untuk menjaga stabilitas arus kas bisnis Anda.",
-    features: [
-      { label: "Input Harian Jurnal Kas / Bank",            detail: "Pencatatan setiap transaksi masuk dan keluar secara real-time untuk menjaga akurasi buku kas dan rekening bank." },
-      { label: "Rekonsiliasi Bank Periodik",                detail: "Pencocokan saldo buku perusahaan dengan rekening koran bank secara berkala untuk mendeteksi selisih dan potensi kesalahan." },
-      { label: "Pengelolaan Buku Besar / General Ledger",   detail: "Kompilasi seluruh jurnal ke dalam Buku Besar yang terstruktur, sebagai basis utama pelaporan keuangan yang akurat." }
-    ]
-  },
-  "2": {
-    badge: "Layanan KJA 02",
-    title: "Kompilasi Laporan Keuangan",
-    desc: "Transformasi data mentah transaksi menjadi informasi strategis dan terstruktur sesuai Standar Akuntansi Keuangan (SAK) yang berlaku.",
-    features: [
-      { label: "Penyusunan Set Laporan Keuangan Penuh",     detail: "Pembuatan Neraca, Laporan Laba Rugi, Laporan Perubahan Ekuitas, dan Laporan Arus Kas secara berkala." },
-      { label: "Catatan Atas Laporan Keuangan (CALK)",      detail: "Penyusunan penjelasan rinci mengenai pos-pos laporan keuangan guna memberikan transparansi penuh bagi stakeholder." },
-      { label: "Penerapan Standar Akuntansi Tepat Guna",    detail: "Penyesuaian format laporan berdasarkan SAK Umum, SAK Entitas Privat/EP, maupun SAK EMKM sesuai skala bisnis Anda." }
-    ]
-  },
-  "3": {
-    badge: "Layanan KJA 03",
-    title: "Tax Compliance (KJA)",
-    desc: "Memastikan seluruh data akuntansi pembukuan Anda sudah selaras dan patuh terhadap regulasi komersial-fiskal untuk meminimalkan risiko administratif.",
-    features: [
-      { label: "Penyiapan Data Akuntansi Pajak",            detail: "Memastikan seluruh pencatatan keuangan sudah patuh dan selaras dengan regulasi perpajakan yang berlaku (Tax-Ready)." },
-      { label: "Ekualisasi Omzet dan Biaya",                detail: "Sinkronisasi berkala antara data laporan keuangan komersial dengan objek pajak untuk meminimalkan risiko sanksi." },
-      { label: "Administrasi Data Potong-Pungut",           detail: "Penyusunan rekapitulasi data pendukung untuk kebutuhan SPT Masa PPh 21, 23, dan 4 ayat 2." }
-    ]
-  },
-  "4": {
-    badge: "Layanan KJA 04",
-    title: "Penyusunan Sistem Akuntan",
-    desc: "Membangun infrastruktur dan ekosistem keuangan internal perusahaan yang solid melalui digitalisasi alur data dan standarisasi operasional.",
-    features: [
-      { label: "Desain Bagan Akun (Chart of Accounts)",          detail: "Merancang struktur kode akun keuangan yang sistematis dan disesuaikan secara spesifik dengan karakteristik industri bisnis Anda." },
-      { label: "Implementasi Software Cloud Accounting",         detail: "Membantu proses migrasi, setup awal, dan integrasi sistem keuangan berbasis cloud seperti Accurate, Xero, atau Jurnal." },
-      { label: "Perancangan Standar Operasional Prosedur (SOP)", detail: "Menyusun alur dokumen, sistem otorisasi keuangan, dan kontrol internal guna mencegah fraud." }
-    ]
-  },
-  "5": {
-    badge: "Layanan KJA 05",
-    title: "Konsultasi Manajemen Keuangan",
-    desc: "Pemberian wawasan strategis, analisis metrik mendalam, dan rekomendasi finansial makro untuk mendukung pengambilan keputusan bisnis yang cerdas.",
-    features: [
-      { label: "Analisis Kinerja & Rasio Keuangan",         detail: "Membaca kesehatan bisnis melalui rasio likuiditas, solvabilitas, dan profitabilitas berdasarkan laporan yang tersedia." },
-      { label: "Proyeksi Arus Kas & Budgeting",             detail: "Membantu penyusunan anggaran perusahaan serta perencanaan arus kas masa depan agar likuiditas terjaga." },
-      { label: "Analisis Kelayakan Investasi & Bisnis",     detail: "Memberikan rekomendasi strategis terhadap rencana ekspansi, pembelian aset, atau keputusan keuangan makro lainnya." }
-    ]
-  }
+  "1": { badge:"Layanan KJA 01", title:"Jasa Akuntan & Pembukuan", desc:"Pengelolaan administrasi keuangan harian secara sistematis.", features:[{label:"Input Harian Jurnal Kas / Bank",detail:"Pencatatan setiap transaksi masuk dan keluar secara real-time."},{label:"Rekonsiliasi Bank Periodik",detail:"Pencocokan saldo buku perusahaan dengan rekening koran bank."},{label:"Pengelolaan Buku Besar",detail:"Kompilasi seluruh jurnal ke dalam Buku Besar yang terstruktur."}] },
+  "2": { badge:"Layanan KJA 02", title:"Kompilasi Laporan Keuangan", desc:"Transformasi data mentah menjadi informasi strategis sesuai SAK.", features:[{label:"Penyusunan Set Laporan Keuangan Penuh",detail:"Neraca, Laporan Laba Rugi, Perubahan Ekuitas, dan Arus Kas."},{label:"Catatan Atas Laporan Keuangan (CALK)",detail:"Penjelasan rinci mengenai pos-pos laporan keuangan."},{label:"Penerapan Standar Akuntansi Tepat Guna",detail:"SAK Umum, SAK Entitas Privat, maupun SAK EMKM."}] },
+  "3": { badge:"Layanan KJA 03", title:"Tax Compliance (KJA)", desc:"Memastikan data akuntansi selaras dengan regulasi komersial-fiskal.", features:[{label:"Penyiapan Data Akuntansi Pajak",detail:"Memastikan pencatatan keuangan sudah Tax-Ready."},{label:"Ekualisasi Omzet dan Biaya",detail:"Sinkronisasi antara laporan keuangan komersial dengan objek pajak."},{label:"Administrasi Data Potong-Pungut",detail:"Rekapitulasi data pendukung untuk SPT Masa PPh 21, 23, dan 4(2)."}] },
+  "4": { badge:"Layanan KJA 04", title:"Penyusunan Sistem Akuntan", desc:"Membangun infrastruktur keuangan internal perusahaan yang solid.", features:[{label:"Desain Bagan Akun (Chart of Accounts)",detail:"Merancang struktur kode akun disesuaikan dengan industri bisnis."},{label:"Implementasi Software Cloud Accounting",detail:"Setup dan integrasi sistem keuangan berbasis cloud."},{label:"Perancangan SOP Keuangan",detail:"Alur dokumen, otorisasi keuangan, dan kontrol internal."}] },
+  "5": { badge:"Layanan KJA 05", title:"Konsultasi Manajemen Keuangan", desc:"Wawasan strategis untuk mendukung pengambilan keputusan bisnis.", features:[{label:"Analisis Kinerja & Rasio Keuangan",detail:"Rasio likuiditas, solvabilitas, dan profitabilitas."},{label:"Proyeksi Arus Kas & Budgeting",detail:"Anggaran perusahaan dan perencanaan arus kas masa depan."},{label:"Analisis Kelayakan Investasi",detail:"Rekomendasi strategis terhadap rencana ekspansi atau pembelian aset."}] }
 };
-
-const mOverlay          = document.getElementById('kjaModalOverlay');
-const mClose            = document.getElementById('closeKjaModal');
-const mBadge            = document.getElementById('kjaModalBadge');
-const mTitle            = document.getElementById('kjaModalTitle');
-const mDesc             = document.getElementById('kjaModalDesc');
-const mFeaturesContainer= document.getElementById('kjaModalFeatures');
-const mWaBtn            = document.getElementById('kjaModalWaBtn');
-
+const mOverlay = document.getElementById('kjaModalOverlay');
+const mClose = document.getElementById('closeKjaModal');
+const mBadge = document.getElementById('kjaModalBadge');
+const mTitle = document.getElementById('kjaModalTitle');
+const mDesc = document.getElementById('kjaModalDesc');
+const mFeaturesContainer = document.getElementById('kjaModalFeatures');
+const mWaBtn = document.getElementById('kjaModalWaBtn');
 function openKjaModal(id) {
   const data = kjaDatabase[id];
   if (!data) return;
-
-  // Isi header
-  mBadge.textContent = data.badge;
-  mTitle.textContent = data.title;
-  mDesc.textContent  = data.desc;
-
-  // Build fitur secara dinamis
+  mBadge.textContent = data.badge; mTitle.textContent = data.title; mDesc.textContent = data.desc;
   mFeaturesContainer.innerHTML = '';
   data.features.forEach(feat => {
-    const fItem = document.createElement('div');
-    fItem.className = 'kja-fi';
-    fItem.innerHTML = `
-      <div class="kja-fcheck">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 13l4 4L19 7"/>
-        </svg>
-      </div>
-      <div class="kja-ft">
-        <strong>${feat.label}</strong>
-        <span>${feat.detail}</span>
-      </div>`;
+    const fItem = document.createElement('div'); fItem.className = 'kja-fi';
+    fItem.innerHTML = `<div class="kja-fcheck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div><div class="kja-ft"><strong>${feat.label}</strong><span>${feat.detail}</span></div>`;
     mFeaturesContainer.appendChild(fItem);
   });
-
-  // Update WA link dengan teks spesifik layanan
-  const waMsg = `Halo KJA Suastawa, saya ingin konsultasi mengenai ${data.title}.`;
-  mWaBtn.href = 'https://wa.me/6281338983753?text=' + encodeURIComponent(waMsg);
-
-  // Scroll panel ke atas & buka
+  mWaBtn.href = 'https://wa.me/6281338983753?text=' + encodeURIComponent(`Halo KJA Suastawa, saya ingin konsultasi mengenai ${data.title}.`);
   mOverlay.querySelector('.kja-modal-panel').scrollTop = 0;
-  mOverlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  mOverlay.classList.add('open'); document.body.style.overflow = 'hidden';
 }
-
-// Attach listener ke semua kartu .ps[data-kja-id]
 document.querySelectorAll('.ps[data-kja-id]').forEach(item => {
-  const id = item.getAttribute('data-kja-id');
-
-  item.addEventListener('click', () => openKjaModal(id));
-
-  item.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      openKjaModal(id);
-    }
-  });
+  item.addEventListener('click', () => openKjaModal(item.getAttribute('data-kja-id')));
+  item.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();openKjaModal(item.getAttribute('data-kja-id'));}});
 });
-
-// Tutup via tombol ✕
-if (mClose) {
-  mClose.addEventListener('click', () => {
-    mOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-}
-
-// Tutup via klik di luar panel
-window.addEventListener('click', e => {
-  if (e.target === mOverlay) {
-    mOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-});
-
-// Tutup via Escape
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && mOverlay.classList.contains('open')) {
-    mOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-});
+if (mClose) mClose.addEventListener('click', () => { mOverlay.classList.remove('open'); document.body.style.overflow = ''; });
+window.addEventListener('click', e => { if(e.target===mOverlay){mOverlay.classList.remove('open');document.body.style.overflow='';} });
+document.addEventListener('keydown', e => { if(e.key==='Escape'&&mOverlay.classList.contains('open')){mOverlay.classList.remove('open');document.body.style.overflow='';} });
 </script>
+
+<script>
+// ══ GALERI LIGHTBOX ══
+(function(){
+  var galeriImgs = [
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_14.34.56_vecz3k.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.42_srpdkh.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.43_k3v1we.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_1_ev1eqa.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_ovbkfz.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_2_ywrccj.jpg'
+  ];
+  var galeriCaptions = [
+    'Tampak Depan Kantor — Arsitektur Bali yang asri dan nyaman',
+    'Ruang Tunggu Klien — Ruang semi-terbuka dengan atmosfer rileks',
+    'Ruang Konsultasi — Privasi dan fokus adalah prioritas kami',
+    'Area Kerja Tim — Tim ahli bekerja kolaboratif dengan presisi',
+    'Taman & Area Santai — Area taman terbuka hijau untuk diskusi santai',
+    'Suasana Kantor Bali — Nuansa tradisional Bali yang autentik'
+  ];
+  var gCur = 0, gTotal = galeriImgs.length;
+
+  window.openGaleri = function(idx) {
+    gCur = idx;
+    showG(gCur);
+    document.getElementById('lbOverlay').classList.add('open');
+    document.getElementById('lbOverlay').setAttribute('data-mode','galeri');
+    document.body.style.overflow = 'hidden';
+  };
+  function showG(idx) {
+    var img = document.getElementById('lbImg');
+    img.style.opacity = '0';
+    setTimeout(function(){ img.src = galeriImgs[idx]; img.style.opacity = '1'; }, 150);
+    document.getElementById('lbCounter').textContent = (idx+1) + ' / ' + gTotal;
+    document.getElementById('lbCaption').textContent = galeriCaptions[idx] || '';
+  }
+  // Hook into existing lightbox prev/next when in galeri mode
+  document.addEventListener('DOMContentLoaded', function(){
+    var lb = document.getElementById('lbOverlay');
+    var prevBtn = document.getElementById('lbPrev');
+    var nextBtn = document.getElementById('lbNext');
+    if(prevBtn) prevBtn.addEventListener('click', function(){
+      if(lb.getAttribute('data-mode')==='galeri'){ gCur=(gCur-1+gTotal)%gTotal; showG(gCur); }
+    }, true);
+    if(nextBtn) nextBtn.addEventListener('click', function(){
+      if(lb.getAttribute('data-mode')==='galeri'){ gCur=(gCur+1)%gTotal; showG(gCur); }
+    }, true);
+    // Reset mode when closing
+    document.getElementById('lbClose').addEventListener('click', function(){ lb.removeAttribute('data-mode'); });
+    lb.addEventListener('click', function(e){ if(e.target===lb) lb.removeAttribute('data-mode'); });
+    document.addEventListener('keydown', function(e){
+      if(lb.getAttribute('data-mode')==='galeri' && lb.classList.contains('open')){
+        if(e.key==='ArrowLeft'){ gCur=(gCur-1+gTotal)%gTotal; showG(gCur); }
+        if(e.key==='ArrowRight'){ gCur=(gCur+1)%gTotal; showG(gCur); }
+      }
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
