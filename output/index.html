@@ -1264,7 +1264,7 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
       <h2 class="sec-h2">Izin Resmi &amp; Sertifikasi<br>Profesional</h2>
       <p class="sec-desc">Semua izin dan sertifikasi diterbitkan oleh lembaga berwenang resmi Pemerintah RI dan organisasi profesi internasional.</p>
     </div>
-    <div class="leg-grid">
+    <div class="leg-grid" id="legGrid">
       <div class="cert reveal" data-cert="0" onclick="openLightbox(0)" style="cursor:zoom-in;">
         <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/Piagam_kementrian_keuangan_eyju5f.jpg" alt="Piagam RNA Kemenkeu RI"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
         <div class="cert-info"><span class="cert-badge g">KJA</span><h4>Piagam RNA — Kemenkeu RI</h4><p>Register Negara Akuntan No. RNA 10235 · 30 September 2015</p></div>
@@ -2015,6 +2015,65 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'&&kkpO.classList.
       // error/timeout → pastikan statis tetap ada
       if(grid.innerHTML.trim() === '') grid.innerHTML = staticHTML;
     });
+})();
+</script>
+
+
+<script>
+// ══ INTEGRASI API: DOKUMEN & SERTIFIKAT DARI ADMIN ══
+(function(){
+  var API_BASE = 'https://suastawa-consulting-production.up.railway.app';
+  var legGrid = document.getElementById('legGrid');
+  if(!legGrid) return;
+
+  function badgeClass(kat){
+    var k = (kat||'').toLowerCase();
+    if(k.indexOf('izin')>=0) return 'g';
+    if(k.indexOf('pajak')>=0 || k.indexOf('kkp')>=0) return 'b';
+    return 'g';
+  }
+
+  function renderDokumen(list){
+    // Hanya dokumen yang punya URL file & nama valid
+    var valid = list.filter(function(d){
+      return (d.url || d.file_url) && (d.nama || d.name || '').trim().length > 0;
+    });
+    if(valid.length === 0) return; // tidak ada → cert statis tetap
+
+    var html = valid.map(function(d){
+      var nama = d.nama || d.name || 'Dokumen';
+      var kat = d.kategori || d.category || 'Dokumen';
+      var url = d.url || d.file_url;
+      var bcls = badgeClass(kat);
+      var isImg = /\.(jpg|jpeg|png|webp|gif)$/i.test(url);
+      var thumb = isImg
+        ? '<img src="'+url+'" alt="'+nama+'" loading="lazy">'
+        : '<div style="height:220px;display:flex;align-items:center;justify-content:center;background:#f1f5f9;font-size:48px;">📄</div>';
+      return '<a href="'+url+'" target="_blank" rel="noopener" class="cert reveal" style="cursor:pointer;display:block;text-decoration:none;color:inherit;">' +
+        thumb +
+        '<div class="cert-zoom-hint">🔍 Klik untuk buka</div>' +
+        '<div class="cert-info"><span class="cert-badge '+bcls+'">'+kat.toUpperCase()+'</span><h4>'+nama+'</h4><p>Dokumen resmi Suastawa Consulting</p></div>' +
+      '</a>';
+    }).join('');
+
+    // TAMBAHKAN dokumen API setelah cert statis (tidak menghapus yang lama)
+    legGrid.insertAdjacentHTML('beforeend', html);
+
+    // re-trigger reveal animation
+    document.querySelectorAll('#legGrid .cert.reveal:not(.visible)').forEach(function(el){
+      el.classList.add('visible');
+    });
+  }
+
+  var controller = new AbortController();
+  var timeout = setTimeout(function(){ controller.abort(); }, 6000);
+
+  fetch(API_BASE + '/api/dokumen', { signal: controller.signal })
+    .then(function(res){ clearTimeout(timeout); return res.ok ? res.json() : null; })
+    .then(function(data){
+      if(Array.isArray(data) && data.length > 0) renderDokumen(data);
+    })
+    .catch(function(){ clearTimeout(timeout); /* diam → cert statis tetap tampil */ });
 })();
 </script>
 

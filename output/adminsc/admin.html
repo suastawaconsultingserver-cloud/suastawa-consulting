@@ -325,6 +325,44 @@ label{display:block;margin-bottom:6px;font-weight:600;font-size:13px;color:var(-
   </div>
 </div>
 
+<!-- Modal: Edit Layanan -->
+<div class="modal-overlay" id="modalEditLayanan">
+  <div class="modal">
+    <div class="modal-header"><h3>Edit Layanan</h3><button class="modal-close" onclick="closeModal('modalEditLayanan')">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="elId">
+      <div class="form-group"><label>Nama Layanan *</label><input type="text" id="elNama"></div>
+      <div class="form-group"><label>Kategori</label>
+        <select id="elKategori"><option value="KJA">KJA</option><option value="KKP">KKP</option><option value="Umum">Umum</option></select>
+      </div>
+      <div class="form-group"><label>Deskripsi</label><textarea id="elDeskripsi" rows="4"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modalEditLayanan')">Batal</button>
+      <button class="btn btn-primary" onclick="saveEditLayanan()">💾 Simpan Perubahan</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Edit Dokumen -->
+<div class="modal-overlay" id="modalEditDokumen">
+  <div class="modal">
+    <div class="modal-header"><h3>Edit Dokumen</h3><button class="modal-close" onclick="closeModal('modalEditDokumen')">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="edId">
+      <div class="form-group"><label>Nama Dokumen *</label><input type="text" id="edNama"></div>
+      <div class="form-group"><label>Kategori</label>
+        <select id="edKategori"><option value="sertifikat">Sertifikat</option><option value="izin">Izin Usaha</option><option value="laporan">Laporan</option><option value="umum">Umum</option></select>
+      </div>
+      <div class="form-hint" style="margin-top:-8px">Catatan: Edit hanya mengubah nama & kategori. Untuk ganti file, hapus lalu upload ulang.</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modalEditDokumen')">Batal</button>
+      <button class="btn btn-primary" onclick="saveEditDokumen()">💾 Simpan Perubahan</button>
+    </div>
+  </div>
+</div>
+
 <!-- Modal: Upload Dokumen -->
 <div class="modal-overlay" id="modalUploadDokumen">
   <div class="modal">
@@ -532,9 +570,11 @@ async function loadDashboard() {
 }
 
 // ==================== LAYANAN ====================
+let _layananCache = [];
 async function loadLayanan() {
   const data = await apiGet('/api/layanan');
   const list = Array.isArray(data) ? data : [];
+  _layananCache = list;
   const tbody = document.getElementById('layananTableBody');
   if (list.length === 0) {
     tbody.innerHTML = '<tr><td colspan="4"><div class="no-data"><div class="no-data-icon">⚙️</div><p>Belum ada layanan</p></div></td></tr>';
@@ -544,7 +584,7 @@ async function loadLayanan() {
     <td><strong>${l.nama||l.name||'-'}</strong></td>
     <td><span class="badge badge-info">${l.kategori||l.category||'-'}</span></td>
     <td>${(l.deskripsi||l.description||'-').substring(0,80)}${(l.deskripsi||l.description||'').length>80?'...':''}</td>
-    <td><button class="btn btn-danger btn-sm" onclick="deleteLayanan('${l._id}')">🗑 Hapus</button></td>
+    <td><div class="action-btns"><button class="btn btn-warning btn-sm" onclick="openEditLayanan('${l._id}')">✏️ Edit</button><button class="btn btn-danger btn-sm" onclick="deleteLayanan('${l._id}')">🗑 Hapus</button></div></td>
   </tr>`).join('');
 }
 
@@ -571,10 +611,42 @@ async function deleteLayanan(id) {
   else showToast('error','Gagal','Gagal menghapus layanan');
 }
 
+// ==================== EDIT LAYANAN ====================
+function openEditLayanan(id) {
+  const l = _layananCache.find(x => x._id === id);
+  if (!l) { showToast('error','Error','Data layanan tidak ditemukan'); return; }
+  document.getElementById('elId').value = l._id;
+  document.getElementById('elNama').value = l.nama || l.name || '';
+  document.getElementById('elKategori').value = l.kategori || l.category || 'KJA';
+  document.getElementById('elDeskripsi').value = l.deskripsi || l.description || '';
+  openModal('modalEditLayanan');
+}
+
+async function saveEditLayanan() {
+  const id = document.getElementById('elId').value;
+  const nama = document.getElementById('elNama').value.trim();
+  if (!nama) { showToast('error','Error','Nama layanan wajib diisi'); return; }
+  const body = {
+    nama,
+    kategori: document.getElementById('elKategori').value,
+    deskripsi: document.getElementById('elDeskripsi').value
+  };
+  const res = await apiPut(`/api/layanan/${id}`, body);
+  if (res && res.ok) {
+    closeModal('modalEditLayanan');
+    showToast('success','Berhasil','Layanan berhasil diperbarui');
+    loadLayanan();
+  } else {
+    showToast('error','Gagal', (res && res.data && res.data.error) || 'Gagal memperbarui. Pastikan backend mendukung edit (PUT).');
+  }
+}
+
 // ==================== DOKUMEN ====================
+let _dokumenCache = [];
 async function loadDokumen() {
   const data = await apiGet('/api/dokumen');
   const list = Array.isArray(data) ? data : [];
+  _dokumenCache = list;
   const tbody = document.getElementById('dokumenTableBody');
   if (list.length === 0) {
     tbody.innerHTML = '<tr><td colspan="5"><div class="no-data"><div class="no-data-icon">📁</div><p>Belum ada dokumen</p></div></td></tr>';
@@ -587,6 +659,7 @@ async function loadDokumen() {
     <td>${d.created_at ? new Date(d.created_at).toLocaleDateString('id-ID') : '-'}</td>
     <td><div class="action-btns">
       ${d.url ? `<a href="${d.url}" target="_blank" class="btn btn-info btn-sm">👁 Lihat</a>` : ''}
+      <button class="btn btn-warning btn-sm" onclick="openEditDokumen('${d._id}')">✏️ Edit</button>
       <button class="btn btn-danger btn-sm" onclick="deleteDokumen('${d._id}')">🗑 Hapus</button>
     </div></td>
   </tr>`).join('');
@@ -638,6 +711,34 @@ async function deleteDokumen(id) {
   const res = await apiDelete(`/api/dokumen/${id}`);
   if (res && res.ok) { showToast('success','Berhasil','Dokumen dihapus'); loadDokumen(); }
   else showToast('error','Gagal','Gagal menghapus dokumen');
+}
+
+// ==================== EDIT DOKUMEN ====================
+function openEditDokumen(id) {
+  const d = _dokumenCache.find(x => x._id === id);
+  if (!d) { showToast('error','Error','Data dokumen tidak ditemukan'); return; }
+  document.getElementById('edId').value = d._id;
+  document.getElementById('edNama').value = d.nama || d.name || '';
+  document.getElementById('edKategori').value = d.kategori || d.category || 'sertifikat';
+  openModal('modalEditDokumen');
+}
+
+async function saveEditDokumen() {
+  const id = document.getElementById('edId').value;
+  const nama = document.getElementById('edNama').value.trim();
+  if (!nama) { showToast('error','Error','Nama dokumen wajib diisi'); return; }
+  const body = {
+    nama,
+    kategori: document.getElementById('edKategori').value
+  };
+  const res = await apiPut(`/api/dokumen/${id}`, body);
+  if (res && res.ok) {
+    closeModal('modalEditDokumen');
+    showToast('success','Berhasil','Dokumen berhasil diperbarui');
+    loadDokumen();
+  } else {
+    showToast('error','Gagal', (res && res.data && res.data.error) || 'Gagal memperbarui. Pastikan backend mendukung edit (PUT).');
+  }
 }
 
 // ==================== PESAN ====================
