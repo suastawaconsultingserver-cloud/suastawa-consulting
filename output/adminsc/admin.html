@@ -306,6 +306,14 @@ label{display:block;margin-bottom:6px;font-weight:600;font-size:13px;color:var(-
         <div class="form-group"><label>Login sebagai</label><input type="text" id="settingUser" readonly></div>
         <button class="btn btn-primary" onclick="checkApiHealth()">🔌 Cek Koneksi API</button>
       </div>
+      <div class="card" style="margin-top:20px">
+        <h3 style="margin:0 0 16px;font-size:16px">🔑 Ganti Password</h3>
+        <div class="form-group"><label>Password Lama *</label><input type="password" id="pwLama" placeholder="Masukkan password lama"></div>
+        <div class="form-group"><label>Password Baru *</label><input type="password" id="pwBaru" placeholder="Minimal 6 karakter"></div>
+        <div class="form-group"><label>Konfirmasi Password Baru *</label><input type="password" id="pwKonfirmasi" placeholder="Ulangi password baru"></div>
+        <div id="pwStatus" style="display:none;padding:10px 14px;border-radius:8px;margin-bottom:12px;font-size:13px"></div>
+        <button class="btn btn-primary" onclick="gantiPassword()">💾 Simpan Password Baru</button>
+      </div>
     </div>
 
   </div>
@@ -793,6 +801,42 @@ async function checkApiHealth() {
   } catch(e) {
     document.getElementById('apiStatus').value = '❌ Tidak dapat terhubung';
     showToast('error','API Offline','Periksa koneksi atau status Railway');
+  }
+}
+
+async function gantiPassword() {
+  const lama = document.getElementById('pwLama').value;
+  const baru = document.getElementById('pwBaru').value;
+  const konfirmasi = document.getElementById('pwKonfirmasi').value;
+  const st = document.getElementById('pwStatus');
+  function show(msg, ok) {
+    st.style.display = 'block';
+    st.textContent = msg;
+    st.style.background = ok ? 'rgba(29,158,117,.15)' : 'rgba(220,53,69,.12)';
+    st.style.color = ok ? '#1D9E75' : '#dc3545';
+  }
+  if (!lama || !baru || !konfirmasi) { show('Semua kolom wajib diisi.', false); return; }
+  if (baru.length < 6) { show('Password baru minimal 6 karakter.', false); return; }
+  if (baru !== konfirmasi) { show('Konfirmasi password tidak cocok.', false); return; }
+
+  try {
+    const res = await fetch(`${API_BASE}/api/auth/ganti-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
+      body: JSON.stringify({ password_lama: lama, password_baru: baru })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      show('✅ Password berhasil diganti.', true);
+      document.getElementById('pwLama').value = '';
+      document.getElementById('pwBaru').value = '';
+      document.getElementById('pwKonfirmasi').value = '';
+      showToast('success', 'Berhasil', 'Password berhasil diganti');
+    } else {
+      show(data.error || 'Gagal mengganti password.', false);
+    }
+  } catch(e) {
+    show('Tidak dapat terhubung ke server.', false);
   }
 }
 
