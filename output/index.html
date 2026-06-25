@@ -357,9 +357,10 @@ section{padding:80px 0;}
 .profil-grid{display:grid;grid-template-columns:360px 1fr;gap:48px;align-items:start;}
 .profil-photo-wrap{position:relative;}
 .profil-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.12);}
-.profil-badge-float{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:var(--g2);color:#fff;padding:12px 22px;border-radius:10px;text-align:center;white-space:nowrap;box-shadow:0 8px 24px rgba(46,125,50,.3);}
-.pbf-name{font-family:var(--serif);font-size:14px;font-weight:600;}
-.pbf-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;opacity:.8;margin-top:2px;}
+.profil-badge-float{margin:18px auto 0;max-width:330px;background:var(--g2);color:#fff;padding:14px 22px;border-radius:12px;text-align:center;box-shadow:0 8px 24px rgba(46,125,50,.3);}
+.pbf-name{font-family:var(--serif);font-size:16px;font-weight:600;}
+.pbf-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-top:3px;}
+.pbf-found{font-size:10.5px;line-height:1.55;font-weight:300;opacity:.92;margin-top:9px;padding-top:9px;border-top:1px solid rgba(255,255,255,.22);}
 .profil-content{padding-top:8px;}
 .profil-gelar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
 .pg{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;background:var(--gp);color:var(--g2);}
@@ -1221,10 +1222,11 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
     </div>
     <div class="profil-grid">
       <div class="profil-photo-wrap reveal">
-        <img class="profil-photo" src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780089720/WhatsApp_Image_2026-05-26_at_17.22.21_wfdjun.jpg" alt="I Gusti Nyoman Suastawa">
+        <img class="profil-photo" src="https://res.cloudinary.com/djwrxixt9/image/upload/v1782370129/photo_2026-06-25_13-47-13_oo356c.jpg" alt="I Gusti Nyoman Suastawa">
         <div class="profil-badge-float">
           <div class="pbf-name">I Gusti Nyoman Suastawa</div>
-          <div class="pbf-title">Pemilik &amp; Pemimpin · Berdiri 2015</div>
+          <div class="pbf-title">Pemilik &amp; Pemimpin</div>
+          <div class="pbf-found">Mendirikan SUASTAWA CONSULTING pada 30 Oktober 2015 di Desa Adat Bindu, Banjar Bindu, Desa Mekar Bhuwana, Kecamatan Abiansemal, Kabupaten Badung, Bali</div>
         </div>
       </div>
       <div class="profil-content reveal">
@@ -1303,6 +1305,18 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
         </div>
         <div class="cert-info"><span class="cert-badge g">KJA</span><h4>Izin Usaha KJA — No. 357/KM.1/PPPK/2022</h4><p>Surat Izin Kantor Jasa Akuntan · Kementerian Keuangan RI · 2 Halaman</p></div>
       </div>
+      <div class="cert reveal" data-cert="7" onclick="openLightbox(7)" style="cursor:zoom-in;">
+        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1782371666/photo_2026-06-25_14-11-46_deser5.jpg" alt="Sertifikat USKP Tingkat A"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
+        <div class="cert-info"><span class="cert-badge b">KKP</span><h4>Sertifikat USKP Tingkat A — IKPI</h4><p>Ujian Sertifikasi Konsultan Pajak · No. 034/A/Kep.01/SK-BP.USKP/I/2008</p></div>
+      </div>
+      <div class="cert reveal" data-cert="8" onclick="openLightbox(8)" style="cursor:zoom-in;">
+        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1782371666/photo_2026-06-25_14-11-49_blaru4.jpg" alt="Sertifikat USKP Tingkat B"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
+        <div class="cert-info"><span class="cert-badge b">KKP</span><h4>Sertifikat USKP Tingkat B — IKPI</h4><p>Ujian Sertifikasi Konsultan Pajak · No. Kep.003/SK-BP.USKP/VIII/2010</p></div>
+      </div>
+      <div class="cert reveal" data-cert="9" onclick="openLightbox(9)" style="cursor:zoom-in;">
+        <img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1782371666/photo_2026-06-25_14-11-48_lbesib.jpg" alt="Kartu Kuasa Hukum Pengadilan Pajak"><div class="cert-zoom-hint">🔍 Klik untuk perbesar</div>
+        <div class="cert-info"><span class="cert-badge b">KKP</span><h4>Kartu Kuasa Hukum — Pengadilan Pajak</h4><p>Kartu Tanda Pengenal Kuasa Hukum Tingkat B · Pengadilan Pajak RI</p></div>
+      </div>
     </div>
 
     <!-- Area Dokumen Lainnya (muncul otomatis jika ada upload kategori non-sertifikat) -->
@@ -1332,6 +1346,11 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
       <div class="gi" onclick="openGaleri(3)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_1_ev1eqa.jpg" alt="Area Kerja Tim"><div class="gi-caption"><strong>Area Kerja Tim</strong><span>Tim ahli bekerja kolaboratif dengan presisi.</span></div></div>
       <div class="gi" onclick="openGaleri(4)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_ovbkfz.jpg" alt="Taman Kantor"><div class="gi-caption"><strong>Taman &amp; Area Santai</strong><span>Area taman terbuka hijau untuk diskusi santai.</span></div></div>
       <div class="gi" onclick="openGaleri(5)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_2_ywrccj.jpg" alt="Suasana Kantor"><div class="gi-caption"><strong>Suasana Kantor Bali</strong><span>Nuansa tradisional Bali yang autentik.</span></div></div>
+      <div class="gi" onclick="openGaleri(6)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1782370130/photo_2026-06-25_13-47-07_dchiy6.jpg" alt="Bersama Klien"><div class="gi-caption"><strong>Kebersamaan dengan Klien</strong><span>Kepercayaan yang terjalin bertahun-tahun.</span></div></div>
+      <div class="gi" onclick="openGaleri(7)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1782370131/photo_2026-06-25_13-47-11_jdzaek.jpg" alt="Melayani Klien"><div class="gi-caption"><strong>Melayani dengan Sepenuh Hati</strong><span>Komitmen pelayanan terbaik untuk klien.</span></div></div>
+      <div class="gi" onclick="openGaleri(8)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1782370131/photo_2026-06-25_13-47-10_jmnw3z.jpg" alt="Diskusi dengan Klien"><div class="gi-caption"><strong>Diskusi Santai Bersama Klien</strong><span>Konsultasi dalam suasana hangat dan akrab.</span></div></div>
+      <div class="gi" onclick="openGaleri(9)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1782370131/photo_2026-06-25_13-47-08_rnxj82.jpg" alt="Klien Internasional"><div class="gi-caption"><strong>Klien Internasional</strong><span>Dipercaya klien lokal hingga mancanegara.</span></div></div>
+      <div class="gi" onclick="openGaleri(10)" style="cursor:zoom-in;"><img src="https://res.cloudinary.com/djwrxixt9/image/upload/v1782370132/photo_2026-06-25_13-47-05_fyrswl.jpg" alt="Kepercayaan Klien"><div class="gi-caption"><strong>Kepercayaan Klien</strong><span>Prioritas utama Suastawa Consulting.</span></div></div>
     </div>
   </div>
 </section>
@@ -1431,7 +1450,7 @@ footer{background:#0a0a0f;padding:48px 0 24px;}
     </div>
     <div class="f-btm">
       <p>© 2026 KJA &amp; KKP Suastawa Consulting · Badung, Bali · Izin 357/KM.1/PPPK/2022</p>
-      <p>✦ Made with <a href="#">JR Production</a> — Jakarta Barat ✦</p>
+      <p>✦ Made with <a href="https://jr-production.com" target="_blank" rel="noopener">jr-production.com</a> — Jakarta Barat ✦</p>
     </div>
   </div>
 </footer>
@@ -1540,7 +1559,10 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_praktik_ogmzhy.jpg',
     'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961715/sertifikat_peradi_eukcjy.jpg',
     'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_1_verzvv.jpg',
-    'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_2_p8zmki.jpg'
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1779961714/izin_KJA_2_p8zmki.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1782371666/photo_2026-06-25_14-11-46_deser5.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1782371666/photo_2026-06-25_14-11-49_blaru4.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1782371666/photo_2026-06-25_14-11-48_lbesib.jpg'
   ];
   var certCaptions = [
     'Piagam RNA — Kemenkeu RI · RNA 10235 · 30 September 2015',
@@ -1549,7 +1571,10 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     'SK DJP — Izin Praktik Tingkat C · KEP-6378/IP.C/PJ/2020',
     'PERADI — PKPA · No. 12-04395/PERADI-KP2A1/XII/13 · 2013',
     'Izin Usaha KJA — Halaman 1 · No. 357/KM.1/PPPK/2022',
-    'Izin Usaha KJA — Halaman 2 · No. 357/KM.1/PPPK/2022'
+    'Izin Usaha KJA — Halaman 2 · No. 357/KM.1/PPPK/2022',
+    'Sertifikat USKP Tingkat A — IKPI · No. 034/A/Kep.01/SK-BP.USKP/I/2008 · 2008',
+    'Sertifikat USKP Tingkat B — IKPI · No. Kep.003/SK-BP.USKP/VIII/2010 · 2011',
+    'Kartu Kuasa Hukum Pengadilan Pajak — Tingkat B · I Gusti Nyoman Suastawa, SE., Ak.'
   ];
   var cur = 0, total = certImgs.length;
   window.openLightbox = function(idx) { cur = idx; showImg(cur); document.getElementById('lbOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; };
@@ -1820,7 +1845,12 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'&&mOverlay.classL
     'https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.43_k3v1we.jpg',
     'https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_1_ev1eqa.jpg',
     'https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_ovbkfz.jpg',
-    'https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_2_ywrccj.jpg'
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1780136763/WhatsApp_Image_2026-05-30_at_15.12.44_2_ywrccj.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1782370130/photo_2026-06-25_13-47-07_dchiy6.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1782370131/photo_2026-06-25_13-47-11_jdzaek.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1782370131/photo_2026-06-25_13-47-10_jmnw3z.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1782370131/photo_2026-06-25_13-47-08_rnxj82.jpg',
+    'https://res.cloudinary.com/djwrxixt9/image/upload/v1782370132/photo_2026-06-25_13-47-05_fyrswl.jpg'
   ];
   var galeriCaptions = [
     'Tampak Depan Kantor — Arsitektur Bali yang asri dan nyaman',
@@ -1828,7 +1858,12 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'&&mOverlay.classL
     'Ruang Konsultasi — Privasi dan fokus adalah prioritas kami',
     'Area Kerja Tim — Tim ahli bekerja kolaboratif dengan presisi',
     'Taman & Area Santai — Area taman terbuka hijau untuk diskusi santai',
-    'Suasana Kantor Bali — Nuansa tradisional Bali yang autentik'
+    'Suasana Kantor Bali — Nuansa tradisional Bali yang autentik',
+    'Kebersamaan dengan Klien — Kepercayaan yang terjalin bertahun-tahun',
+    'Melayani dengan Sepenuh Hati — Komitmen pelayanan terbaik untuk klien',
+    'Diskusi Santai Bersama Klien — Konsultasi dalam suasana hangat dan akrab',
+    'Klien Internasional — Dipercaya klien lokal hingga mancanegara',
+    'Kepercayaan Klien — Prioritas utama Suastawa Consulting'
   ];
   var gCur = 0, gTotal = galeriImgs.length;
 
