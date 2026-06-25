@@ -1528,7 +1528,7 @@ async function submitForm(e) {
   const alamat = document.getElementById('f-alamat').value;
   const masalah = document.getElementById('f-masalah').value;
   try {
-    await fetch('https://suastawa-consulting-production.up.railway.app/api/kontak', {
+    await fetch('https://suastawa-api.up.railway.app/api/kontak', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nama, hp, email, layanan: layanan || 'Konsultasi Umum', alamat: alamat || '-', pesan: masalah })
@@ -1902,6 +1902,31 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'&&mOverlay.classL
       }
     });
   });
+
+  // ── Galeri dinamis dari panel admin (jika ada data, ganti statis) ──
+  (function(){
+    var API='https://suastawa-api.up.railway.app';
+    fetch(API+'/api/galeri').then(function(r){ return r.ok ? r.json() : null; }).then(function(items){
+      if(!Array.isArray(items) || items.length===0) return; // kosong → biarkan statis
+      var grid=document.querySelector('#galeri .galeri-grid');
+      if(!grid) return;
+      var imgs=[], caps=[], html='', pIdx=0;
+      items.forEach(function(it){
+        var url=it.url||'';
+        var judul=it.judul||'';
+        var cap=it.caption||'';
+        if((it.tipe||'')==='video'){
+          html+='<div class="gi"><video src="'+url+'" controls muted playsinline style="width:100%;height:100%;object-fit:cover"></video><div class="gi-caption"><strong>'+judul+'</strong><span>'+cap+'</span></div></div>';
+        } else {
+          var idx=pIdx++; imgs.push(url); caps.push((judul?judul+' — ':'')+cap);
+          html+='<div class="gi" onclick="openGaleri('+idx+')" style="cursor:zoom-in;"><img src="'+url+'" alt="'+judul+'"><div class="gi-caption"><strong>'+judul+'</strong><span>'+cap+'</span></div></div>';
+        }
+      });
+      grid.innerHTML=html;
+      galeriImgs=imgs; galeriCaptions=caps; gTotal=imgs.length;
+    }).catch(function(){});
+  })();
+
 })();
 </script>
 
@@ -2016,7 +2041,7 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'&&kkpO.classList.
 <script>
 // ══ INTEGRASI API: LAYANAN DARI ADMIN PANEL ══
 (function(){
-  var API_BASE = 'https://suastawa-consulting-production.up.railway.app';
+  var API_BASE = 'https://suastawa-api.up.railway.app';
 
   // Simpan HTML statis asli sebagai fallback
   var grid = document.getElementById('layananGrid');
@@ -2071,7 +2096,7 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'&&kkpO.classList.
 <script>
 // ══ INTEGRASI API: DOKUMEN & SERTIFIKAT DARI ADMIN (2 AREA) ══
 (function(){
-  var API_BASE = 'https://suastawa-consulting-production.up.railway.app';
+  var API_BASE = 'https://suastawa-api.up.railway.app';
   var legGrid = document.getElementById('legGrid');
   var lainGrid = document.getElementById('dokLainnyaGrid');
   var lainWrap = document.getElementById('dokLainnyaWrap');
