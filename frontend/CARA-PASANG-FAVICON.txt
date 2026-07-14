@@ -1,0 +1,20 @@
+FAVICON SUASTAWA CONSULTING
+
+Isi:
+- favicon.ico             (browser lama / tab)
+- favicon-16/32/48.png    (tab modern)
+- apple-touch-icon.png    (180 - iPhone/iPad home screen)
+- android-chrome-192/512.png (Android/PWA)
+
+CARA PASANG (setelah klien setuju):
+1. Taruh SEMUA file ini ke folder: frontend/
+2. Di frontend/index.html, GANTI blok favicon lama (3 baris <link rel="icon" ... base64 ...)
+   dengan snippet ini di dalam <head>:
+
+   <link rel="icon" href="/favicon.ico" sizes="any">
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+3. git add . && git commit -m "favicon baru" && git push
+4. Cloudflare auto-deploy. Cek di tab browser (hard refresh Ctrl+Shift+R).
