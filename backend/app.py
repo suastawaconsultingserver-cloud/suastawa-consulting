@@ -328,6 +328,43 @@ def delete_galeri(id):
     db.galeri.delete_one({"_id": ObjectId(id)})
     return jsonify({"message": "Galeri berhasil dihapus"})
 
+# ==================== SEO ====================
+
+SEO_DEFAULT = {
+    "title": "Suastawa Consulting \u2014 KJA & KKP Profesional | Badung, Bali",
+    "description": "Kantor Jasa Akuntan & Konsultan Pajak profesional di Bali. Izin resmi Kemenkeu RI, IAI & IKPI. Melayani akuntansi, perpajakan, dan konsultasi bisnis sejak 2015.",
+    "keywords": "Kantor Jasa Akuntan Bali, Konsultan Pajak Bali, KJA Badung, KKP Badung, akuntan Abiansemal, jasa pajak Bali, SPT tahunan, laporan keuangan SAK, tax planning, Suastawa Consulting",
+    "og_image": "https://res.cloudinary.com/djwrxixt9/image/upload/v1780124191/Logo_KJA_SUASTAWA_CONSULTING_cekjhj.png"
+}
+
+@app.route("/api/seo", methods=["GET"])
+def get_seo():
+    doc = db.seo.find_one({"_id": "main"})
+    if not doc:
+        return jsonify(SEO_DEFAULT)
+    return jsonify({
+        "title": doc.get("title", SEO_DEFAULT["title"]),
+        "description": doc.get("description", SEO_DEFAULT["description"]),
+        "keywords": doc.get("keywords", SEO_DEFAULT["keywords"]),
+        "og_image": doc.get("og_image", SEO_DEFAULT["og_image"]),
+        "updated_at": doc.get("updated_at", "")
+    })
+
+@app.route("/api/seo", methods=["PUT"])
+@jwt_required()
+def update_seo():
+    data = request.json or {}
+    from datetime import datetime
+    allowed = {}
+    for f in ["title", "description", "keywords", "og_image"]:
+        if f in data and isinstance(data[f], str) and data[f].strip():
+            allowed[f] = data[f].strip()
+    if not allowed:
+        return jsonify({"error": "Tidak ada data SEO yang dikirim"}), 400
+    allowed["updated_at"] = datetime.utcnow().isoformat()
+    db.seo.update_one({"_id": "main"}, {"$set": allowed}, upsert=True)
+    return jsonify({"message": "SEO berhasil disimpan", **allowed})
+
 # ==================== HEALTH CHECK ====================
 
 @app.route("/api/health", methods=["GET"])

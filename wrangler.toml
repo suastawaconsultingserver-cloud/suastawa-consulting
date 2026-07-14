@@ -1,5 +1,7 @@
 name = "small-pine-fd8b"
+main = "worker.js"
 compatibility_date = "2026-05-30"
 
 [assets]
 directory = "./frontend"
+binding = "ASSETS"

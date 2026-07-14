@@ -215,6 +215,7 @@ label{display:block;margin-bottom:6px;font-weight:600;font-size:13px;color:var(-
       <div class="nav-item" onclick="navigateTo('pesan')"><span class="nav-icon">✉️</span><span class="nav-label">Pesan Masuk <span id="pesanBadge" style="background:var(--danger);color:#fff;border-radius:10px;padding:1px 7px;font-size:10px;margin-left:4px;display:none">0</span></span></div>
       <div class="nav-item" onclick="openLiveChat()"><span class="nav-icon">💬</span><span class="nav-label">Live Chat <span style="background:#1D9E75;color:#fff;border-radius:10px;padding:1px 7px;font-size:9px;margin-left:4px;">Tawk.to</span></span></div>
       <div class="nav-section">SISTEM</div>
+      <div class="nav-item" onclick="navigateTo('seo')"><span class="nav-icon">🔍</span><span class="nav-label">SEO &amp; Google</span></div>
       <div class="nav-item" onclick="navigateTo('settings')"><span class="nav-icon">🔧</span><span class="nav-label">Pengaturan</span></div>
     </nav>
   </aside>
@@ -316,6 +317,48 @@ label{display:block;margin-bottom:6px;font-weight:600;font-size:13px;color:var(-
     </div>
 
     <!-- Settings -->
+    <div class="page-content" id="page-seo">
+      <div class="page-header"><div><h2>SEO &amp; Google</h2><p>Atur bagaimana situs tampil di Google &amp; saat link dibagikan</p></div></div>
+
+      <div class="card">
+        <h3 style="margin:0 0 16px;font-size:16px">📝 Meta Tag Situs</h3>
+        <div id="seoStatus" style="display:none;padding:10px 14px;border-radius:8px;margin-bottom:12px;font-size:13px"></div>
+        <div class="form-group"><label>Judul Situs (Title) *</label><input type="text" id="seoTitle" maxlength="70" placeholder="Judul yang muncul di tab & hasil Google"><small style="color:#888">Ideal 50–60 karakter.</small></div>
+        <div class="form-group"><label>Deskripsi (Meta Description) *</label><textarea id="seoDescription" rows="3" maxlength="170" placeholder="Ringkasan singkat yang muncul di bawah judul di Google"></textarea><small style="color:#888">Ideal 150–160 karakter.</small></div>
+        <div class="form-group"><label>Kata Kunci (Keywords)</label><input type="text" id="seoKeywords" placeholder="pisahkan dengan koma"></div>
+        <div class="form-group"><label>Gambar Preview Link (OG Image) — URL</label><input type="text" id="seoOgImage" placeholder="https://res.cloudinary.com/..."><small style="color:#888">Muncul saat link dibagikan di WhatsApp/Facebook. Pakai URL Cloudinary.</small></div>
+        <button class="btn btn-primary" onclick="simpanSeo()">💾 Simpan SEO</button>
+        <p style="color:#888;font-size:12px;margin-top:10px">Perubahan langsung aktif di homepage (disuntik oleh Cloudflare). Untuk melihat di Google butuh beberapa hari.</p>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <h3 style="margin:0 0 16px;font-size:16px">🌐 Sitemap &amp; Google Search Console</h3>
+        <div class="form-group"><label>URL Sitemap</label><input type="text" value="https://suastawa-consulting.com/sitemap.xml" readonly></div>
+        <div class="form-group"><label>URL Robots</label><input type="text" value="https://suastawa-consulting.com/robots.txt" readonly></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="https://search.google.com/search-console" target="_blank" rel="noopener">🔗 Buka Search Console</a>
+          <a class="btn" style="background:#eee" href="https://suastawa-consulting.com/sitemap.xml" target="_blank" rel="noopener">👁️ Lihat Sitemap</a>
+        </div>
+        <div style="margin-top:14px;background:#f6f8f7;border-radius:8px;padding:14px;font-size:13px;line-height:1.7;color:#444">
+          <b>Cara daftar ke Google (sekali saja):</b><br>
+          1. Buka Search Console → tambah properti <b>suastawa-consulting.com</b><br>
+          2. Menu <b>Sitemaps</b> → tempel <b>sitemap.xml</b> → Submit<br>
+          3. Tempel URL homepage di kolom atas → <b>Request Indexing</b>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <h3 style="margin:0 0 16px;font-size:16px">💡 Panduan Singkat SEO</h3>
+        <div style="font-size:13px;line-height:1.8;color:#444">
+          • <b>Title</b> yang bagus: ada nama + lokasi + layanan (mis. "KJA &amp; KKP Bali").<br>
+          • <b>Description</b> mengundang klik, sebutkan keunggulan (izin resmi, sejak 2015).<br>
+          • Update konten &amp; galeri berkala — Google suka situs aktif.<br>
+          • Minta klien puas menulis <b>ulasan di Google Maps</b> — sangat kuat untuk pencarian lokal.<br>
+          • Jangan ganti Title/Description terlalu sering; beri jeda agar stabil di indeks.
+        </div>
+      </div>
+    </div>
+
     <div class="page-content" id="page-settings">
       <div class="page-header"><div><h2>Pengaturan</h2><p>Informasi sistem dan API</p></div></div>
       <div class="card">
@@ -573,6 +616,40 @@ async function apiPut(endpoint, body) {
     if (res.status === 401) { doLogout(); return null; }
     return { ok: res.ok, data: await res.json() };
   } catch(e) { return null; }
+}
+
+async function loadSeo() {
+  const res = await fetch(`${API_BASE}/api/seo`);
+  if (!res.ok) return;
+  const s = await res.json();
+  document.getElementById('seoTitle').value = s.title || '';
+  document.getElementById('seoDescription').value = s.description || '';
+  document.getElementById('seoKeywords').value = s.keywords || '';
+  document.getElementById('seoOgImage').value = s.og_image || '';
+}
+
+async function simpanSeo() {
+  const body = {
+    title: document.getElementById('seoTitle').value.trim(),
+    description: document.getElementById('seoDescription').value.trim(),
+    keywords: document.getElementById('seoKeywords').value.trim(),
+    og_image: document.getElementById('seoOgImage').value.trim()
+  };
+  const box = document.getElementById('seoStatus');
+  if (!body.title || !body.description) {
+    box.style.display='block'; box.style.background='#fde8e8'; box.style.color='#c0392b';
+    box.textContent='Judul dan Deskripsi wajib diisi.'; return;
+  }
+  const r = await apiPut('/api/seo', body);
+  box.style.display='block';
+  if (r && r.ok) {
+    box.style.background='#e8f8f0'; box.style.color='#1D9E75';
+    box.textContent='✓ SEO berhasil disimpan & aktif di situs.';
+    showToast('success','Tersimpan','SEO situs diperbarui');
+  } else {
+    box.style.background='#fde8e8'; box.style.color='#c0392b';
+    box.textContent=(r && r.data && r.data.error) ? r.data.error : 'Gagal menyimpan SEO.';
+  }
 }
 
 // ==================== DASHBOARD ====================
@@ -982,11 +1059,11 @@ function openLiveChat() {
 // ==================== NAVIGATION ====================
 const pageTitles = {
   dashboard:'Dashboard', layanan:'Layanan KJA/KKP', dokumen:'Dokumen & Sertifikat',
-  galeri:'Galeri', pesan:'Pesan Masuk', settings:'Pengaturan'
+  galeri:'Galeri', pesan:'Pesan Masuk', settings:'Pengaturan', seo:'SEO & Google'
 };
 const pageLoaders = {
   layanan: loadLayanan, dokumen: loadDokumen, galeri: loadGaleri, pesan: loadPesan,
-  settings: checkApiHealth
+  settings: checkApiHealth, seo: loadSeo
 };
 
 function navigateTo(page) {
