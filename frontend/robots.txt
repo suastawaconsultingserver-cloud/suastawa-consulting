@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /adminsc/
+
+Sitemap: https://suastawa-consulting.com/sitemap.xml

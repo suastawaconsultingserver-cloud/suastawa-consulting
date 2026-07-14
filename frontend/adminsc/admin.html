@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - Suastawa Consulting</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#1D9E75;--primary-dark:#157a5a;--primary-light:#e8f7f2;--secondary:#2c3e50;--danger:#e74c3c;--warning:#f39c12;--info:#3498db;--bg:#f0f4f8;--white:#fff;--text:#333;--text-light:#666;--border:#dde3ec;--shadow:0 2px 15px rgba(0,0,0,.08)}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;outline:none}
+input,select,textarea{outline:none;border:1px solid var(--border);border-radius:8px;padding:10px 14px;width:100%;font-size:14px;font-family:inherit;transition:.2s}
+input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(29,158,117,.1)}
+label{display:block;margin-bottom:6px;font-weight:600;font-size:13px;color:var(--secondary)}
+.form-group{margin-bottom:18px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;transition:.2s;cursor:pointer}
+.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-dark)}
+.btn-danger{background:var(--danger);color:#fff}.btn-danger:hover{background:#c0392b}
+.btn-secondary{background:#ecf0f1;color:var(--secondary)}.btn-secondary:hover{background:#dde3ec}
+.btn-warning{background:var(--warning);color:#fff}
+.btn-info{background:var(--info);color:#fff}
+.btn-sm{padding:6px 14px;font-size:12px}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.badge-success{background:#d4edda;color:#155724}
+.badge-danger{background:#f8d7da;color:#721c24}
+.badge-warning{background:#fff3cd;color:#856404}
+.badge-info{background:#d1ecf1;color:#0c5460}
+#loginPage{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%)}
+.login-card{background:#fff;border-radius:20px;padding:48px 40px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.login-logo{text-align:center;margin-bottom:32px}
+.login-logo .logo-icon{width:72px;height:72px;background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:32px}
+.login-logo h2{color:var(--secondary);font-size:22px;font-weight:700}
+.login-logo p{color:var(--text-light);font-size:13px;margin-top:4px}
+.login-btn{width:100%;padding:14px;background:var(--primary);color:#fff;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:.2s;border:none}
+.login-btn:hover{background:var(--primary-dark)}
+.login-btn:disabled{background:#aaa;cursor:not-allowed}
+.login-error{background:#fdf0f0;border:1px solid #f5c6cb;color:#721c24;padding:12px;border-radius:8px;font-size:13px;margin-bottom:16px;display:none}
+/* ── Password toggle (mata) ── */
+.pw-wrap{position:relative}
+.pw-wrap input{padding-right:44px}
+.pw-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:4px;display:flex;align-items:center;justify-content:center;color:var(--text-light);transition:.2s}
+.pw-toggle:hover{color:var(--primary)}
+#adminLayout{display:none;min-height:100vh}
+.sidebar{width:260px;background:var(--secondary);min-height:100vh;position:fixed;left:0;top:0;z-index:1000;transition:.3s;overflow-y:auto}
+.sidebar.collapsed{width:72px}
+.sidebar-header{padding:20px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:12px}
+.sidebar-header .logo{width:40px;height:40px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.sidebar-header .brand{color:#fff;font-size:14px;font-weight:700;line-height:1.3}
+.sidebar-header .brand span{display:block;font-size:11px;color:rgba(255,255,255,.5);font-weight:400}
+.sidebar-nav{padding:16px 0}
+.nav-section{padding:8px 20px 4px;font-size:10px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase}
+.nav-item{display:flex;align-items:center;gap:14px;padding:12px 20px;color:rgba(255,255,255,.7);font-size:14px;cursor:pointer;transition:.2s;border-left:3px solid transparent}
+.nav-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav-item.active{background:rgba(29,158,117,.2);color:var(--primary);border-left-color:var(--primary)}
+.nav-item .nav-icon{font-size:18px;flex-shrink:0;width:22px;text-align:center}
+.nav-label{white-space:nowrap;overflow:hidden}
+.collapsed .nav-label,.collapsed .brand,.collapsed .nav-section{display:none}
+.collapsed .nav-item{justify-content:center;padding:14px}
+.collapsed .sidebar-header{justify-content:center}
+.main-content{margin-left:260px;transition:.3s;min-height:100vh}
+.main-content.expanded{margin-left:72px}
+.topbar{background:#fff;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow);position:sticky;top:0;z-index:100}
+.topbar-left{display:flex;align-items:center;gap:16px}
+.toggle-btn{width:36px;height:36px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;border:none;color:var(--text)}
+.toggle-btn:hover{background:var(--primary-light);color:var(--primary)}
+.page-title{font-size:18px;font-weight:700;color:var(--secondary)}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.user-avatar{width:38px;height:38px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px}
+.user-info{font-size:13px}.user-info strong{display:block;color:var(--secondary)}.user-info span{color:var(--text-light);font-size:11px}
+.logout-btn{background:var(--primary-light);color:var(--primary);padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:.2s}
+.logout-btn:hover{background:var(--primary);color:#fff}
+.page-content{padding:24px;display:none}
+.page-content.active{display:block}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:28px}
+.stat-card{background:#fff;border-radius:16px;padding:24px;box-shadow:var(--shadow);display:flex;align-items:center;gap:20px;transition:.2s}
+.stat-card:hover{transform:translateY(-2px)}
+.stat-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.stat-icon.green{background:rgba(29,158,117,.12);color:var(--primary)}
+.stat-icon.blue{background:rgba(52,152,219,.12);color:var(--info)}
+.stat-icon.orange{background:rgba(243,156,18,.12);color:var(--warning)}
+.stat-icon.red{background:rgba(231,76,60,.12);color:var(--danger)}
+.stat-value{font-size:28px;font-weight:800;color:var(--secondary);line-height:1}
+.stat-label{font-size:13px;color:var(--text-light);margin-top:4px}
+.dashboard-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-bottom:24px}
+.card{background:#fff;border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+.card-title{font-size:16px;font-weight:700;color:var(--secondary);margin-bottom:20px;display:flex;align-items:center;justify-content:space-between}
+.recent-table{width:100%;border-collapse:collapse}
+.recent-table th{text-align:left;padding:10px 12px;font-size:12px;font-weight:700;color:var(--text-light);text-transform:uppercase;border-bottom:1px solid var(--border)}
+.recent-table td{padding:12px;font-size:13px;border-bottom:1px solid var(--border)}
+.recent-table tr:last-child td{border-bottom:none}
+.recent-table tr:hover td{background:var(--primary-light)}
+.quick-action{display:flex;flex-direction:column;gap:12px}
+.quick-btn{display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg);border-radius:10px;cursor:pointer;transition:.2s;border:none;width:100%;text-align:left;font-family:inherit}
+.quick-btn:hover{background:var(--primary-light);color:var(--primary)}
+.quick-btn .q-icon{width:36px;height:36px;border-radius:8px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.quick-btn:hover .q-icon{background:var(--primary);color:#fff}
+.page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.page-header h2{font-size:20px;font-weight:700;color:var(--secondary)}
+.page-header p{font-size:13px;color:var(--text-light);margin-top:2px}
+.table-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.table-toolbar{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.search-box{display:flex;align-items:center;gap:8px;background:var(--bg);border-radius:8px;padding:8px 14px;flex:1;max-width:300px}
+.search-box input{background:none;border:none;font-size:13px;width:100%;padding:0}
+.search-box input:focus{box-shadow:none}
+.data-table{width:100%;border-collapse:collapse}
+.data-table th{padding:12px 16px;text-align:left;font-size:12px;font-weight:700;color:var(--text-light);text-transform:uppercase;background:var(--bg);border-bottom:1px solid var(--border)}
+.data-table td{padding:14px 16px;font-size:13px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tbody tr:hover td{background:var(--primary-light)}
+.action-btns{display:flex;gap:6px;flex-wrap:wrap}
+.no-data{text-align:center;padding:48px;color:var(--text-light)}
+.no-data .no-data-icon{font-size:48px;margin-bottom:12px}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:2000;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.show{display:flex}
+.modal{background:#fff;border-radius:20px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:modalIn .2s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+.modal-header{padding:24px 28px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:1}
+.modal-header h3{font-size:18px;font-weight:700;color:var(--secondary)}
+.modal-close{width:32px;height:32px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;border:none;transition:.2s}
+.modal-close:hover{background:var(--danger);color:#fff}
+.modal-body{padding:24px 28px}
+.modal-footer{padding:20px 28px 24px;border-top:1px solid var(--border);display:flex;gap:12px;justify-content:flex-end}
+.toast-container{position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px}
+.toast{background:#fff;border-radius:12px;padding:14px 20px;box-shadow:0 8px 30px rgba(0,0,0,.15);display:flex;align-items:center;gap:12px;min-width:300px;animation:toastIn .3s ease;border-left:4px solid var(--primary)}
+.toast.success{border-left-color:var(--primary)}
+.toast.error{border-left-color:var(--danger)}
+.toast.warning{border-left-color:var(--warning)}
+@keyframes toastIn{from{opacity:0;transform:translateX(100%)}to{opacity:1;transform:translateX(0)}}
+.toast-icon{font-size:20px}
+.toast-msg{font-size:13px;font-weight:600;color:var(--secondary)}
+.toast-sub{font-size:12px;color:var(--text-light)}
+.loading{display:flex;align-items:center;justify-content:center;padding:40px;color:var(--text-light)}
+.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px}
+.status-dot.green{background:#27ae60}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+.full-width{grid-column:span 2!important}
+.form-hint{font-size:11px;color:var(--text-light);margin-top:4px}
+.pesan-box{background:var(--bg);border-radius:10px;padding:16px;margin-bottom:12px;border-left:3px solid var(--primary)}
+.pesan-box.belum{border-left-color:var(--warning)}
+.pesan-box.sudah{border-left-color:var(--primary);opacity:.7}
+.pesan-nama{font-weight:700;color:var(--secondary);font-size:14px}
+.pesan-email{font-size:12px;color:var(--text-light);margin-bottom:8px}
+.pesan-isi{font-size:13px;color:var(--text);line-height:1.6}
+.pesan-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.pesan-time{font-size:11px;color:var(--text-light)}
+.upload-area{border:2px dashed var(--border);border-radius:12px;padding:40px;text-align:center;cursor:pointer;transition:.2s;background:var(--bg)}
+.upload-area:hover{border-color:var(--primary);background:var(--primary-light)}
+.upload-icon{font-size:40px;margin-bottom:12px}
+.upload-text{font-size:14px;color:var(--text-light)}
+.upload-text strong{color:var(--primary)}
+@media(max-width:768px){
+.sidebar{width:0;overflow:hidden}.sidebar.mobile-open{width:260px}
+.main-content{margin-left:0}.stats-grid{grid-template-columns:1fr 1fr}
+.dashboard-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}
+.form-grid .form-group{grid-column:unset!important}}
+</style>
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Login -->
+<div id="loginPage">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="logo-icon" style="background:#fff;overflow:hidden;padding:8px;"><img src="data:image/png;base64,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" alt="Suastawa" style="width:100%;height:100%;object-fit:contain;"></div>
+      <h2>Suastawa Consulting</h2>
+      <p>KJA & KKP Management System</p>
+    </div>
+    <div class="login-error" id="loginError"></div>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" id="loginUser" placeholder="admin" autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password">
+        <button type="button" class="pw-toggle" id="pwToggle" onclick="togglePw()" aria-label="Tampilkan password">
+          <svg id="eyeOpen" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          <svg id="eyeClosed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-10-8-10-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 10 8 10 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="form-group" style="display:flex;align-items:center;gap:8px">
+      <input type="checkbox" id="rememberMe" style="width:auto;padding:0">
+      <label for="rememberMe" style="margin:0;font-weight:400;font-size:13px">Ingat saya</label>
+    </div>
+    <button class="login-btn" id="loginBtn" onclick="doLogin()">Masuk ke Dashboard</button>
+    <div style="text-align:center;margin-top:20px;font-size:12px;color:var(--text-light)">© 2024 Suastawa Consulting. All rights reserved.</div>
+  </div>
+</div>
+
+<!-- Admin Layout -->
+<div id="adminLayout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo" style="background:#fff;overflow:hidden;padding:5px;"><img src="data:image/png;base64,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" alt="Suastawa" style="width:100%;height:100%;object-fit:contain;"></div>
+      <div class="brand">Suastawa Admin<span>KJA & KKP Panel</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">UTAMA</div>
+      <div class="nav-item active" onclick="navigateTo('dashboard')"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></div>
+      <div class="nav-section">LAYANAN & DOKUMEN</div>
+      <div class="nav-item" onclick="navigateTo('layanan')"><span class="nav-icon">⚙️</span><span class="nav-label">Layanan KJA/KKP</span></div>
+      <div class="nav-item" onclick="navigateTo('dokumen')"><span class="nav-icon">📁</span><span class="nav-label">Dokumen & Sertifikat</span></div>
+      <div class="nav-item" onclick="navigateTo('galeri')"><span class="nav-icon">🖼️</span><span class="nav-label">Galeri</span></div>
+      <div class="nav-section">KOMUNIKASI</div>
+      <div class="nav-item" onclick="navigateTo('pesan')"><span class="nav-icon">✉️</span><span class="nav-label">Pesan Masuk <span id="pesanBadge" style="background:var(--danger);color:#fff;border-radius:10px;padding:1px 7px;font-size:10px;margin-left:4px;display:none">0</span></span></div>
+      <div class="nav-item" onclick="openLiveChat()"><span class="nav-icon">💬</span><span class="nav-label">Live Chat <span style="background:#1D9E75;color:#fff;border-radius:10px;padding:1px 7px;font-size:9px;margin-left:4px;">Tawk.to</span></span></div>
+      <div class="nav-section">SISTEM</div>
+      <div class="nav-item" onclick="navigateTo('settings')"><span class="nav-icon">🔧</span><span class="nav-label">Pengaturan</span></div>
+    </nav>
+  </aside>
+
+  <div class="main-content" id="mainContent">
+    <div class="topbar">
+      <div class="topbar-left">
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        <div class="page-title" id="pageTitle">Dashboard</div>
+      </div>
+      <div class="topbar-right">
+        <div style="font-size:13px;color:var(--text-light)"><span class="status-dot green"></span>API Online</div>
+        <div class="user-info"><strong id="userName">Admin</strong><span id="userRole">Administrator</span></div>
+        <div class="user-avatar" id="userAvatar">A</div>
+        <button class="logout-btn" onclick="doLogout()">🚪 Keluar</button>
+      </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="page-content active" id="page-dashboard">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-icon green">⚙️</div><div><div class="stat-value" id="statLayanan">-</div><div class="stat-label">Total Layanan</div></div></div>
+        <div class="stat-card"><div class="stat-icon blue">📁</div><div><div class="stat-value" id="statDokumen">-</div><div class="stat-label">Total Dokumen</div></div></div>
+        <div class="stat-card"><div class="stat-icon orange">✉️</div><div><div class="stat-value" id="statPesan">-</div><div class="stat-label">Total Pesan</div></div></div>
+        <div class="stat-card"><div class="stat-icon red">🔴</div><div><div class="stat-value" id="statBelumDibaca">-</div><div class="stat-label">Pesan Belum Dibaca</div></div></div>
+      </div>
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-title">Pesan Terbaru <button class="btn btn-primary btn-sm" onclick="navigateTo('pesan')">Lihat Semua</button></div>
+          <div id="recentPesanList"><div class="loading"><div class="spinner"></div></div></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Aksi Cepat</div>
+          <div class="quick-action">
+            <button class="quick-btn" onclick="navigateTo('layanan')"><div class="q-icon">⚙️</div><div><div style="font-weight:600;font-size:13px">Tambah Layanan</div><div style="font-size:12px;color:var(--text-light)">Daftarkan layanan baru</div></div></button>
+            <button class="quick-btn" onclick="navigateTo('dokumen')"><div class="q-icon">📁</div><div><div style="font-weight:600;font-size:13px">Upload Dokumen</div><div style="font-size:12px;color:var(--text-light)">Upload sertifikat/file</div></div></button>
+            <button class="quick-btn" onclick="navigateTo('pesan')"><div class="q-icon">✉️</div><div><div style="font-weight:600;font-size:13px">Cek Pesan</div><div style="font-size:12px;color:var(--text-light)">Pesan dari klien</div></div></button>
+            <button class="quick-btn" onclick="openLiveChat()"><div class="q-icon">💬</div><div><div style="font-weight:600;font-size:13px">Live Chat</div><div style="font-size:12px;color:var(--text-light)">Buka Tawk.to real-time</div></div></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layanan -->
+    <div class="page-content" id="page-layanan">
+      <div class="page-header">
+        <div><h2>Layanan KJA/KKP</h2><p>Kelola layanan yang ditampilkan di website</p></div>
+        <button class="btn btn-primary" onclick="openModal('modalAddLayanan')">+ Tambah Layanan</button>
+      </div>
+      <div class="table-card">
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead><tr><th>Nama Layanan</th><th>Kategori</th><th>Deskripsi</th><th>Aksi</th></tr></thead>
+            <tbody id="layananTableBody"><tr><td colspan="4"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dokumen -->
+    <div class="page-content" id="page-dokumen">
+      <div class="page-header">
+        <div><h2>Dokumen & Sertifikat</h2><p>Kelola dokumen yang ditampilkan di website</p></div>
+        <button class="btn btn-primary" onclick="openModal('modalUploadDokumen')">+ Upload Dokumen</button>
+      </div>
+      <div class="table-card">
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead><tr><th>Nama</th><th>Kategori</th><th>Format</th><th>Tanggal</th><th>Aksi</th></tr></thead>
+            <tbody id="dokumenTableBody"><tr><td colspan="5"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Galeri -->
+    <div class="page-content" id="page-galeri">
+      <div class="page-header">
+        <div><h2>Galeri</h2><p>Kelola foto &amp; video yang tampil di section Galeri website</p></div>
+        <button class="btn btn-primary" onclick="openModal('modalUploadGaleri')">+ Upload Galeri</button>
+      </div>
+      <div class="table-card">
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead><tr><th>Preview</th><th>Judul</th><th>Caption</th><th>Tipe</th><th>Urutan</th><th>Aksi</th></tr></thead>
+            <tbody id="galeriTableBody"><tr><td colspan="6"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pesan -->
+    <div class="page-content" id="page-pesan">
+      <div class="page-header">
+        <div><h2>Pesan Masuk</h2><p>Pesan dari formulir kontak website</p></div>
+        <button class="btn btn-secondary" onclick="loadPesan()">🔄 Refresh</button>
+      </div>
+      <div id="pesanList"><div class="loading"><div class="spinner"></div></div></div>
+    </div>
+
+    <!-- Settings -->
+    <div class="page-content" id="page-settings">
+      <div class="page-header"><div><h2>Pengaturan</h2><p>Informasi sistem dan API</p></div></div>
+      <div class="card">
+        <div class="form-group"><label>Base URL API</label><input type="text" value="https://suastawa-api.up.railway.app" readonly></div>
+        <div class="form-group"><label>Status API</label><input type="text" id="apiStatus" value="Mengecek..." readonly></div>
+        <div class="form-group"><label>Login sebagai</label><input type="text" id="settingUser" readonly></div>
+        <button class="btn btn-primary" onclick="checkApiHealth()">🔌 Cek Koneksi API</button>
+      </div>
+      <div class="card" style="margin-top:20px">
+        <h3 style="margin:0 0 16px;font-size:16px">🔑 Ganti Password</h3>
+        <div class="form-group"><label>Password Lama *</label><input type="password" id="pwLama" placeholder="Masukkan password lama"></div>
+        <div class="form-group"><label>Password Baru *</label><input type="password" id="pwBaru" placeholder="Minimal 6 karakter"></div>
+        <div class="form-group"><label>Konfirmasi Password Baru *</label><input type="password" id="pwKonfirmasi" placeholder="Ulangi password baru"></div>
+        <div id="pwStatus" style="display:none;padding:10px 14px;border-radius:8px;margin-bottom:12px;font-size:13px"></div>
+        <button class="btn btn-primary" onclick="gantiPassword()">💾 Simpan Password Baru</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal: Add Layanan -->
+<div class="modal-overlay" id="modalAddLayanan">
+  <div class="modal">
+    <div class="modal-header"><h3>Tambah Layanan</h3><button class="modal-close" onclick="closeModal('modalAddLayanan')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-group"><label>Nama Layanan *</label><input type="text" id="lNama"></div>
+      <div class="form-group"><label>Kategori</label>
+        <select id="lKategori"><option value="KJA">KJA</option><option value="KKP">KKP</option><option value="Umum">Umum</option></select>
+      </div>
+      <div class="form-group"><label>Deskripsi</label><textarea id="lDeskripsi" rows="4" placeholder="Deskripsi layanan..."></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modalAddLayanan')">Batal</button>
+      <button class="btn btn-primary" onclick="addLayanan()">Simpan Layanan</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Edit Layanan -->
+<div class="modal-overlay" id="modalEditLayanan">
+  <div class="modal">
+    <div class="modal-header"><h3>Edit Layanan</h3><button class="modal-close" onclick="closeModal('modalEditLayanan')">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="elId">
+      <div class="form-group"><label>Nama Layanan *</label><input type="text" id="elNama"></div>
+      <div class="form-group"><label>Kategori</label>
+        <select id="elKategori"><option value="KJA">KJA</option><option value="KKP">KKP</option><option value="Umum">Umum</option></select>
+      </div>
+      <div class="form-group"><label>Deskripsi</label><textarea id="elDeskripsi" rows="4"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modalEditLayanan')">Batal</button>
+      <button class="btn btn-primary" onclick="saveEditLayanan()">💾 Simpan Perubahan</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Edit Dokumen -->
+<div class="modal-overlay" id="modalEditDokumen">
+  <div class="modal">
+    <div class="modal-header"><h3>Edit Dokumen</h3><button class="modal-close" onclick="closeModal('modalEditDokumen')">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="edId">
+      <div class="form-group"><label>Nama Dokumen *</label><input type="text" id="edNama"></div>
+      <div class="form-group"><label>Kategori</label>
+        <select id="edKategori"><option value="sertifikat">Sertifikat</option><option value="izin">Izin Usaha</option><option value="laporan">Laporan</option><option value="umum">Umum</option></select>
+      </div>
+      <div class="form-hint" style="margin-top:-8px">Catatan: Edit hanya mengubah nama & kategori. Untuk ganti file, hapus lalu upload ulang.</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modalEditDokumen')">Batal</button>
+      <button class="btn btn-primary" onclick="saveEditDokumen()">💾 Simpan Perubahan</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Upload Dokumen -->
+<div class="modal-overlay" id="modalUploadDokumen">
+  <div class="modal">
+    <div class="modal-header"><h3>Upload Dokumen</h3><button class="modal-close" onclick="closeModal('modalUploadDokumen')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-group"><label>Nama Dokumen *</label><input type="text" id="dNama" placeholder="Contoh: Sertifikat KJA 2024"></div>
+      <div class="form-group"><label>Kategori</label>
+        <select id="dKategori"><option value="sertifikat">Sertifikat</option><option value="izin">Izin Usaha</option><option value="laporan">Laporan</option><option value="umum">Umum</option></select>
+      </div>
+      <div class="form-group"><label>Pilih File *</label><input type="file" id="dFile" style="padding:8px" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"></div>
+      <div class="form-hint" style="margin-top:-12px">Format: PDF, JPG, PNG, DOC, DOCX</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modalUploadDokumen')">Batal</button>
+      <button class="btn btn-primary" id="uploadBtn" onclick="uploadDokumen()">📤 Upload</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalUploadGaleri">
+  <div class="modal">
+    <div class="modal-header"><h3>Upload Galeri</h3><button class="modal-close" onclick="closeModal('modalUploadGaleri')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-group"><label>Judul</label><input type="text" id="gJudul" placeholder="Contoh: Tampak Depan Kantor"></div>
+      <div class="form-group"><label>Caption</label><input type="text" id="gCaption" placeholder="Keterangan singkat foto/video"></div>
+      <div class="form-group"><label>Urutan</label><input type="number" id="gUrutan" value="0" min="0"></div>
+      <div class="form-group"><label>Pilih File (Foto/Video) *</label><input type="file" id="gFile" style="padding:8px" accept="image/*,video/*"></div>
+      <div class="form-hint" style="margin-top:-12px">Foto: JPG, PNG, WEBP · Video: MP4. Urutan kecil tampil lebih dulu.</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modalUploadGaleri')">Batal</button>
+      <button class="btn btn-primary" id="uploadGaleriBtn" onclick="uploadGaleri()">📤 Upload</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_BASE = 'https://suastawa-api.up.railway.app';
+
+let authToken = localStorage.getItem('sc_token') || sessionStorage.getItem('sc_token') || null;
+let currentUser = JSON.parse(localStorage.getItem('sc_user') || sessionStorage.getItem('sc_user') || 'null');
+
+// ==================== TOGGLE PASSWORD (MATA) ====================
+function togglePw() {
+  var pw = document.getElementById('loginPass');
+  var open = document.getElementById('eyeOpen');
+  var closed = document.getElementById('eyeClosed');
+  if (pw.type === 'password') {
+    pw.type = 'text';
+    open.style.display = 'none';
+    closed.style.display = 'flex';
+  } else {
+    pw.type = 'password';
+    open.style.display = 'flex';
+    closed.style.display = 'none';
+  }
+}
+
+// ==================== INIT ====================
+window.onload = function() {
+  if (authToken && currentUser) {
+    showAdmin();
+  } else {
+    document.getElementById('loginPage').style.display = 'flex';
+  }
+  document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+  document.getElementById('loginUser').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+};
+
+// ==================== AUTH ====================
+async function doLogin() {
+  const username = document.getElementById('loginUser').value.trim();
+  const password = document.getElementById('loginPass').value;
+  const btn = document.getElementById('loginBtn');
+  const errEl = document.getElementById('loginError');
+
+  if (!username || !password) { showLoginError('Username dan password wajib diisi'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Memproses...';
+  errEl.style.display = 'none';
+
+  try {
+    const res = await fetch(`${API_BASE}/api/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+    const data = await res.json();
+    if (!res.ok) { showLoginError(data.error || 'Login gagal. Periksa username dan password.'); return; }
+
+    authToken = data.token;
+    currentUser = data.user;
+
+    const storage = document.getElementById('rememberMe').checked ? localStorage : sessionStorage;
+    storage.setItem('sc_token', authToken);
+    storage.setItem('sc_user', JSON.stringify(currentUser));
+
+    showToast('success', 'Login Berhasil', `Selamat datang, ${currentUser.username}!`);
+    showAdmin();
+  } catch(err) {
+    showLoginError('Tidak dapat terhubung ke server. Pastikan backend Railway sudah aktif.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Masuk ke Dashboard';
+  }
+}
+
+function showLoginError(msg) {
+  const el = document.getElementById('loginError');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function doLogout() {
+  authToken = null; currentUser = null;
+  ['sc_token','sc_user'].forEach(k => { localStorage.removeItem(k); sessionStorage.removeItem(k); });
+  document.getElementById('adminLayout').style.display = 'none';
+  document.getElementById('loginPage').style.display = 'flex';
+  document.getElementById('loginUser').value = '';
+  document.getElementById('loginPass').value = '';
+  showToast('success','Logout Berhasil','Sampai jumpa!');
+}
+
+function showAdmin() {
+  document.getElementById('loginPage').style.display = 'none';
+  document.getElementById('adminLayout').style.display = 'block';
+  if (currentUser) {
+    document.getElementById('userName').textContent = currentUser.username || 'Admin';
+    document.getElementById('userRole').textContent = currentUser.role || 'Administrator';
+    document.getElementById('userAvatar').textContent = (currentUser.username||'A')[0].toUpperCase();
+    document.getElementById('settingUser').value = currentUser.username + ' (' + currentUser.role + ')';
+  }
+  loadDashboard();
+}
+
+// ==================== API HELPER ====================
+async function apiGet(endpoint) {
+  try {
+    const res = await fetch(`${API_BASE}${endpoint}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` }
+    });
+    if (res.status === 401) { doLogout(); return null; }
+    return await res.json();
+  } catch(e) { showToast('error','Koneksi Gagal','Tidak dapat terhubung ke server'); return null; }
+}
+
+async function apiPost(endpoint, body) {
+  try {
+    const res = await fetch(`${API_BASE}${endpoint}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
+      body: JSON.stringify(body)
+    });
+    if (res.status === 401) { doLogout(); return null; }
+    return { ok: res.ok, data: await res.json() };
+  } catch(e) { showToast('error','Koneksi Gagal','Tidak dapat terhubung ke server'); return null; }
+}
+
+async function apiDelete(endpoint) {
+  try {
+    const res = await fetch(`${API_BASE}${endpoint}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${authToken}` }
+    });
+    if (res.status === 401) { doLogout(); return null; }
+    return { ok: res.ok, data: await res.json() };
+  } catch(e) { showToast('error','Koneksi Gagal','Tidak dapat terhubung ke server'); return null; }
+}
+
+async function apiPut(endpoint, body) {
+  try {
+    const res = await fetch(`${API_BASE}${endpoint}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
+      body: JSON.stringify(body)
+    });
+    if (res.status === 401) { doLogout(); return null; }
+    return { ok: res.ok, data: await res.json() };
+  } catch(e) { return null; }
+}
+
+// ==================== DASHBOARD ====================
+async function loadDashboard() {
+  const [layanan, dokumen, pesan] = await Promise.all([
+    apiGet('/api/layanan'),
+    apiGet('/api/dokumen'),
+    apiGet('/api/kontak')
+  ]);
+
+  const lList = Array.isArray(layanan) ? layanan : [];
+  const dList = Array.isArray(dokumen) ? dokumen : [];
+  const pList = Array.isArray(pesan) ? pesan : [];
+  const belumDibaca = pList.filter(p => p.status === 'belum_dibaca').length;
+
+  document.getElementById('statLayanan').textContent = lList.length;
+  document.getElementById('statDokumen').textContent = dList.length;
+  document.getElementById('statPesan').textContent = pList.length;
+  document.getElementById('statBelumDibaca').textContent = belumDibaca;
+
+  if (belumDibaca > 0) {
+    const badge = document.getElementById('pesanBadge');
+    badge.textContent = belumDibaca;
+    badge.style.display = 'inline';
+  }
+
+  const container = document.getElementById('recentPesanList');
+  if (pList.length === 0) {
+    container.innerHTML = '<div class="no-data"><div class="no-data-icon">✉️</div><p>Belum ada pesan masuk</p></div>';
+  } else {
+    container.innerHTML = pList.slice(0,3).map(p => `
+      <div class="pesan-box ${p.status==='belum_dibaca'?'belum':'sudah'}">
+        <div class="pesan-nama">${p.nama||'-'}</div>
+        <div class="pesan-email">${p.email||''}</div>
+        <div class="pesan-isi">${(p.pesan||'').substring(0,100)}${p.pesan&&p.pesan.length>100?'...':''}</div>
+        <div class="pesan-footer">
+          <span class="pesan-time">${p.created_at ? new Date(p.created_at).toLocaleDateString('id-ID') : '-'}</span>
+          <span class="badge ${p.status==='belum_dibaca'?'badge-warning':'badge-success'}">${p.status==='belum_dibaca'?'Belum Dibaca':'Sudah Dibaca'}</span>
+        </div>
+      </div>`).join('');
+  }
+}
+
+// ==================== LAYANAN ====================
+let _layananCache = [];
+async function loadLayanan() {
+  const data = await apiGet('/api/layanan');
+  const list = Array.isArray(data) ? data : [];
+  _layananCache = list;
+  const tbody = document.getElementById('layananTableBody');
+  if (list.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="4"><div class="no-data"><div class="no-data-icon">⚙️</div><p>Belum ada layanan</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(l => `<tr>
+    <td><strong>${l.nama||l.name||'-'}</strong></td>
+    <td><span class="badge badge-info">${l.kategori||l.category||'-'}</span></td>
+    <td>${(l.deskripsi||l.description||'-').substring(0,80)}${(l.deskripsi||l.description||'').length>80?'...':''}</td>
+    <td><div class="action-btns"><button class="btn btn-warning btn-sm" onclick="openEditLayanan('${l._id}')">✏️ Edit</button><button class="btn btn-danger btn-sm" onclick="deleteLayanan('${l._id}')">🗑 Hapus</button></div></td>
+  </tr>`).join('');
+}
+
+async function addLayanan() {
+  const nama = document.getElementById('lNama').value.trim();
+  if (!nama) { showToast('error','Error','Nama layanan wajib diisi'); return; }
+  const body = { nama, kategori: document.getElementById('lKategori').value, deskripsi: document.getElementById('lDeskripsi').value };
+  const res = await apiPost('/api/layanan', body);
+  if (res && res.ok) {
+    closeModal('modalAddLayanan');
+    document.getElementById('lNama').value = '';
+    document.getElementById('lDeskripsi').value = '';
+    showToast('success','Berhasil','Layanan berhasil ditambahkan');
+    loadLayanan();
+  } else {
+    showToast('error','Gagal', res?.data?.error || 'Gagal menambahkan layanan');
+  }
+}
+
+async function deleteLayanan(id) {
+  if (!confirm('Hapus layanan ini?')) return;
+  const res = await apiDelete(`/api/layanan/${id}`);
+  if (res && res.ok) { showToast('success','Berhasil','Layanan dihapus'); loadLayanan(); }
+  else showToast('error','Gagal','Gagal menghapus layanan');
+}
+
+// ==================== EDIT LAYANAN ====================
+function openEditLayanan(id) {
+  const l = _layananCache.find(x => x._id === id);
+  if (!l) { showToast('error','Error','Data layanan tidak ditemukan'); return; }
+  document.getElementById('elId').value = l._id;
+  document.getElementById('elNama').value = l.nama || l.name || '';
+  document.getElementById('elKategori').value = l.kategori || l.category || 'KJA';
+  document.getElementById('elDeskripsi').value = l.deskripsi || l.description || '';
+  openModal('modalEditLayanan');
+}
+
+async function saveEditLayanan() {
+  const id = document.getElementById('elId').value;
+  const nama = document.getElementById('elNama').value.trim();
+  if (!nama) { showToast('error','Error','Nama layanan wajib diisi'); return; }
+  const body = {
+    nama,
+    kategori: document.getElementById('elKategori').value,
+    deskripsi: document.getElementById('elDeskripsi').value
+  };
+  const res = await apiPut(`/api/layanan/${id}`, body);
+  if (res && res.ok) {
+    closeModal('modalEditLayanan');
+    showToast('success','Berhasil','Layanan berhasil diperbarui');
+    loadLayanan();
+  } else {
+    showToast('error','Gagal', (res && res.data && res.data.error) || 'Gagal memperbarui. Pastikan backend mendukung edit (PUT).');
+  }
+}
+
+// ==================== DOKUMEN ====================
+let _dokumenCache = [];
+async function loadDokumen() {
+  const data = await apiGet('/api/dokumen');
+  const list = Array.isArray(data) ? data : [];
+  _dokumenCache = list;
+  const tbody = document.getElementById('dokumenTableBody');
+  if (list.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5"><div class="no-data"><div class="no-data-icon">📁</div><p>Belum ada dokumen</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(d => `<tr>
+    <td><strong>${d.nama||d.name||'-'}</strong></td>
+    <td><span class="badge badge-info">${d.kategori||d.category||'-'}</span></td>
+    <td>${d.format||'-'}</td>
+    <td>${d.created_at ? new Date(d.created_at).toLocaleDateString('id-ID') : '-'}</td>
+    <td><div class="action-btns">
+      ${d.url ? `<a href="${d.url}" target="_blank" class="btn btn-info btn-sm">👁 Lihat</a>` : ''}
+      <button class="btn btn-warning btn-sm" onclick="openEditDokumen('${d._id}')">✏️ Edit</button>
+      <button class="btn btn-danger btn-sm" onclick="deleteDokumen('${d._id}')">🗑 Hapus</button>
+    </div></td>
+  </tr>`).join('');
+}
+
+async function uploadDokumen() {
+  const nama = document.getElementById('dNama').value.trim();
+  const fileInput = document.getElementById('dFile');
+  const kategori = document.getElementById('dKategori').value;
+
+  if (!nama) { showToast('error','Error','Nama dokumen wajib diisi'); return; }
+  if (!fileInput.files[0]) { showToast('error','Error','Pilih file terlebih dahulu'); return; }
+
+  const btn = document.getElementById('uploadBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Mengupload...';
+
+  const formData = new FormData();
+  formData.append('file', fileInput.files[0]);
+  formData.append('nama', nama);
+  formData.append('kategori', kategori);
+
+  try {
+    const res = await fetch(`${API_BASE}/api/dokumen/upload`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${authToken}` },
+      body: formData
+    });
+    const data = await res.json();
+    if (res.ok) {
+      closeModal('modalUploadDokumen');
+      document.getElementById('dNama').value = '';
+      fileInput.value = '';
+      showToast('success','Berhasil','Dokumen berhasil diupload');
+      loadDokumen();
+    } else {
+      showToast('error','Gagal', data.error || 'Gagal upload dokumen');
+    }
+  } catch(e) {
+    showToast('error','Error','Gagal menghubungi server');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '📤 Upload';
+  }
+}
+
+async function deleteDokumen(id) {
+  if (!confirm('Hapus dokumen ini?')) return;
+  const res = await apiDelete(`/api/dokumen/${id}`);
+  if (res && res.ok) { showToast('success','Berhasil','Dokumen dihapus'); loadDokumen(); }
+  else showToast('error','Gagal','Gagal menghapus dokumen');
+}
+
+// ==================== GALERI ====================
+let _galeriCache = [];
+async function loadGaleri() {
+  const data = await apiGet('/api/galeri');
+  const list = Array.isArray(data) ? data : [];
+  _galeriCache = list;
+  const tbody = document.getElementById('galeriTableBody');
+  if (list.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6"><div class="no-data"><div class="no-data-icon">🖼️</div><p>Belum ada item galeri</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(g => {
+    const isVideo = (g.tipe||'') === 'video';
+    const preview = isVideo
+      ? `<video src="${g.url}" style="width:64px;height:48px;object-fit:cover;border-radius:6px" muted></video>`
+      : `<img src="${g.url}" style="width:64px;height:48px;object-fit:cover;border-radius:6px" alt="">`;
+    return `<tr>
+    <td>${preview}</td>
+    <td><strong>${g.judul||'-'}</strong></td>
+    <td>${g.caption||'-'}</td>
+    <td><span class="badge badge-info">${isVideo?'Video':'Foto'}</span></td>
+    <td>${g.urutan!=null?g.urutan:0}</td>
+    <td><div class="action-btns">
+      <a href="${g.url}" target="_blank" class="btn btn-info btn-sm">👁 Lihat</a>
+      <button class="btn btn-warning btn-sm" onclick="openEditGaleri('${g._id}')">✏️ Edit</button>
+      <button class="btn btn-danger btn-sm" onclick="deleteGaleri('${g._id}')">🗑 Hapus</button>
+    </div></td>
+  </tr>`;
+  }).join('');
+}
+
+async function uploadGaleri() {
+  const judul = document.getElementById('gJudul').value.trim();
+  const caption = document.getElementById('gCaption').value.trim();
+  const urutan = document.getElementById('gUrutan').value || '0';
+  const fileInput = document.getElementById('gFile');
+
+  if (!fileInput.files[0]) { showToast('error','Error','Pilih file terlebih dahulu'); return; }
+
+  const btn = document.getElementById('uploadGaleriBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Mengupload...';
+
+  const formData = new FormData();
+  formData.append('file', fileInput.files[0]);
+  formData.append('judul', judul);
+  formData.append('caption', caption);
+  formData.append('urutan', urutan);
+
+  try {
+    const res = await fetch(`${API_BASE}/api/galeri/upload`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${authToken}` },
+      body: formData
+    });
+    const data = await res.json();
+    if (res.ok) {
+      closeModal('modalUploadGaleri');
+      document.getElementById('gJudul').value = '';
+      document.getElementById('gCaption').value = '';
+      document.getElementById('gUrutan').value = '0';
+      fileInput.value = '';
+      showToast('success','Berhasil','Item galeri berhasil diupload');
+      loadGaleri();
+    } else {
+      showToast('error','Gagal', data.error || 'Gagal upload galeri');
+    }
+  } catch(e) {
+    showToast('error','Error','Gagal menghubungi server');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '📤 Upload';
+  }
+}
+
+function openEditGaleri(id) {
+  const g = _galeriCache.find(x => x._id === id);
+  if (!g) return;
+  const judul = prompt('Judul:', g.judul||'');
+  if (judul === null) return;
+  const caption = prompt('Caption:', g.caption||'');
+  if (caption === null) return;
+  const urutan = prompt('Urutan (angka):', g.urutan!=null?g.urutan:0);
+  if (urutan === null) return;
+  apiPut(`/api/galeri/${id}`, { judul, caption, urutan }).then(res => {
+    if (res && res.ok) { showToast('success','Berhasil','Galeri diupdate'); loadGaleri(); }
+    else showToast('error','Gagal','Gagal update galeri');
+  });
+}
+
+async function deleteGaleri(id) {
+  if (!confirm('Hapus item galeri ini? File di Cloudinary juga akan terhapus.')) return;
+  const res = await apiDelete(`/api/galeri/${id}`);
+  if (res && res.ok) { showToast('success','Berhasil','Item galeri dihapus'); loadGaleri(); }
+  else showToast('error','Gagal','Gagal menghapus galeri');
+}
+
+// ==================== EDIT DOKUMEN ====================
+function openEditDokumen(id) {
+  const d = _dokumenCache.find(x => x._id === id);
+  if (!d) { showToast('error','Error','Data dokumen tidak ditemukan'); return; }
+  document.getElementById('edId').value = d._id;
+  document.getElementById('edNama').value = d.nama || d.name || '';
+  document.getElementById('edKategori').value = d.kategori || d.category || 'sertifikat';
+  openModal('modalEditDokumen');
+}
+
+async function saveEditDokumen() {
+  const id = document.getElementById('edId').value;
+  const nama = document.getElementById('edNama').value.trim();
+  if (!nama) { showToast('error','Error','Nama dokumen wajib diisi'); return; }
+  const body = {
+    nama,
+    kategori: document.getElementById('edKategori').value
+  };
+  const res = await apiPut(`/api/dokumen/${id}`, body);
+  if (res && res.ok) {
+    closeModal('modalEditDokumen');
+    showToast('success','Berhasil','Dokumen berhasil diperbarui');
+    loadDokumen();
+  } else {
+    showToast('error','Gagal', (res && res.data && res.data.error) || 'Gagal memperbarui. Pastikan backend mendukung edit (PUT).');
+  }
+}
+
+// ==================== PESAN ====================
+async function loadPesan() {
+  document.getElementById('pesanList').innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+  const data = await apiGet('/api/kontak');
+  const list = Array.isArray(data) ? data : [];
+
+  if (list.length === 0) {
+    document.getElementById('pesanList').innerHTML = '<div class="no-data"><div class="no-data-icon">✉️</div><p>Belum ada pesan masuk</p></div>';
+    return;
+  }
+
+  document.getElementById('pesanList').innerHTML = list.map(p => `
+    <div class="pesan-box ${p.status==='belum_dibaca'?'belum':'sudah'}" id="pesan-${p._id}">
+      <div class="pesan-nama">${p.nama||'-'}</div>
+      <div class="pesan-email">📧 ${p.email||''} ${p.telepon ? '📱 '+p.telepon : ''}</div>
+      <div class="pesan-isi" style="margin-top:8px">${p.pesan||'-'}</div>
+      <div class="pesan-footer">
+        <span class="pesan-time">${p.created_at ? new Date(p.created_at).toLocaleString('id-ID') : '-'}</span>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span class="badge ${p.status==='belum_dibaca'?'badge-warning':'badge-success'}">${p.status==='belum_dibaca'?'Belum Dibaca':'Sudah Dibaca'}</span>
+          ${p.status==='belum_dibaca' ? `<button class="btn btn-primary btn-sm" onclick="tandaiBaca('${p._id}')">✓ Tandai Dibaca</button>` : ''}
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+async function tandaiBaca(id) {
+  const res = await apiPut(`/api/kontak/${id}/baca`, {});
+  if (res && res.ok) {
+    showToast('success','Berhasil','Pesan ditandai sudah dibaca');
+    loadPesan();
+    loadDashboard();
+  }
+}
+
+// ==================== HEALTH CHECK ====================
+async function checkApiHealth() {
+  document.getElementById('apiStatus').value = 'Mengecek...';
+  try {
+    const res = await fetch(`${API_BASE}/api/health`);
+    const data = await res.json();
+    if (res.ok) {
+      document.getElementById('apiStatus').value = '✅ Online - ' + (data.service || 'OK');
+      showToast('success','API Online','Koneksi berhasil');
+    }
+  } catch(e) {
+    document.getElementById('apiStatus').value = '❌ Tidak dapat terhubung';
+    showToast('error','API Offline','Periksa koneksi atau status Railway');
+  }
+}
+
+async function gantiPassword() {
+  const lama = document.getElementById('pwLama').value;
+  const baru = document.getElementById('pwBaru').value;
+  const konfirmasi = document.getElementById('pwKonfirmasi').value;
+  const st = document.getElementById('pwStatus');
+  function show(msg, ok) {
+    st.style.display = 'block';
+    st.textContent = msg;
+    st.style.background = ok ? 'rgba(29,158,117,.15)' : 'rgba(220,53,69,.12)';
+    st.style.color = ok ? '#1D9E75' : '#dc3545';
+  }
+  if (!lama || !baru || !konfirmasi) { show('Semua kolom wajib diisi.', false); return; }
+  if (baru.length < 6) { show('Password baru minimal 6 karakter.', false); return; }
+  if (baru !== konfirmasi) { show('Konfirmasi password tidak cocok.', false); return; }
+
+  try {
+    const res = await fetch(`${API_BASE}/api/auth/ganti-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
+      body: JSON.stringify({ password_lama: lama, password_baru: baru })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      show('✅ Password berhasil diganti.', true);
+      document.getElementById('pwLama').value = '';
+      document.getElementById('pwBaru').value = '';
+      document.getElementById('pwKonfirmasi').value = '';
+      showToast('success', 'Berhasil', 'Password berhasil diganti');
+    } else {
+      show(data.error || 'Gagal mengganti password.', false);
+    }
+  } catch(e) {
+    show('Tidak dapat terhubung ke server.', false);
+  }
+}
+
+// ==================== LIVE CHAT (TAWK.TO) ====================
+function openLiveChat() {
+  // Buka dashboard Tawk.to di tab baru
+  window.open('https://dashboard.tawk.to/', '_blank');
+  showToast('success','Live Chat','Membuka dashboard Tawk.to di tab baru');
+}
+
+// ==================== NAVIGATION ====================
+const pageTitles = {
+  dashboard:'Dashboard', layanan:'Layanan KJA/KKP', dokumen:'Dokumen & Sertifikat',
+  galeri:'Galeri', pesan:'Pesan Masuk', settings:'Pengaturan'
+};
+const pageLoaders = {
+  layanan: loadLayanan, dokumen: loadDokumen, galeri: loadGaleri, pesan: loadPesan,
+  settings: checkApiHealth
+};
+
+function navigateTo(page) {
+  document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const el = document.getElementById(`page-${page}`);
+  if (el) el.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => {
+    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes(`'${page}'`)) n.classList.add('active');
+  });
+  document.getElementById('pageTitle').textContent = pageTitles[page] || page;
+  if (pageLoaders[page]) pageLoaders[page]();
+  if (window.innerWidth <= 768) document.getElementById('sidebar').classList.remove('mobile-open');
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const main = document.getElementById('mainContent');
+  if (window.innerWidth <= 768) sidebar.classList.toggle('mobile-open');
+  else { sidebar.classList.toggle('collapsed'); main.classList.toggle('expanded'); }
+}
+
+function openModal(id) { document.getElementById(id).classList.add('show'); }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', function(e) { if(e.target===this) this.classList.remove('show'); });
+});
+
+function showToast(type, msg, sub='') {
+  const icons = { success:'✅', error:'❌', warning:'⚠️' };
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `<span class="toast-icon">${icons[type]||'ℹ️'}</span><div><div class="toast-msg">${msg}</div>${sub?`<div class="toast-sub">${sub}</div>`:''}</div>`;
+  document.getElementById('toastContainer').appendChild(toast);
+  setTimeout(() => toast.remove(), 3500);
+}
+</script>
+</body>
+</html>
